@@ -34,6 +34,6 @@ Pod::Spec.new do |s|
 
   s.swift_version = '4.2'
   s.platform      = :ios, "10.0"
-  s.source        = { :git => "https://github.com/able-srls/A-BLEManager.git", :tag => "#{s.version}" }
+  s.source        = { :git => "https://github.com/ABLEsrls/ABLEManager.git", :tag => "#{s.version}" }
   s.source_files  = "ABLEManager/Sources/**/*.{swift}"
 end
