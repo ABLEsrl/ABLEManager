@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class CommandResponse: Hashable {
+public class Response: Hashable {
     var rawData: Data = Data()
 
     public init(with data: Data = Data()) {
@@ -20,11 +20,11 @@ public class CommandResponse: Hashable {
         hasher.combine(rawData)
     }
     
-    public static func ==(lhs: CommandResponse, rhs: CommandResponse) -> Bool {
+    public static func ==(lhs: Response, rhs: Response) -> Bool {
         return lhs.rawData == rhs.rawData
     }
     
     var description: String {
-        return String(bytes: rawData, encoding: .ascii) ?? ""
+        return rawData.asciiString
     }
 }
