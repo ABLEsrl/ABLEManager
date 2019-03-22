@@ -10,25 +10,25 @@ import CoreBluetooth
 import Foundation
 import UIKit
 
-class Command: Hashable {
+public class Command: Hashable {
     var rawString: String = ""
     var rawData:   Data   = Data()
     
-    init(with payload: String) {
+    public init(with payload: String) {
         self.rawString = payload
         self.rawData   = payload.data(using: .ascii) ?? Data()
     }
     
     
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(rawString)
     }
     
-    static func ==(lhs: Command, rhs: Command) -> Bool {
+    public static func ==(lhs: Command, rhs: Command) -> Bool {
         return lhs.rawString == rhs.rawString
     }
     
-    var description: String {
+    public var description: String {
         return rawString
     }
 }

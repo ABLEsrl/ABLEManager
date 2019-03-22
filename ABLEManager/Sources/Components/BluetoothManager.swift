@@ -100,7 +100,7 @@ public class BluetoothManager: NSObject {
 
 
 
-    func scanForPeripheral(_ prefix: String? = nil, completion: @escaping ScanningCallback) {
+    public func scanForPeripheral(_ prefix: String? = nil, completion: @escaping ScanningCallback) {
         parameterMap[.Scanning] = prefix
         scanningCallback = completion
         peripherals = [PeripheralDevice]()
@@ -108,7 +108,7 @@ public class BluetoothManager: NSObject {
     }
     
     @discardableResult
-    func connect(to device: PeripheralDevice) -> Bool {
+    public func connect(to device: PeripheralDevice) -> Bool {
         parameterMap[.Connect] = device.peripheral.name
         
         if device.peripheral.state != .connected {
@@ -142,7 +142,7 @@ public class BluetoothManager: NSObject {
     }
 
     @discardableResult
-    func reconnect() -> Bool {
+    public func reconnect() -> Bool {
         if let device = lastConnectedDevice {
             isConnected = connect(to: device)
         } else {
@@ -210,7 +210,7 @@ public class BluetoothManager: NSObject {
     }
     
     
-    func readData(from characteristic: Characteristic, completion: @escaping NotifyCallback) {
+    public func readData(from characteristic: Characteristic, completion: @escaping NotifyCallback) {
         if let peripheral = connectedDevice?.peripheral {
             parameterMap[.Read] = peripheral.name
             
@@ -221,7 +221,7 @@ public class BluetoothManager: NSObject {
         }
     }
     
-    func subscribe(to characteristic: Characteristic, completion: @escaping NotifyCallback) {
+    public func subscribe(to characteristic: Characteristic, completion: @escaping NotifyCallback) {
         if let peripheral = connectedDevice?.peripheral {
             parameterMap[.Subscribe] = peripheral.name
             parameterMap[.Read] = peripheral.name
@@ -246,7 +246,7 @@ public class BluetoothManager: NSObject {
         }
     }
     
-    func unsubscribe(to characteristic: Characteristic) {
+    public func unsubscribe(to characteristic: Characteristic) {
         if let peripheral = connectedDevice?.peripheral {
             parameterMap[.Subscribe] = peripheral.name
             
@@ -263,7 +263,7 @@ public class BluetoothManager: NSObject {
         }
     }
 
-    func write(command: Command, to characteristic: Characteristic, modality: CBCharacteristicWriteType = .withResponse, completion: ( (PeripheralDevice, Bool)->Void)? = nil) {
+    public func write(command: Command, to characteristic: Characteristic, modality: CBCharacteristicWriteType = .withResponse, completion: ( (PeripheralDevice, Bool)->Void)? = nil) {
         
         if let device = connectedDevice {
             parameterMap[.Write] = device.peripheral.name
@@ -286,7 +286,7 @@ public class BluetoothManager: NSObject {
         }
     }
     
-    func registerConnnectionObserver(_ callback: @escaping ((Bool) -> ())) -> NSKeyValueObservation {
+    public func registerConnnectionObserver(_ callback: @escaping ((Bool) -> ())) -> NSKeyValueObservation {
         let observer = self.observe(\.isConnected, options: [.old, .new]) { (object, change) in
             callback(self.isConnected)
         }
@@ -294,13 +294,13 @@ public class BluetoothManager: NSObject {
         return observer
     }
     
-    func disconnect() {
+    public func disconnect() {
         if let peripheral = connectedDevice?.peripheral {
             manager.cancelPeripheralConnection(peripheral)
         }
     }
 
-    func stopScan() {
+    public func stopScan() {
         manager.stopScan()
     }
 }

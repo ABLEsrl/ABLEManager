@@ -9,18 +9,18 @@
 import Foundation
 
 
-class CommandResponse: Hashable {
+public class CommandResponse: Hashable {
     var rawData: Data = Data()
 
-    init(with data: Data = Data()) {
+    public init(with data: Data = Data()) {
         self.rawData = data
     }
     
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(rawData)
     }
     
-    static func ==(lhs: CommandResponse, rhs: CommandResponse) -> Bool {
+    public static func ==(lhs: CommandResponse, rhs: CommandResponse) -> Bool {
         return lhs.rawData == rhs.rawData
     }
     
