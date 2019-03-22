@@ -1,0 +1,16 @@
+PODS:
+  - ABLEManager (1.0.0)
+
+DEPENDENCIES:
+  - ABLEManager (from `../`)
+
+EXTERNAL SOURCES:
+  ABLEManager:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ABLEManager: 9745df972350097438fdef5a376c354fae18a6e8
+
+PODFILE CHECKSUM: 8602e8a92713d1f2a3159f994dc92713429c9cae
+
+COCOAPODS: 1.5.3

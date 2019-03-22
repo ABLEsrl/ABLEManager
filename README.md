@@ -1,2 +1,2 @@
-# A-BLEManager
+# ABLEManager
 A simple and lightweight CoreBluetooth wrapper.

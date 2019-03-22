@@ -1,0 +1,6 @@
+framework module Pods_ABLEManager {
+  umbrella header "Pods-ABLEManager-umbrella.h"
+
+  export *
+  module * { export * }
+}
