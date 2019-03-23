@@ -14,9 +14,6 @@ public class DMiniBLEManager {
     
     private var readedTag: Int = 0
     
-    private let countCommand = DMiniCommand.tagCountCommand()
-    private let readCommand  = DMiniCommand.readTagCommand(index: 1)
-    
     private var currentTag: DMiniResponse
     
     
