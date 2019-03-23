@@ -15,8 +15,8 @@ public enum DeviceOperationType: String {
     case Connect        = "Connect"
     case Read           = "Read"
     case Write          = "Write"
-    case Service        = "Service"
     case Subscribe      = "Subscribe"
+    case Service        = "Service"
     case Characteristic = "Characteristic"
     case Stop           = "Stop"
 }

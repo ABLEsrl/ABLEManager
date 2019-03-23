@@ -38,9 +38,6 @@ public class BluetoothManager: NSObject {
     public var connectedDevice: PeripheralDevice?
     private var lastConnectedDevice: PeripheralDevice?
     
-    private var writeTimeout: Timer?
-    private var writeTimeoutCallback: TimeoutCallback?
-    
     private var scanningCallback: ScanningCallback?
     private var connectCallback: ConnectCallback?
     private var writeCallback: WriteCallback?
@@ -61,6 +58,16 @@ public class BluetoothManager: NSObject {
         }
     }
     
+    @objc dynamic var isPoweredOn: Bool {
+        get {
+            if let manager = manager {
+                return manager.state == .poweredOn
+            }
+            
+            return false
+        }
+    }
+    
     private override init() {
         connectingSemaphore = DispatchGroup()
         serviceSemaphore = DispatchGroup()
@@ -75,11 +82,8 @@ public class BluetoothManager: NSObject {
         parameterMap = [DeviceOperationType: Any]()
         
         peripherals = [PeripheralDevice]()
-        eventQueue = DispatchQueue(label: "it.idrocontroller.ble.event.queue")
-        
-        writeTimeout = nil
-        writeTimeoutCallback = nil
-        
+        eventQueue = DispatchQueue(label: "it.able.ble.event.queue")
+
         scanningCallback = nil
         connectCallback = nil
         writeCallback = nil
@@ -89,16 +93,23 @@ public class BluetoothManager: NSObject {
         manager = CBCentralManager(delegate: self, queue: eventQueue, options: [CBCentralManagerOptionShowPowerAlertKey: true])
     }
     
-    private func startWriteTimeoutTimer(_ timeout: Double = 4.0) {
-        TimeoutTimer.invalidate(timer: writeTimeout)
+    public func scanAndConnect(to name: String, callback: @escaping ConnectCallback) {
+        while isPoweredOn == false {
+            sleep(1)
+        }
         
-        writeTimeout = TimeoutTimer.detachTimer(relative: timeout) { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.writeTimeoutCallback?()
+        connectCallback = callback
+        
+        scanForPeripheral(name) { (devices) in
+            if devices.count == 1, devices[0].peripheral.name == name {
+                self.stopScan()
+                
+                self.connect(to: devices[0])
+                
+                self.connectCallback?(devices[0])
+            }
         }
     }
-
-
 
     public func scanForPeripheral(_ prefix: String? = nil, completion: @escaping ScanningCallback) {
         parameterMap[.Scanning] = prefix
@@ -125,20 +136,6 @@ public class BluetoothManager: NSObject {
         lastConnectedDevice = connectedDevice
         
         return discoverServicesForConnectedDevice()
-    }
-    
-    public func scanAndConnect(to name: String, callback: @escaping ConnectCallback) {
-        connectCallback = callback
-        
-        scanForPeripheral(name) { (devices) in
-            if devices.count == 1, devices[0].peripheral.name == name {
-                self.stopScan()
-                
-                self.connect(to: devices[0])
-                
-                self.connectCallback?(devices[0])
-            }
-        }
     }
 
     @discardableResult
@@ -223,6 +220,8 @@ public class BluetoothManager: NSObject {
     
     public func subscribe(to characteristic: Characteristic, completion: @escaping NotifyCallback) {
         if let peripheral = connectedDevice?.peripheral {
+            unsubscribe(to: characteristic)
+            
             parameterMap[.Subscribe] = peripheral.name
             parameterMap[.Read] = peripheral.name
             
@@ -263,7 +262,7 @@ public class BluetoothManager: NSObject {
         }
     }
 
-    public func write(command: Command, to characteristic: Characteristic, modality: CBCharacteristicWriteType = .withResponse, completion: ( (PeripheralDevice, Bool)->Void)? = nil) {
+    public func write(command: ABLECommand, to characteristic: Characteristic, modality: CBCharacteristicWriteType = .withResponse, completion: ( (PeripheralDevice, Bool)->Void)? = nil) {
         
         if let device = connectedDevice {
             parameterMap[.Write] = device.peripheral.name
@@ -323,11 +322,13 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
             print("PowerOff")
         case .poweredOn:
             print("PowerOn")
+            manager.delegate = self
+            manager.scanForPeripherals(withServices: nil, options: nil)
         }
     }
     
-    private func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        //print("Found Peripheral: \(peripheral.name ?? "No Nome")")
+    public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        print("Found Peripheral: \(peripheral.name ?? "No Nome")")
         
         let prefix = parameterMap[.Scanning] as? String ?? ""
         let name = peripheral.name ?? ""
@@ -347,7 +348,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    private func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         if let name = parameterMap[.Connect] as? String, name == peripheral.name {
             isConnected = true
             
@@ -358,11 +359,11 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    private func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+    public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         isConnected = false
     }
     
-    private func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+    public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let name = parameterMap[.Service] as? String, name == peripheral.name {
             if needLeaveService == true {
                 needLeaveService = false
@@ -371,7 +372,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    private func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+    public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let name = parameterMap[.Characteristic] as? String, name == peripheral.name {
             if needLeaveCharacteristic == true {
                 needLeaveCharacteristic = false
@@ -380,7 +381,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    private func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+    public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         //print("Received: \(characteristic.value?.toHexString() ?? "")")
             
         if let connectedDev = connectedDevice, let data = characteristic.value {
@@ -390,17 +391,16 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    private func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+    public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         if let connectedDev = connectedDevice {
             DispatchQueue.main.async {
-                TimeoutTimer.invalidate(timer: self.writeTimeout)
                 self.writeCallback?(connectedDev, (error == nil))
             }
         }
     }
     
     
-    private func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+    public func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         //print("Notification enabled: \(characteristic.isNotifying)")
         
         if needLeaveSubcribe == true {

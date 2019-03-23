@@ -1,5 +1,5 @@
 PODS:
-  - ABLEManager (1.0.0)
+  - ABLEManager (1.0.1)
 
 DEPENDENCIES:
   - ABLEManager (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ABLEManager: 9745df972350097438fdef5a376c354fae18a6e8
+  ABLEManager: 5e5ba07471d489d480c335a55f41af2c1e01f524
 
 PODFILE CHECKSUM: 8602e8a92713d1f2a3159f994dc92713429c9cae
 

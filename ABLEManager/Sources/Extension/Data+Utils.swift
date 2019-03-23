@@ -13,7 +13,7 @@ public extension Data {
     var isNoneOrZeroFilled: Bool {
         get {
             var res = true
-            self.toHexString().forEach { (element) in
+            self.hexString.forEach { (element) in
                 if String(element) != "0" {
                     res = false
                 }
@@ -25,6 +25,12 @@ public extension Data {
     var asciiString: String {
         get {
             return String(bytes: self, encoding: .ascii) ?? ""
+        }
+    }
+    
+    var hexString: String {
+        get {
+            return reduce("") { "\($0)" + "\(Utils.intToHex(Int($1)) ?? "")" }
         }
     }
 }

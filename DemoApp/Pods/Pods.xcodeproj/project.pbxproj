@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		007FDE7A8E7177BE2BA89A39AFB039AF /* TimeoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B1310CBBCCE41AAF3DE16072976D7C /* TimeoutTimer.swift */; };
+		0351C591CF49609A77901B46EBE28F2F /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AD898C745698432932F8C521EDAA1 /* String+Utils.swift */; };
+		074A94B196FC7EEEC0380B6DE4511F27 /* ABLEManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04062958DAD8EAADC695EE1DEFEA484F /* ABLEManager-dummy.m */; };
+		08A2FC1A47053F8278A5E2EEC5FB6C9E /* ABLEManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D6AEA83F34D6B68BAC09CAF09FB26196 /* ABLEManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3AE621B4C0328169411289ACF94D0ECB /* Utils+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8E7B2F105EA17DCE398A2EFB21BF5B /* Utils+Hex.swift */; };
+		3B0078AC3F0F6D8579180F0BCAC39F74 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36AD867667F0A49A0A089AB694B01D /* BluetoothManager.swift */; };
 		3C0CB3C56DDDFCBD037F0736F39CD840 /* Pods-DemoApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA28139ADF70472F0519703078FFEE /* Pods-DemoApp-dummy.m */; };
-		546E5CD1DA6CCBB97DCA3FD75A32A2F4 /* Data+Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6D23BD0764E02FD3CF9D2255A4442 /* Data+Parser.swift */; };
-		7B349B4E31A7A79AD7FEE70331EB9067 /* ABLEManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F8916B4AB2514EEBD1C9A57C9B8AD3 /* ABLEManager-dummy.m */; };
-		7CBC175A76E8255E214159CBCE013BA4 /* PeripheralDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D3061E1F2AE50B234219C4F210B7C5 /* PeripheralDevice.swift */; };
+		51BF11DF98B05185F25A622546F1B6E2 /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A449605E28409064A75BD238DE1948 /* Data+Utils.swift */; };
+		52100805B31705A315E03771895551DB /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA78384ACD8F7842F05CCB4A1256043 /* ServiceModel.swift */; };
+		7026A0F427BB0B1446E251C05B7C7B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		7DAC41C494B4BCDB699A39C75EBA109A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		84BA2F5BA03FA0E11544B5DF67B1CEB2 /* Pods-DemoApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CD4FD0EDE0451463E1223D3D0848ACE3 /* Pods-DemoApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8CA5B519FCA5752811872B045E55B6EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		9014DC15B8AA0899CDB44E4F89029232 /* ABLEManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CDAD562D0B3D8635B70DFBD990DBFA94 /* ABLEManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		911243E24E64B5A48F97146E550B6048 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D842B872CC5C330EB7A6234BE238B /* Command.swift */; };
-		A5A5A66356B41D8DDC4A8E460E03FDDB /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD64FF86D1339810653CF1CE9908F2 /* BluetoothManager.swift */; };
-		A65494159EA38750226882BE026BD884 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0C014F73F0A49AE69F3817CCAACAB7 /* Response.swift */; };
-		DC07278B316C9AE489ACB0548ACD45B7 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254EEC09F8C17353049C601353A0CE9 /* ServiceModel.swift */; };
-		E6BC521D31D330AA100F49C20DE12134 /* Utils+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183E7622AB8B51A13F558CCE956F002 /* Utils+Hex.swift */; };
+		A528F87973CC54EB2DF5F4AF4FB059FC /* ABLECommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E922B912DE3E887FAA367080BF632AD /* ABLECommand.swift */; };
+		ACF4D40DBD20EBD14E0D91C0B58ED592 /* TimeoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265B16417E2F6A7F8B9AFFC6FCAC8561 /* TimeoutTimer.swift */; };
+		D07618162289C7486BB58A2B09AE6FFD /* PeripheralDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B16CA0D9ACE88F2445220497F150D7 /* PeripheralDevice.swift */; };
+		FB866C9CBC66DBC1EFCFCB242CD187F2 /* ABLEResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED23632CFD912CA4B5737DD5F77B83A6 /* ABLEResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,54 +29,47 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5225486C3865A861492E91451AD63B61;
+			remoteGlobalIDString = CDDFED35B68A8DB78D2C7BF41C28AADE;
 			remoteInfo = ABLEManager;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		116173B033039A2AB48847934B17B653 /* ABLEManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ABLEManager.xcconfig; sourceTree = "<group>"; };
+		04062958DAD8EAADC695EE1DEFEA484F /* ABLEManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ABLEManager-dummy.m"; sourceTree = "<group>"; };
 		242919D93F9FD3900E12E1D62FBEED8D /* Pods-DemoApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DemoApp-frameworks.sh"; sourceTree = "<group>"; };
 		248D7ABC2384BD9B9EA71D4F27255E1F /* Pods-DemoApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DemoApp-resources.sh"; sourceTree = "<group>"; };
+		265B16417E2F6A7F8B9AFFC6FCAC8561 /* TimeoutTimer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimeoutTimer.swift; sourceTree = "<group>"; };
+		2793818C5CEF162152958204E7809689 /* ABLEManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = ABLEManager.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		311A1AD4433245FBACDB1D75CCAFB722 /* Pods-DemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DemoApp.debug.xcconfig"; sourceTree = "<group>"; };
-		3C4D842B872CC5C330EB7A6234BE238B /* Command.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		42815FA8FB2383A7DB64EC427ACCDBEA /* Pods-DemoApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DemoApp-acknowledgements.plist"; sourceTree = "<group>"; };
-		42D3061E1F2AE50B234219C4F210B7C5 /* PeripheralDevice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PeripheralDevice.swift; sourceTree = "<group>"; };
-		43F8916B4AB2514EEBD1C9A57C9B8AD3 /* ABLEManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ABLEManager-dummy.m"; sourceTree = "<group>"; };
-		59D4EFF96B07222F43FAC88CB34C1F12 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5E922B912DE3E887FAA367080BF632AD /* ABLECommand.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ABLECommand.swift; sourceTree = "<group>"; };
 		5FEA28139ADF70472F0519703078FFEE /* Pods-DemoApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DemoApp-dummy.m"; sourceTree = "<group>"; };
-		6103F684A38BC6ABDC6E1D39B22E5FAA /* ABLEManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = ABLEManager.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7D0C014F73F0A49AE69F3817CCAACAB7 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		69B16CA0D9ACE88F2445220497F150D7 /* PeripheralDevice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PeripheralDevice.swift; sourceTree = "<group>"; };
+		6D636A767D6CB1E126E579DEF286E184 /* ABLEManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ABLEManager.xcconfig; sourceTree = "<group>"; };
+		8131843CA29C0245D9A180DE3D94E4D3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		828A647C34F82DF1B1E7CBA26D1E6ED5 /* ABLEManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ABLEManager.modulemap; sourceTree = "<group>"; };
+		84A449605E28409064A75BD238DE1948 /* Data+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
+		8AA78384ACD8F7842F05CCB4A1256043 /* ServiceModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		8CE3885E66D378A658642E111F9C3D1D /* Pods-DemoApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DemoApp.modulemap"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A254EEC09F8C17353049C601353A0CE9 /* ServiceModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
+		9B7AD898C745698432932F8C521EDAA1 /* String+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
+		A2D5A4DDCD5F4A15822C56CCAF55BE82 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8112ADE2BDD8A91A7A9C38682CD94E7 /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0B6D23BD0764E02FD3CF9D2255A4442 /* Data+Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Data+Parser.swift"; sourceTree = "<group>"; };
+		AE8E7B2F105EA17DCE398A2EFB21BF5B /* Utils+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Utils+Hex.swift"; sourceTree = "<group>"; };
 		B611CABACB0E94A999909FDD1EDE07EC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BCDD64FF86D1339810653CF1CE9908F2 /* BluetoothManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		C0007C680C58948F3430418E2EE172BC /* Pods-DemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DemoApp.release.xcconfig"; sourceTree = "<group>"; };
+		C1A5FAF3E15F0EA80CE25D0C7800C524 /* ABLEManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ABLEManager-prefix.pch"; sourceTree = "<group>"; };
 		C8ED76661AD3DA2AA520ABD8211DF228 /* Pods-DemoApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DemoApp-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CD4FD0EDE0451463E1223D3D0848ACE3 /* Pods-DemoApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DemoApp-umbrella.h"; sourceTree = "<group>"; };
-		CDAD562D0B3D8635B70DFBD990DBFA94 /* ABLEManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ABLEManager-umbrella.h"; sourceTree = "<group>"; };
-		D51F48056616B0E8914D351FC9155E9D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		D650569EC4BC9F8D24C9343B100CDF6E /* ABLEManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ABLEManager.modulemap; sourceTree = "<group>"; };
-		DE576A26044904510CD0C360E56C7BA3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E183E7622AB8B51A13F558CCE956F002 /* Utils+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Utils+Hex.swift"; sourceTree = "<group>"; };
-		E6822972CDD071897CA97D2D224D2A96 /* ABLEManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ABLEManager-prefix.pch"; sourceTree = "<group>"; };
+		CE36AD867667F0A49A0A089AB694B01D /* BluetoothManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		D6AEA83F34D6B68BAC09CAF09FB26196 /* ABLEManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ABLEManager-umbrella.h"; sourceTree = "<group>"; };
+		E0F0768B22CB683CB5F7456460D6FD6E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED23632CFD912CA4B5737DD5F77B83A6 /* ABLEResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ABLEResponse.swift; sourceTree = "<group>"; };
 		F04206160FBCD91CF9AD256B86563EB5 /* ABLEManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ABLEManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7B1310CBBCCE41AAF3DE16072976D7C /* TimeoutTimer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimeoutTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		31C2FBB463473545C8CF4C59A7E82065 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8CA5B519FCA5752811872B045E55B6EF /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3F771A64B87FBF2B6E90331B04C1CB8A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -84,21 +78,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5DF28828DD9046FB55284B28F6033616 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7026A0F427BB0B1446E251C05B7C7B7F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3C55AA7C25C3C4606918582FED39E8A3 /* Support Files */ = {
+		342769E987AAE7DEAA96F72C25EBCC2B /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				D650569EC4BC9F8D24C9343B100CDF6E /* ABLEManager.modulemap */,
-				116173B033039A2AB48847934B17B653 /* ABLEManager.xcconfig */,
-				43F8916B4AB2514EEBD1C9A57C9B8AD3 /* ABLEManager-dummy.m */,
-				E6822972CDD071897CA97D2D224D2A96 /* ABLEManager-prefix.pch */,
-				CDAD562D0B3D8635B70DFBD990DBFA94 /* ABLEManager-umbrella.h */,
-				DE576A26044904510CD0C360E56C7BA3 /* Info.plist */,
+				CE36AD867667F0A49A0A089AB694B01D /* BluetoothManager.swift */,
+				265B16417E2F6A7F8B9AFFC6FCAC8561 /* TimeoutTimer.swift */,
 			);
-			name = "Support Files";
-			path = "DemoApp/Pods/Target Support Files/ABLEManager";
+			name = Components;
+			path = ABLEManager/Sources/Components;
 			sourceTree = "<group>";
 		};
 		4056CE810F521B760B3BAD777DDE31E8 /* Pods-DemoApp */ = {
@@ -119,68 +117,27 @@
 			path = "Target Support Files/Pods-DemoApp";
 			sourceTree = "<group>";
 		};
-		598B2826B46B3DA95A2F18180ED83585 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7B7CEF1249A37C8443C111C2C127AF61 /* ABLEManager */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		5FCB845A3314EB4EE88ECA1F6780C123 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				B0B6D23BD0764E02FD3CF9D2255A4442 /* Data+Parser.swift */,
-				E183E7622AB8B51A13F558CCE956F002 /* Utils+Hex.swift */,
-			);
-			name = Extension;
-			path = ABLEManager/Sources/Extension;
-			sourceTree = "<group>";
-		};
-		6F7DE203E13BCBD5CEC9B387EC0A9D97 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				3C4D842B872CC5C330EB7A6234BE238B /* Command.swift */,
-				7D0C014F73F0A49AE69F3817CCAACAB7 /* Response.swift */,
-				42D3061E1F2AE50B234219C4F210B7C5 /* PeripheralDevice.swift */,
-				A254EEC09F8C17353049C601353A0CE9 /* ServiceModel.swift */,
-			);
-			name = Models;
-			path = ABLEManager/Sources/Models;
-			sourceTree = "<group>";
-		};
-		7B7CEF1249A37C8443C111C2C127AF61 /* ABLEManager */ = {
-			isa = PBXGroup;
-			children = (
-				7D20EFAC270CE4DD987A936A1A83D4EF /* Components */,
-				5FCB845A3314EB4EE88ECA1F6780C123 /* Extension */,
-				6F7DE203E13BCBD5CEC9B387EC0A9D97 /* Models */,
-				C6A3C9014C970DB36FC20FA7A2E3869A /* Pod */,
-				3C55AA7C25C3C4606918582FED39E8A3 /* Support Files */,
-			);
-			name = ABLEManager;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		7D20EFAC270CE4DD987A936A1A83D4EF /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				BCDD64FF86D1339810653CF1CE9908F2 /* BluetoothManager.swift */,
-				F7B1310CBBCCE41AAF3DE16072976D7C /* TimeoutTimer.swift */,
-			);
-			name = Components;
-			path = ABLEManager/Sources/Components;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				598B2826B46B3DA95A2F18180ED83585 /* Development Pods */,
+				FCA59567E336003F24760889965087CE /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				AFA034F04E771E7B35551935CC506262 /* Products */,
 				F78FD055B769C56ABB53AFC0D30DD822 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		A957991B2CB392CF74702FB1779E2A82 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5E922B912DE3E887FAA367080BF632AD /* ABLECommand.swift */,
+				ED23632CFD912CA4B5737DD5F77B83A6 /* ABLEResponse.swift */,
+				69B16CA0D9ACE88F2445220497F150D7 /* PeripheralDevice.swift */,
+				8AA78384ACD8F7842F05CCB4A1256043 /* ServiceModel.swift */,
+			);
+			name = Models;
+			path = ABLEManager/Sources/Models;
 			sourceTree = "<group>";
 		};
 		AFA034F04E771E7B35551935CC506262 /* Products */ = {
@@ -200,14 +157,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C6A3C9014C970DB36FC20FA7A2E3869A /* Pod */ = {
+		C6692D278A0E72D745978AF20D09EBBD /* ABLEManager */ = {
 			isa = PBXGroup;
 			children = (
-				6103F684A38BC6ABDC6E1D39B22E5FAA /* ABLEManager.podspec */,
-				D51F48056616B0E8914D351FC9155E9D /* LICENSE */,
-				59D4EFF96B07222F43FAC88CB34C1F12 /* README.md */,
+				342769E987AAE7DEAA96F72C25EBCC2B /* Components */,
+				FE2496DB40BE4119107BB19020EDEDA7 /* Extension */,
+				A957991B2CB392CF74702FB1779E2A82 /* Models */,
+				EA2A85C3DE162E3BEE47C8C00DDE411B /* Pod */,
+				E2BE4EE5108BD5599B0F517F8734823C /* Support Files */,
 			);
-			name = Pod;
+			name = ABLEManager;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
@@ -218,6 +178,30 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		E2BE4EE5108BD5599B0F517F8734823C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				828A647C34F82DF1B1E7CBA26D1E6ED5 /* ABLEManager.modulemap */,
+				6D636A767D6CB1E126E579DEF286E184 /* ABLEManager.xcconfig */,
+				04062958DAD8EAADC695EE1DEFEA484F /* ABLEManager-dummy.m */,
+				C1A5FAF3E15F0EA80CE25D0C7800C524 /* ABLEManager-prefix.pch */,
+				D6AEA83F34D6B68BAC09CAF09FB26196 /* ABLEManager-umbrella.h */,
+				A2D5A4DDCD5F4A15822C56CCAF55BE82 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "DemoApp/Pods/Target Support Files/ABLEManager";
+			sourceTree = "<group>";
+		};
+		EA2A85C3DE162E3BEE47C8C00DDE411B /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				2793818C5CEF162152958204E7809689 /* ABLEManager.podspec */,
+				8131843CA29C0245D9A180DE3D94E4D3 /* LICENSE */,
+				E0F0768B22CB683CB5F7456460D6FD6E /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		F78FD055B769C56ABB53AFC0D30DD822 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,14 +210,33 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		FCA59567E336003F24760889965087CE /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6692D278A0E72D745978AF20D09EBBD /* ABLEManager */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		FE2496DB40BE4119107BB19020EDEDA7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				84A449605E28409064A75BD238DE1948 /* Data+Utils.swift */,
+				9B7AD898C745698432932F8C521EDAA1 /* String+Utils.swift */,
+				AE8E7B2F105EA17DCE398A2EFB21BF5B /* Utils+Hex.swift */,
+			);
+			name = Extension;
+			path = ABLEManager/Sources/Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		CC55291D232AAE2CE6F2BA5892C70C77 /* Headers */ = {
+		375582C2A6AC1177CD80CD7A9EB4F43D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9014DC15B8AA0899CDB44E4F89029232 /* ABLEManager-umbrella.h in Headers */,
+				08A2FC1A47053F8278A5E2EEC5FB6C9E /* ABLEManager-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,23 +251,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5225486C3865A861492E91451AD63B61 /* ABLEManager */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 95FDDDC005765261BE1D5A5C504E43EC /* Build configuration list for PBXNativeTarget "ABLEManager" */;
-			buildPhases = (
-				E96D80C5C5535FF9C2A782E5E6E3063A /* Sources */,
-				31C2FBB463473545C8CF4C59A7E82065 /* Frameworks */,
-				CC55291D232AAE2CE6F2BA5892C70C77 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ABLEManager;
-			productName = ABLEManager;
-			productReference = F04206160FBCD91CF9AD256B86563EB5 /* ABLEManager.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		9EF5FA429942D2155B110F3C6B62F9DA /* Pods-DemoApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5EE9440E8B331F803A37B68178CD79A /* Build configuration list for PBXNativeTarget "Pods-DemoApp" */;
@@ -283,6 +269,23 @@
 			productReference = A8112ADE2BDD8A91A7A9C38682CD94E7 /* Pods_DemoApp.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		CDDFED35B68A8DB78D2C7BF41C28AADE /* ABLEManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB691106298A7A4A9140DA7B2002BA8F /* Build configuration list for PBXNativeTarget "ABLEManager" */;
+			buildPhases = (
+				375983B8929A2BBB98A85B5B6011FBCD /* Sources */,
+				5DF28828DD9046FB55284B28F6033616 /* Frameworks */,
+				375582C2A6AC1177CD80CD7A9EB4F43D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ABLEManager;
+			productName = ABLEManager;
+			productReference = F04206160FBCD91CF9AD256B86563EB5 /* ABLEManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -290,7 +293,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -304,34 +307,35 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5225486C3865A861492E91451AD63B61 /* ABLEManager */,
+				CDDFED35B68A8DB78D2C7BF41C28AADE /* ABLEManager */,
 				9EF5FA429942D2155B110F3C6B62F9DA /* Pods-DemoApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		375983B8929A2BBB98A85B5B6011FBCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A528F87973CC54EB2DF5F4AF4FB059FC /* ABLECommand.swift in Sources */,
+				074A94B196FC7EEEC0380B6DE4511F27 /* ABLEManager-dummy.m in Sources */,
+				FB866C9CBC66DBC1EFCFCB242CD187F2 /* ABLEResponse.swift in Sources */,
+				3B0078AC3F0F6D8579180F0BCAC39F74 /* BluetoothManager.swift in Sources */,
+				51BF11DF98B05185F25A622546F1B6E2 /* Data+Utils.swift in Sources */,
+				D07618162289C7486BB58A2B09AE6FFD /* PeripheralDevice.swift in Sources */,
+				52100805B31705A315E03771895551DB /* ServiceModel.swift in Sources */,
+				0351C591CF49609A77901B46EBE28F2F /* String+Utils.swift in Sources */,
+				ACF4D40DBD20EBD14E0D91C0B58ED592 /* TimeoutTimer.swift in Sources */,
+				3AE621B4C0328169411289ACF94D0ECB /* Utils+Hex.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4295ECBEACEA5BEE8E86310C7BA946F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3C0CB3C56DDDFCBD037F0736F39CD840 /* Pods-DemoApp-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E96D80C5C5535FF9C2A782E5E6E3063A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7B349B4E31A7A79AD7FEE70331EB9067 /* ABLEManager-dummy.m in Sources */,
-				A5A5A66356B41D8DDC4A8E460E03FDDB /* BluetoothManager.swift in Sources */,
-				911243E24E64B5A48F97146E550B6048 /* Command.swift in Sources */,
-				A65494159EA38750226882BE026BD884 /* Response.swift in Sources */,
-				546E5CD1DA6CCBB97DCA3FD75A32A2F4 /* Data+Parser.swift in Sources */,
-				7CBC175A76E8255E214159CBCE013BA4 /* PeripheralDevice.swift in Sources */,
-				DC07278B316C9AE489ACB0548ACD45B7 /* ServiceModel.swift in Sources */,
-				007FDE7A8E7177BE2BA89A39AFB039AF /* TimeoutTimer.swift in Sources */,
-				E6BC521D31D330AA100F49C20DE12134 /* Utils+Hex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +345,7 @@
 		27279C759441E38E001A8D6A609959EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ABLEManager;
-			target = 5225486C3865A861492E91451AD63B61 /* ABLEManager */;
+			target = CDDFED35B68A8DB78D2C7BF41C28AADE /* ABLEManager */;
 			targetProxy = F21382658C89B545BD2C06B7129EFC26 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -401,10 +405,42 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
+		};
+		1D18F9C22CE527FD6E4F686403FFB9A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D636A767D6CB1E126E579DEF286E184 /* ABLEManager.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ABLEManager/ABLEManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ABLEManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ABLEManager/ABLEManager.modulemap";
+				PRODUCT_MODULE_NAME = ABLEManager;
+				PRODUCT_NAME = ABLEManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		35259FE4332AD21E0A85A64ADFA11AB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -442,9 +478,9 @@
 			};
 			name = Debug;
 		};
-		4163847E20FE281116AD66D4C7ABD756 /* Release */ = {
+		7938CCD9D0B25728A94A55449FDBF7CF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 116173B033039A2AB48847934B17B653 /* ABLEManager.xcconfig */;
+			baseConfigurationReference = 6D636A767D6CB1E126E579DEF286E184 /* ABLEManager.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -475,39 +511,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		764E797971815EF8D30EC0E0081D4613 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 116173B033039A2AB48847934B17B653 /* ABLEManager.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ABLEManager/ABLEManager-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ABLEManager/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ABLEManager/ABLEManager.modulemap";
-				PRODUCT_MODULE_NAME = ABLEManager;
-				PRODUCT_NAME = ABLEManager;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		87EAC867385563488A6D8F1E74AC46B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -620,20 +623,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		95FDDDC005765261BE1D5A5C504E43EC /* Build configuration list for PBXNativeTarget "ABLEManager" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				764E797971815EF8D30EC0E0081D4613 /* Debug */,
-				4163847E20FE281116AD66D4C7ABD756 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		B5EE9440E8B331F803A37B68178CD79A /* Build configuration list for PBXNativeTarget "Pods-DemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35259FE4332AD21E0A85A64ADFA11AB8 /* Debug */,
 				FEDED23ADCD1CF1460680E196CBD0F7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB691106298A7A4A9140DA7B2002BA8F /* Build configuration list for PBXNativeTarget "ABLEManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D18F9C22CE527FD6E4F686403FFB9A3 /* Debug */,
+				7938CCD9D0B25728A94A55449FDBF7CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
