@@ -52,7 +52,7 @@ public class DMiniBLEManager {
                 
                 self.currentTag.append(string: response.asciiString)
                 if self.currentTag.parsedCompletely() {
-                    print("Tag Parsato: " + self.currentTag.tagPayload)
+                    // print("Tag Parsato: " + self.currentTag.tagPayload)
                     callback(self.currentTag.tagPayload, true)
                 }
             }

@@ -19,11 +19,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y81-Pc-1vg">
-                                <rect key="frame" x="145" y="269" width="84" height="30"/>
+                                <rect key="frame" x="107" y="269" width="160" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ReadAllTags"/>
+                                <state key="normal" title="Read all Tags on reader"/>
                                 <connections>
-                                    <action selector="readAllTags:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A8h-J4-ez7"/>
+                                    <action selector="readAllTags:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4bM-CV-KKs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Grp-lg-fyh">
+                                <rect key="frame" x="136" y="201" width="102" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Get tags count"/>
+                                <connections>
+                                    <action selector="tagsCountOnReader:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PFl-Ss-LVL"/>
                                 </connections>
                             </button>
                         </subviews>

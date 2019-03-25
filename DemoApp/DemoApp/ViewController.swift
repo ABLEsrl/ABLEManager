@@ -24,17 +24,19 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func readAllTags(_ sender: UIButton?) {
+    @IBAction func tagsCountOnReader(_ sender: UIButton?) {
         DMiniBLEManager.shared.getTagsCountOnReader { (tagsCount, success) in
-            if success {
-                DMiniBLEManager.shared.readAllTags({ (tags, success) in
-                    tags.forEach({ (tag) in
-                        print("Tag : \(tag)")
-                    })
-                })
+            print ("Tags on reader: \(tagsCount)")
+        }
+    }
+    
+    @IBAction func readAllTags(_ sender: UIButton?) {
+        DMiniBLEManager.shared.readAllTags { (tags, success) in
+            tags.forEach { (tag) in
+                print("Tag : \(tag)")
             }
         }
     }
-  
+    
 }
 

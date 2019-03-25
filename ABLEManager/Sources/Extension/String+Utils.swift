@@ -2,7 +2,8 @@
 //  String+Padding.swift
 //  ABLEManager
 //
-//  Created by Riccardo Paolillo on 23/03/2019.
+//  Created by Riccardo Paolillo on 02/01/2019.
+//  Copyright © 2019 ABLE. All rights reserved.
 //
 
 import Foundation
