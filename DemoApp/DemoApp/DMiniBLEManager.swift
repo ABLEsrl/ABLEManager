@@ -38,7 +38,7 @@ public class DMiniBLEManager {
     
     func getTagsCountOnReader(_ callback: @escaping ((Int, Bool)->Void) ) {
         // La risposta del palmare è: $2808xxxx\r\n
-        BluetoothManager.shared.subscribe(to: .characteristic5) { (device, rawResponse, success) in
+        BluetoothManager.shared.subscribe(to: DMiniCharacteristic.characteristic5.rawValue) { (device, rawResponse, success) in
             if success {
                 let response = DMiniCountResponse(with: rawResponse.asciiString)
                 //print("Tags count raw respone: \(rawResponse.asciiString)")
@@ -48,13 +48,13 @@ public class DMiniBLEManager {
         }
         
         let counter = DMiniCommand.tagCountCommand()
-        BluetoothManager.shared.write(command: counter, to: .characteristic5, modality: .withoutResponse)
+        BluetoothManager.shared.write(command: counter, to: DMiniCharacteristic.characteristic5.rawValue, modality: .withoutResponse)
     }
     
     func readTag(index: Int, callback: @escaping ((String, Bool)->Void) ) {
         currentTag = DMiniTagResponse()
         
-        BluetoothManager.shared.subscribe(to: .characteristic5) { (device, response, success) in
+        BluetoothManager.shared.subscribe(to: DMiniCharacteristic.characteristic5.rawValue) { (device, response, success) in
             if success {
                 //print("Ricevo risposta: " + response.asciiString)
                 
@@ -67,7 +67,7 @@ public class DMiniBLEManager {
         }
         
         let readTag = DMiniCommand.readTagCommand()
-        BluetoothManager.shared.write(command: readTag, to: .characteristic5, modality: .withoutResponse)
+        BluetoothManager.shared.write(command: readTag, to: DMiniCharacteristic.characteristic5.rawValue, modality: .withoutResponse)
     }
     
     func readAllTags(_ callback: @escaping (([String], Bool)->Void) ) {

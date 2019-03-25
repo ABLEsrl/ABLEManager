@@ -207,18 +207,18 @@ public class BluetoothManager: NSObject {
     }
     
     
-    public func readData(from characteristic: Characteristic, completion: @escaping NotifyCallback) {
+    public func readData(from characteristic: String, completion: @escaping NotifyCallback) {
         if let peripheral = connectedDevice?.peripheral {
             parameterMap[.Read] = peripheral.name
             
-            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic.rawValue}) {
+            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
                 notifyCallback = completion
                 peripheral.readValue(for: cbcharacteristic)
             }
         }
     }
     
-    public func subscribeRead(to characteristic: Characteristic, completion: @escaping NotifyCallback) {
+    public func subscribeRead(to characteristic: String, completion: @escaping NotifyCallback) {
         if let peripheral = connectedDevice?.peripheral {
             unsubscribe(to: characteristic)
             
@@ -226,7 +226,7 @@ public class BluetoothManager: NSObject {
             
             notifyCallback = completion
             
-            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic.rawValue}) {
+            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
                 if cbcharacteristic.isNotifying {
                     peripheral.readValue(for: cbcharacteristic)
                     return
@@ -244,7 +244,7 @@ public class BluetoothManager: NSObject {
         }
     }
     
-    public func subscribe(to characteristic: Characteristic, completion: @escaping NotifyCallback) {
+    public func subscribe(to characteristic: String, completion: @escaping NotifyCallback) {
         if let peripheral = connectedDevice?.peripheral {
             unsubscribe(to: characteristic)
             
@@ -252,7 +252,7 @@ public class BluetoothManager: NSObject {
             
             notifyCallback = completion
             
-            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic.rawValue}) {
+            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
                 if cbcharacteristic.isNotifying {
                     return
                 }
@@ -267,11 +267,11 @@ public class BluetoothManager: NSObject {
         }
     }
     
-    public func unsubscribe(to characteristic: Characteristic) {
+    public func unsubscribe(to characteristic: String) {
         if let peripheral = connectedDevice?.peripheral {
             parameterMap[.Subscribe] = peripheral.name
             
-            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic.rawValue}) {
+            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
                 if cbcharacteristic.isNotifying {
                     return
                 }
@@ -284,14 +284,14 @@ public class BluetoothManager: NSObject {
         }
     }
 
-    public func write(command: ABLECommand, to characteristic: Characteristic, modality: CBCharacteristicWriteType = .withResponse, completion: ( (PeripheralDevice, Bool)->Void)? = nil) {
+    public func write(command: ABLECommand, to characteristic: String, modality: CBCharacteristicWriteType = .withResponse, completion: ( (PeripheralDevice, Bool)->Void)? = nil) {
         
         if let device = connectedDevice {
             parameterMap[.Write] = device.peripheral.name
             
             let data = command.rawData
             
-            if let cbcharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic.rawValue}) {
+            if let cbcharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
                 if modality == .withResponse {
                     //print("Writing \(command.rawString) to characteristic: \(cbcharacteristic.uuid.uuidString)...")
                     if let callback = completion {

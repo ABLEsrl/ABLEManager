@@ -14,7 +14,7 @@
 		3B0078AC3F0F6D8579180F0BCAC39F74 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36AD867667F0A49A0A089AB694B01D /* BluetoothManager.swift */; };
 		3C0CB3C56DDDFCBD037F0736F39CD840 /* Pods-DemoApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA28139ADF70472F0519703078FFEE /* Pods-DemoApp-dummy.m */; };
 		51BF11DF98B05185F25A622546F1B6E2 /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A449605E28409064A75BD238DE1948 /* Data+Utils.swift */; };
-		52100805B31705A315E03771895551DB /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA78384ACD8F7842F05CCB4A1256043 /* ServiceModel.swift */; };
+		52100805B31705A315E03771895551DB /* DeviceOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA78384ACD8F7842F05CCB4A1256043 /* DeviceOperationType.swift */; };
 		7026A0F427BB0B1446E251C05B7C7B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		7DAC41C494B4BCDB699A39C75EBA109A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		84BA2F5BA03FA0E11544B5DF67B1CEB2 /* Pods-DemoApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CD4FD0EDE0451463E1223D3D0848ACE3 /* Pods-DemoApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -50,7 +50,7 @@
 		8131843CA29C0245D9A180DE3D94E4D3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		828A647C34F82DF1B1E7CBA26D1E6ED5 /* ABLEManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ABLEManager.modulemap; sourceTree = "<group>"; };
 		84A449605E28409064A75BD238DE1948 /* Data+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
-		8AA78384ACD8F7842F05CCB4A1256043 /* ServiceModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
+		8AA78384ACD8F7842F05CCB4A1256043 /* DeviceOperationType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceOperationType.swift; sourceTree = "<group>"; };
 		8CE3885E66D378A658642E111F9C3D1D /* Pods-DemoApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DemoApp.modulemap"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9B7AD898C745698432932F8C521EDAA1 /* String+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 				5E922B912DE3E887FAA367080BF632AD /* ABLECommand.swift */,
 				ED23632CFD912CA4B5737DD5F77B83A6 /* ABLEResponse.swift */,
 				69B16CA0D9ACE88F2445220497F150D7 /* PeripheralDevice.swift */,
-				8AA78384ACD8F7842F05CCB4A1256043 /* ServiceModel.swift */,
+				8AA78384ACD8F7842F05CCB4A1256043 /* DeviceOperationType.swift */,
 			);
 			name = Models;
 			path = ABLEManager/Sources/Models;
@@ -324,7 +324,7 @@
 				3B0078AC3F0F6D8579180F0BCAC39F74 /* BluetoothManager.swift in Sources */,
 				51BF11DF98B05185F25A622546F1B6E2 /* Data+Utils.swift in Sources */,
 				D07618162289C7486BB58A2B09AE6FFD /* PeripheralDevice.swift in Sources */,
-				52100805B31705A315E03771895551DB /* ServiceModel.swift in Sources */,
+				52100805B31705A315E03771895551DB /* DeviceOperationType.swift in Sources */,
 				0351C591CF49609A77901B46EBE28F2F /* String+Utils.swift in Sources */,
 				ACF4D40DBD20EBD14E0D91C0B58ED592 /* TimeoutTimer.swift in Sources */,
 				3AE621B4C0328169411289ACF94D0ECB /* Utils+Hex.swift in Sources */,

@@ -13,6 +13,7 @@
 		B237FD0C2244FDEC006D9099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B237FD0B2244FDEC006D9099 /* Assets.xcassets */; };
 		B237FD0F2244FDEC006D9099 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B237FD0D2244FDEC006D9099 /* LaunchScreen.storyboard */; };
 		B25194972248E0E1006327F4 /* DMiniCountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25194962248E0E1006327F4 /* DMiniCountResponse.swift */; };
+		B25194A422492243006327F4 /* DMiniCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25194A322492243006327F4 /* DMiniCharacteristics.swift */; };
 		B26182CE2246348D008DD6AF /* DMiniCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26182CD2246348D008DD6AF /* DMiniCommand.swift */; };
 		B26182D022463D67008DD6AF /* DMiniBLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26182CF22463D67008DD6AF /* DMiniBLEManager.swift */; };
 		B26182D2224643A4008DD6AF /* DMiniTagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26182D1224643A4008DD6AF /* DMiniTagResponse.swift */; };
@@ -31,6 +32,7 @@
 		B237FD0E2244FDEC006D9099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B237FD102244FDEC006D9099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B25194962248E0E1006327F4 /* DMiniCountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniCountResponse.swift; sourceTree = "<group>"; };
+		B25194A322492243006327F4 /* DMiniCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniCharacteristics.swift; sourceTree = "<group>"; };
 		B26182CD2246348D008DD6AF /* DMiniCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniCommand.swift; sourceTree = "<group>"; };
 		B26182CF22463D67008DD6AF /* DMiniBLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniBLEManager.swift; sourceTree = "<group>"; };
 		B26182D1224643A4008DD6AF /* DMiniTagResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniTagResponse.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				B26182D1224643A4008DD6AF /* DMiniTagResponse.swift */,
 				B25194962248E0E1006327F4 /* DMiniCountResponse.swift */,
 				B26182CF22463D67008DD6AF /* DMiniBLEManager.swift */,
+				B25194A322492243006327F4 /* DMiniCharacteristics.swift */,
 			);
 			path = DemoApp;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			files = (
 				B237FD072244FDEB006D9099 /* ViewController.swift in Sources */,
 				B26182CE2246348D008DD6AF /* DMiniCommand.swift in Sources */,
+				B25194A422492243006327F4 /* DMiniCharacteristics.swift in Sources */,
 				B237FD052244FDEB006D9099 /* AppDelegate.swift in Sources */,
 				B26182D022463D67008DD6AF /* DMiniBLEManager.swift in Sources */,
 				B25194972248E0E1006327F4 /* DMiniCountResponse.swift in Sources */,
