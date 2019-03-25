@@ -43,10 +43,10 @@ public class BluetoothManager: NSObject {
     private var writeCallback: WriteCallback?
     private var notifyCallback: NotifyCallback?
     
-    @objc dynamic var isConnected: Bool {
+    @objc dynamic public var isConnected: Bool {
         get {
-            if let connected = connectedDevice {
-                return connected.peripheral.state == .connected
+            if let device = connectedDevice {
+                return device.peripheral.state == .connected
             }
             
             return false
@@ -58,7 +58,7 @@ public class BluetoothManager: NSObject {
         }
     }
     
-    @objc dynamic var isPoweredOn: Bool {
+    @objc dynamic public var isPoweredOn: Bool {
         get {
             if let manager = manager {
                 return manager.state == .poweredOn
@@ -309,9 +309,12 @@ public class BluetoothManager: NSObject {
     
     public func registerConnnectionObserver(_ callback: @escaping ((Bool) -> ())) -> NSKeyValueObservation {
         let observer = self.observe(\.isConnected, options: [.old, .new]) { (object, change) in
-            callback(self.isConnected)
+            DispatchQueue.main.async {
+                callback(self.isConnected)
+            }
         }
         
+        callback(self.isConnected)
         return observer
     }
     
