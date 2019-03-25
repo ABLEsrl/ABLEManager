@@ -10,8 +10,7 @@ import CoreBluetooth
 import Foundation
 
 
-public class PeripheralDevice: Equatable, Comparable, Hashable {
-    
+open class PeripheralDevice: Equatable, Comparable, Hashable {
     var peripheral: CBPeripheral
     var services: [CBService]
     var characteristics: [CBCharacteristic]!
@@ -19,6 +18,12 @@ public class PeripheralDevice: Equatable, Comparable, Hashable {
     init(with peripheral: CBPeripheral) {
         self.peripheral = peripheral
         self.services = peripheral.services ?? [CBService]()
+    }
+    
+    public var peripheralName: String {
+        get {
+            return peripheral.name ?? ""
+        }
     }
     
     public static func ==(lhs: PeripheralDevice, rhs: PeripheralDevice) -> Bool {

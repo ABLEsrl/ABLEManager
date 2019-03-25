@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         }
         
         DMiniBLEManager.shared.searchAndConnect { (device) in
-            print ("Connesso")
+            print ("Connesso con \(device.peripheralName)")
         }
     }
     
