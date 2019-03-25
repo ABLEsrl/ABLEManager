@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        DMiniBLEManager.shared.registerConnectionObserver { (isConnected) in
+            print("DMini is connected? \(isConnected)")
+        }
         
         DMiniBLEManager.shared.searchAndConnect { (device) in
             print ("Connesso")

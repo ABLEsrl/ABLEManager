@@ -15,10 +15,18 @@ public class DMiniBLEManager {
     private var readedTag: Int = 0
     
     private var currentTag: DMiniTagResponse
-    
+    private var connectionObserver: NSKeyValueObservation?
     
     init() {
         currentTag = DMiniTagResponse()
+        
+        connectionObserver = nil
+    }
+    
+    func registerConnectionObserver(_ callback: @escaping ((Bool)->Void) ) {
+        connectionObserver = BluetoothManager.shared.registerConnnectionObserver { (connected) in
+            callback(connected)
+        }
     }
     
     func searchAndConnect(_ callback: @escaping ((PeripheralDevice)->Void) ) {
