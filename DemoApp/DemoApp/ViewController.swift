@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             if success {
                 DMiniBLEManager.shared.readAllTags({ (tags, success) in
                     tags.forEach({ (tag) in
-                        print("Tag: \(tag)")
+                        print("Tag : \(tag)")
                     })
                 })
             }

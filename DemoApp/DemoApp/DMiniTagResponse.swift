@@ -20,7 +20,7 @@ import ABLEManager
  yyyy è il tag
  */
 
-public class DMiniResponse: ABLEResponse {
+public class DMiniTagResponse: ABLEResponse {
     var SOF:         String = "$"
     var CMD:         String = ""
     var LEN:         String = ""
@@ -74,18 +74,9 @@ public class DMiniResponse: ABLEResponse {
         return true
     }
     
-    static func tagCountCommand() -> DMiniCommand {
-        let command = DMiniCommand(with: .TAG_COUNT, payload: "00")
-        return command
-    }
-    
-    static func readTagCommand() -> DMiniCommand {
-        return readTagCommand(index: 1)
-    }
-    static func readTagCommand(index: Int) -> DMiniCommand {
-        let readFromRAM = "01"
-        let tagIndexString = String(index).leftPadding(toLength: 4, withPad: "0")
-        let command = DMiniCommand(with: .READ_TAG, payload: readFromRAM + tagIndexString)
-        return command
+    public var tagPayload: String {
+        get {
+            return TAG
+        }
     }
 }

@@ -218,12 +218,11 @@ public class BluetoothManager: NSObject {
         }
     }
     
-    public func subscribe(to characteristic: Characteristic, completion: @escaping NotifyCallback) {
+    public func subscribeRead(to characteristic: Characteristic, completion: @escaping NotifyCallback) {
         if let peripheral = connectedDevice?.peripheral {
             unsubscribe(to: characteristic)
             
             parameterMap[.Subscribe] = peripheral.name
-            parameterMap[.Read] = peripheral.name
             
             notifyCallback = completion
             
@@ -237,8 +236,31 @@ public class BluetoothManager: NSObject {
                 needLeaveSubcribe = true
                 peripheral.setNotifyValue(true, for: cbcharacteristic)
                 subcribeSemaphore.wait()
-        
+                
                 peripheral.readValue(for: cbcharacteristic)
+            }
+        } else {
+            //completion(PeripheralDevice(), Data(), false)
+        }
+    }
+    
+    public func subscribe(to characteristic: Characteristic, completion: @escaping NotifyCallback) {
+        if let peripheral = connectedDevice?.peripheral {
+            unsubscribe(to: characteristic)
+            
+            parameterMap[.Subscribe] = peripheral.name
+            
+            notifyCallback = completion
+            
+            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic.rawValue}) {
+                if cbcharacteristic.isNotifying {
+                    return
+                }
+                
+                subcribeSemaphore.enter()
+                needLeaveSubcribe = true
+                peripheral.setNotifyValue(true, for: cbcharacteristic)
+                subcribeSemaphore.wait()
             }
         } else {
             //completion(PeripheralDevice(), Data(), false)

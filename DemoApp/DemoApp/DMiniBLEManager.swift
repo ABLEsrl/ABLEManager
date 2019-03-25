@@ -14,11 +14,11 @@ public class DMiniBLEManager {
     
     private var readedTag: Int = 0
     
-    private var currentTag: DMiniResponse
+    private var currentTag: DMiniTagResponse
     
     
     init() {
-        currentTag = DMiniResponse()
+        currentTag = DMiniTagResponse()
     }
     
     func searchAndConnect(_ callback: @escaping ((PeripheralDevice)->Void) ) {
@@ -29,16 +29,14 @@ public class DMiniBLEManager {
    
     
     func getTagsCountOnReader(_ callback: @escaping ((Int, Bool)->Void) ) {
-        // La risposta del palmare è:
-        // $2808xxxx\r\n
-        BluetoothManager.shared.subscribe(to: .characteristic5) { (device, response, success) in
+        // La risposta del palmare è: $2808xxxx\r\n
+        BluetoothManager.shared.subscribe(to: .characteristic5) { (device, rawResponse, success) in
             if success {
-                print("Tags presenti nel lettore: " + response.asciiString)
-                
-                callback(3, true)
+                let response = DMiniCountResponse(with: rawResponse.asciiString)
+                //print("Tags count raw respone: \(rawResponse.asciiString)")
+                print("Tags presenti nel lettore: \(response.tagsCount)\n")
+                callback(response.tagsCount, true)
             }
-            
-            callback(-1, false)
         }
         
         let counter = DMiniCommand.tagCountCommand()
@@ -46,15 +44,16 @@ public class DMiniBLEManager {
     }
     
     func readTag(index: Int, callback: @escaping ((String, Bool)->Void) ) {
-        currentTag = DMiniResponse()
+        currentTag = DMiniTagResponse()
         
         BluetoothManager.shared.subscribe(to: .characteristic5) { (device, response, success) in
             if success {
-                print("Ricevo risposta: " + response.asciiString)
+                //print("Ricevo risposta: " + response.asciiString)
                 
                 self.currentTag.append(string: response.asciiString)
                 if self.currentTag.parsedCompletely() {
-                    callback(self.currentTag.rawString, true)
+                    print("Tag Parsato: " + self.currentTag.tagPayload)
+                    callback(self.currentTag.tagPayload, true)
                 }
             }
         }
@@ -65,20 +64,25 @@ public class DMiniBLEManager {
     
     func readAllTags(_ callback: @escaping (([String], Bool)->Void) ) {
         getTagsCountOnReader { (tagsCount, success) in
-            var tags = [String]()
-            let group = DispatchGroup()
-            
-            for i in 1...tagsCount {
-                group.enter()
+            let queue = DispatchQueue(label: "tags.reader.queue")
+            queue.async {
+                var tags = [String]()
+                let group = DispatchGroup()
                 
-                self.readTag(index: i) { (tag, success) in
-                    tags.append(tag)
-                    group.leave()
+                for i in 1...tagsCount {
+                    group.enter()
+                    
+                    self.readTag(index: i) { (tag, success) in
+                        tags.append(tag)
+                        group.leave()
+                    }
+                    
+                    group.wait()
                 }
-            }
-            
-            group.notify(queue: DispatchQueue.main) {
-                callback(tags, true)
+                
+                group.notify(queue: DispatchQueue.main) {
+                    callback(tags, true)
+                }
             }
         }
     }
