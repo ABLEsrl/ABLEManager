@@ -42,7 +42,7 @@ public class DMiniBLEManager {
             if success {
                 let response = DMiniCountResponse(with: rawResponse.asciiString)
                 //print("Tags count raw respone: \(rawResponse.asciiString)")
-                print("Tags presenti nel lettore: \(response.tagsCount)\n")
+                //print("Tags presenti nel lettore: \(response.tagsCount)\n")
                 callback(response.tagsCount, true)
             }
         }
@@ -72,8 +72,11 @@ public class DMiniBLEManager {
     
     func readAllTags(_ callback: @escaping (([String], Bool)->Void) ) {
         getTagsCountOnReader { (tagsCount, success) in
-            let queue = DispatchQueue(label: "tags.reader.queue")
-            queue.async {
+            if tagsCount <= 0 {
+                return
+            }
+            
+            DispatchQueue(label: "tags.reader.queue").async {
                 var tags = [String]()
                 let group = DispatchGroup()
                 
