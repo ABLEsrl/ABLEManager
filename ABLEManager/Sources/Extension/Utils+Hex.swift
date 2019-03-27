@@ -39,14 +39,14 @@ open class Utils {
 
 public extension Character {
     
-    public var asciiValue: Int {
+    var asciiValue: Int {
         get {
             let s = String(self).unicodeScalars
             return Int(s[s.startIndex].value)
         }
     }
     
-    public var asciiHexValue: String? {
+    var asciiHexValue: String? {
         get {
             return Utils.intToHex(asciiValue)
         }
