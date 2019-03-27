@@ -13,24 +13,24 @@ open class ABLECommand: Hashable {
     open var rawString: String = ""
     open var rawData:   Data   = Data()
     
-    public init(with payload: String) {
+    open init(with payload: String) {
         self.rawString = payload
         self.rawData   = payload.data(using: .ascii) ?? Data()
     }
     
-    public func hash(into hasher: inout Hasher) {
+    open func hash(into hasher: inout Hasher) {
         hasher.combine(rawString)
     }
     
-    public static func ==(lhs: ABLECommand, rhs: ABLECommand) -> Bool {
+    open static func ==(lhs: ABLECommand, rhs: ABLECommand) -> Bool {
         return lhs.rawString == rhs.rawString
     }
     
-    public func getData() -> Data {
+    open func getData() -> Data {
         return rawData
     }
     
-    public var description: String {
+    open var description: String {
         return rawString
     }
 }

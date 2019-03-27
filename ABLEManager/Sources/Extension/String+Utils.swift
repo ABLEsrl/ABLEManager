@@ -9,7 +9,7 @@
 import Foundation
 
 extension String {
-    public func leftPadding(toLength: Int, withPad character: Character) -> String {
+    open func leftPadding(toLength: Int, withPad character: Character) -> String {
         let stringLength = self.count
         if stringLength < toLength {
             return String(repeatElement(character, count: toLength - stringLength)) + self
@@ -18,7 +18,7 @@ extension String {
         }
     }
     
-    public func rightPadding(toLength: Int, withPad character: Character) -> String {
+    open func rightPadding(toLength: Int, withPad character: Character) -> String {
         let stringLength = self.count
         if stringLength < toLength {
             return self + String(repeatElement(character, count: toLength - stringLength))
@@ -27,7 +27,7 @@ extension String {
         }
     }
     
-    public func subString(from: Int, len: Int) -> String {
+    open func subString(from: Int, len: Int) -> String {
         var res = ""
         
         var count = 0
@@ -44,7 +44,7 @@ extension String {
     }
     
     /// A data representation of the hexadecimal bytes in this string.
-    public func hexDecodedData() -> Data {
+    open func hexDecodedData() -> Data {
         // Get the UTF8 characters of this string
         let chars = Array(utf8)
         

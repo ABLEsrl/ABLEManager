@@ -9,8 +9,8 @@
 import Foundation
 
 
-public extension Data {
-    var isNoneOrZeroFilled: Bool {
+open extension Data {
+    open var isNoneOrZeroFilled: Bool {
         get {
             var res = true
             self.hexString.forEach { (element) in
@@ -22,13 +22,13 @@ public extension Data {
         }
     }
     
-    var asciiString: String {
+    open var asciiString: String {
         get {
             return String(bytes: self, encoding: .ascii) ?? ""
         }
     }
     
-    var hexString: String {
+    open var hexString: String {
         get {
             return reduce("") { "\($0)" + "\(Utils.intToHex(Int($1)) ?? "")" }
         }
