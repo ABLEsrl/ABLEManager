@@ -26,6 +26,10 @@ open class ABLEResponse: Hashable {
         return lhs.rawString == rhs.rawString
     }
     
+    public func parseData(_ data: Data) {
+        rawData = data
+    }
+    
     public var description: String {
         return rawString
     }

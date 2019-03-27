@@ -289,7 +289,7 @@ public class BluetoothManager: NSObject {
         if let device = connectedDevice {
             parameterMap[.Write] = device.peripheral.name
             
-            let data = command.rawData
+            let data = command.getData()
             
             if let cbcharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
                 if modality == .withResponse {

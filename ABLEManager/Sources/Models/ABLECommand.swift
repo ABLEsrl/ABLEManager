@@ -10,8 +10,8 @@ import Foundation
 
 
 open class ABLECommand: Hashable {
-    var rawString: String = ""
-    var rawData:   Data   = Data()
+    open var rawString: String = ""
+    open var rawData:   Data   = Data()
     
     public init(with payload: String) {
         self.rawString = payload
@@ -24,6 +24,10 @@ open class ABLECommand: Hashable {
     
     public static func ==(lhs: ABLECommand, rhs: ABLECommand) -> Bool {
         return lhs.rawString == rhs.rawString
+    }
+    
+    public func getData() -> Data {
+        return rawData
     }
     
     public var description: String {
