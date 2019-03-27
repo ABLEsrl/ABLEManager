@@ -13,7 +13,7 @@ open class ABLECommand: Hashable {
     open var rawString: String = ""
     open var rawData:   Data   = Data()
     
-    open init(with payload: String) {
+    public init(with payload: String) {
         self.rawString = payload
         self.rawData   = payload.data(using: .ascii) ?? Data()
     }
@@ -22,7 +22,7 @@ open class ABLECommand: Hashable {
         hasher.combine(rawString)
     }
     
-    open static func ==(lhs: ABLECommand, rhs: ABLECommand) -> Bool {
+    public static func ==(lhs: ABLECommand, rhs: ABLECommand) -> Bool {
         return lhs.rawString == rhs.rawString
     }
     

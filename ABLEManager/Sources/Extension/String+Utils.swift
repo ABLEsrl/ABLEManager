@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension String {
-    open func leftPadding(toLength: Int, withPad character: Character) -> String {
+public extension String {
+    func leftPadding(toLength: Int, withPad character: Character) -> String {
         let stringLength = self.count
         if stringLength < toLength {
             return String(repeatElement(character, count: toLength - stringLength)) + self
@@ -18,7 +18,7 @@ extension String {
         }
     }
     
-    open func rightPadding(toLength: Int, withPad character: Character) -> String {
+    func rightPadding(toLength: Int, withPad character: Character) -> String {
         let stringLength = self.count
         if stringLength < toLength {
             return self + String(repeatElement(character, count: toLength - stringLength))
@@ -27,7 +27,7 @@ extension String {
         }
     }
     
-    open func subString(from: Int, len: Int) -> String {
+    func subString(from: Int, len: Int) -> String {
         var res = ""
         
         var count = 0
@@ -44,7 +44,7 @@ extension String {
     }
     
     /// A data representation of the hexadecimal bytes in this string.
-    open func hexDecodedData() -> Data {
+    func hexDecodedData() -> Data {
         // Get the UTF8 characters of this string
         let chars = Array(utf8)
         
@@ -73,36 +73,7 @@ extension String {
     }
 }
 
-extension String {
-    subscript (i: Int) -> Character {
-        return self[index(startIndex, offsetBy: i)]
-    }
-    subscript (bounds: CountableRange<Int>) -> Substring {
-        let start = index(startIndex, offsetBy: bounds.lowerBound)
-        let end = index(startIndex, offsetBy: bounds.upperBound)
-        return self[start ..< end]
-    }
-    subscript (bounds: CountableClosedRange<Int>) -> Substring {
-        let start = index(startIndex, offsetBy: bounds.lowerBound)
-        let end = index(startIndex, offsetBy: bounds.upperBound)
-        return self[start ... end]
-    }
-    subscript (bounds: CountablePartialRangeFrom<Int>) -> Substring {
-        let start = index(startIndex, offsetBy: bounds.lowerBound)
-        let end = index(endIndex, offsetBy: -1)
-        return self[start ... end]
-    }
-    subscript (bounds: PartialRangeThrough<Int>) -> Substring {
-        let end = index(startIndex, offsetBy: bounds.upperBound)
-        return self[startIndex ... end]
-    }
-    subscript (bounds: PartialRangeUpTo<Int>) -> Substring {
-        let end = index(startIndex, offsetBy: bounds.upperBound)
-        return self[startIndex ..< end]
-    }
-}
-
-extension Substring {
+public extension String {
     subscript (i: Int) -> Character {
         return self[index(startIndex, offsetBy: i)]
     }
