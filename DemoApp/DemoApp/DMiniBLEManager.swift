@@ -83,9 +83,11 @@ public class DMiniBLEManager {
                 for i in 1...tagsCount {
                     group.enter()
                     
-                    self.readTag(index: i) { (tag, success) in
-                        tags.append(tag)
-                        group.leave()
+                    DispatchQueue(label: "read.tag.reader.queue").sync {
+                        self.readTag(index: i) { (tag, success) in
+                            tags.append(tag)
+                            group.leave()
+                        }
                     }
                     
                     group.wait()
