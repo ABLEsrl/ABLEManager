@@ -88,9 +88,9 @@ public class DMiniBLEManager {
                             tags.append(tag)
                             group.leave()
                         }
+                        
+                        group.wait()
                     }
-                    
-                    group.wait()
                 }
                 
                 group.notify(queue: DispatchQueue.main) {

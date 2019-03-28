@@ -63,8 +63,8 @@ public class DMiniTagResponse: ABLEResponse {
             TAGS_COUNT = rawString.subString(from: 7, len: 4)
         }
         
-        if let len = Utils.hexToInt(TAG_LEN), rawString.count >= 11 + len, TAG == "" {
-            TAG = rawString.subString(from: 11, len: len)
+        if let hexLen = Utils.hexToInt(TAG_LEN), rawString.count >= 11 + hexLen * 2, TAG == "" {
+            TAG = rawString.subString(from: 11, len: hexLen * 2)
         }
         
         if CMD == "" || LEN == "" || TAG_LEN == "" || TAGS_COUNT == "" || TAG == "" {
