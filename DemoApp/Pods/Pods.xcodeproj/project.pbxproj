@@ -39,7 +39,7 @@
 		242919D93F9FD3900E12E1D62FBEED8D /* Pods-DemoApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DemoApp-frameworks.sh"; sourceTree = "<group>"; };
 		248D7ABC2384BD9B9EA71D4F27255E1F /* Pods-DemoApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DemoApp-resources.sh"; sourceTree = "<group>"; };
 		265B16417E2F6A7F8B9AFFC6FCAC8561 /* TimeoutTimer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimeoutTimer.swift; sourceTree = "<group>"; };
-		2793818C5CEF162152958204E7809689 /* ABLEManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = ABLEManager.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		2793818C5CEF162152958204E7809689 /* ABLEManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = ABLEManager.podspec; sourceTree = "<group>"; };
 		311A1AD4433245FBACDB1D75CCAFB722 /* Pods-DemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		42815FA8FB2383A7DB64EC427ACCDBEA /* Pods-DemoApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DemoApp-acknowledgements.plist"; sourceTree = "<group>"; };
 		5E922B912DE3E887FAA367080BF632AD /* ABLECommand.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ABLECommand.swift; sourceTree = "<group>"; };

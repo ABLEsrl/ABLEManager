@@ -24,6 +24,7 @@ public class BluetoothManager: NSObject {
     private var subcribeSemaphore: DispatchGroup
     private var serviceSemaphore: DispatchGroup
     private var characteristicSemaphore: DispatchGroup
+    private var reconnectionSemaphore: DispatchGroup
     
     private var needLeaveConnecting: Bool
     private var needLeaveSubcribe: Bool
@@ -36,7 +37,7 @@ public class BluetoothManager: NSObject {
     
     public var peripherals: [PeripheralDevice]!
     public var connectedDevice: PeripheralDevice?
-    private var lastConnectedDevice: PeripheralDevice?
+    public var lastConnectedDevice: PeripheralDevice?
     
     private var scanningCallback: ScanningCallback?
     private var connectCallback: ConnectCallback?
@@ -73,6 +74,7 @@ public class BluetoothManager: NSObject {
         serviceSemaphore = DispatchGroup()
         characteristicSemaphore = DispatchGroup()
         subcribeSemaphore = DispatchGroup()
+        reconnectionSemaphore = DispatchGroup()
         
         needLeaveConnecting = false
         needLeaveService = false
@@ -140,19 +142,23 @@ public class BluetoothManager: NSObject {
         return discoverServicesForConnectedDevice()
     }
 
-    @discardableResult
-    public func reconnect() -> Bool {
-        if let device = lastConnectedDevice {
-            let waiting = DispatchGroup()
-            waiting.enter()
-            scanAndConnect(to: device.peripheralName) { (device) in
-                waiting.leave()
+    public func reconnect( _ callback: @escaping ((Bool)->Void)) {
+        Thread.detachNewThread { [weak self] in
+            if let device = self?.lastConnectedDevice {
+                self?.reconnectionSemaphore = DispatchGroup()
+                self?.reconnectionSemaphore.enter()
+                self?.scanAndConnect(to: device.peripheralName) { (device) in
+                    self?.reconnectionSemaphore.leave()
+                    callback(true)
+                }
+                
+                if self?.reconnectionSemaphore.wait(timeout: .now() + 10) == .timedOut {
+                    callback(false)
+                }
+            } else {
+                callback(false)
             }
-            waiting.wait()
-            return true
         }
-        
-        return false
     }
     
     @discardableResult
