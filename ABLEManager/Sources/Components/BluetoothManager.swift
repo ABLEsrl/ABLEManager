@@ -94,19 +94,23 @@ public class BluetoothManager: NSObject {
     }
     
     public func scanAndConnect(to name: String, callback: @escaping ConnectCallback) {
-        while isPoweredOn == false {
-            sleep(1)
-        }
-        
-        connectCallback = callback
-        
-        scanForPeripheral(name) { (devices) in
-            if devices.count == 1, devices[0].peripheral.name == name {
-                self.stopScan()
-                
-                self.connect(to: devices[0])
-                
-                self.connectCallback?(devices[0])
+        Thread.detachNewThread {
+            while self.isPoweredOn == false {
+                sleep(1)
+            }
+            
+            self.connectCallback = callback
+            
+            self.scanForPeripheral(name) { (devices) in
+                if devices.count == 1, devices[0].peripheral.name == name {
+                    self.stopScan()
+                    
+                    self.connect(to: devices[0])
+                    
+                    DispatchQueue.main.async {
+                        self.connectCallback?(devices[0])
+                    }
+                }
             }
         }
     }
@@ -122,18 +126,16 @@ public class BluetoothManager: NSObject {
     public func connect(to device: PeripheralDevice) -> Bool {
         parameterMap[.Connect] = device.peripheral.name
         
-        if device.peripheral.state != .connected {
-            connectingSemaphore.enter()
-            needLeaveConnecting = true
-            manager.connect(device.peripheral, options: nil)
+        connectingSemaphore.enter()
+        needLeaveConnecting = true
+        manager.connect(device.peripheral, options: nil)
 
-            if connectingSemaphore.wait(timeout: .now() + 4) == DispatchTimeoutResult.timedOut {
-                return false
-            }
+        if connectingSemaphore.wait(timeout: .now() + 4) == DispatchTimeoutResult.timedOut {
+            return false
         }
         
         connectedDevice = device
-        lastConnectedDevice = connectedDevice
+        lastConnectedDevice = device
         
         return discoverServicesForConnectedDevice()
     }
@@ -314,7 +316,10 @@ public class BluetoothManager: NSObject {
             }
         }
         
-        callback(self.isConnected)
+        DispatchQueue.main.async {
+            callback(self.isConnected)
+        }
+        
         return observer
     }
     
@@ -375,6 +380,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         if let name = parameterMap[.Connect] as? String, name == peripheral.name {
+            connectedDevice = PeripheralDevice(with: peripheral)
             isConnected = true
             
             if needLeaveConnecting == true {
@@ -385,6 +391,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        connectedDevice = nil
         isConnected = false
     }
     

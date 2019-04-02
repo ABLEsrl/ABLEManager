@@ -11,7 +11,7 @@ import Foundation
 
 open class TimeoutTimer {
     
-    open static func detachTimer(relative deadline: Double, interval: TimeInterval = 2, callback: @escaping ()->()) -> Timer {
+    public static func detachTimer(relative deadline: Double, interval: TimeInterval = 2, callback: @escaping ()->()) -> Timer {
         let timer = Timer(fire: Date(timeInterval: deadline, since: Date()), interval: interval, repeats: false) { (timer) in
             DispatchQueue.main.async {
                 callback()
@@ -22,7 +22,7 @@ open class TimeoutTimer {
         return timer
     }
     
-    open static func invalidate(timer: Timer?) {
+    public static func invalidate(timer: Timer?) {
         if let timeout = timer {
             timeout.invalidate()
         }
