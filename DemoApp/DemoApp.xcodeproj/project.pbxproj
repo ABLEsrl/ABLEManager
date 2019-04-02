@@ -17,12 +17,6 @@
 		B26182CE2246348D008DD6AF /* DMiniCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26182CD2246348D008DD6AF /* DMiniCommand.swift */; };
 		B26182D022463D67008DD6AF /* DMiniBLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26182CF22463D67008DD6AF /* DMiniBLEManager.swift */; };
 		B26182D2224643A4008DD6AF /* DMiniTagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26182D1224643A4008DD6AF /* DMiniTagResponse.swift */; };
-		B2F8BAC822533CFC00D2C8D8 /* LocalData+Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F8BAC322533CFC00D2C8D8 /* LocalData+Parser.swift */; };
-		B2F8BAC922533CFC00D2C8D8 /* IdroCharacteristicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F8BAC422533CFC00D2C8D8 /* IdroCharacteristicsModel.swift */; };
-		B2F8BACA22533CFC00D2C8D8 /* IdroManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F8BAC522533CFC00D2C8D8 /* IdroManager.swift */; };
-		B2F8BACB22533CFC00D2C8D8 /* IdroResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F8BAC622533CFC00D2C8D8 /* IdroResponse.swift */; };
-		B2F8BACC22533CFC00D2C8D8 /* IdroCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F8BAC722533CFC00D2C8D8 /* IdroCommand.swift */; };
-		B2F8BACE225342BF00D2C8D8 /* ViewTwoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F8BACD225342BF00D2C8D8 /* ViewTwoController.swift */; };
 		DF33DC2D6C3F1DAFDB8ED82B /* Pods_DemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6744546B7F16FCA9E59974C7 /* Pods_DemoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,12 +36,6 @@
 		B26182CD2246348D008DD6AF /* DMiniCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniCommand.swift; sourceTree = "<group>"; };
 		B26182CF22463D67008DD6AF /* DMiniBLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniBLEManager.swift; sourceTree = "<group>"; };
 		B26182D1224643A4008DD6AF /* DMiniTagResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniTagResponse.swift; sourceTree = "<group>"; };
-		B2F8BAC322533CFC00D2C8D8 /* LocalData+Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocalData+Parser.swift"; sourceTree = "<group>"; };
-		B2F8BAC422533CFC00D2C8D8 /* IdroCharacteristicsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdroCharacteristicsModel.swift; sourceTree = "<group>"; };
-		B2F8BAC522533CFC00D2C8D8 /* IdroManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdroManager.swift; sourceTree = "<group>"; };
-		B2F8BAC622533CFC00D2C8D8 /* IdroResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdroResponse.swift; sourceTree = "<group>"; };
-		B2F8BAC722533CFC00D2C8D8 /* IdroCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdroCommand.swift; sourceTree = "<group>"; };
-		B2F8BACD225342BF00D2C8D8 /* ViewTwoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTwoController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,12 +82,10 @@
 			children = (
 				B237FD042244FDEB006D9099 /* AppDelegate.swift */,
 				B237FD062244FDEB006D9099 /* ViewController.swift */,
-				B2F8BACD225342BF00D2C8D8 /* ViewTwoController.swift */,
 				B237FD082244FDEB006D9099 /* Main.storyboard */,
 				B237FD0B2244FDEC006D9099 /* Assets.xcassets */,
 				B237FD0D2244FDEC006D9099 /* LaunchScreen.storyboard */,
 				B237FD102244FDEC006D9099 /* Info.plist */,
-				B2F8BAC222533C8C00D2C8D8 /* E188 */,
 				B2F8BAC122533C7900D2C8D8 /* DMini */,
 			);
 			path = DemoApp;
@@ -115,18 +101,6 @@
 				B25194A322492243006327F4 /* DMiniCharacteristics.swift */,
 			);
 			name = DMini;
-			sourceTree = "<group>";
-		};
-		B2F8BAC222533C8C00D2C8D8 /* E188 */ = {
-			isa = PBXGroup;
-			children = (
-				B2F8BAC422533CFC00D2C8D8 /* IdroCharacteristicsModel.swift */,
-				B2F8BAC722533CFC00D2C8D8 /* IdroCommand.swift */,
-				B2F8BAC522533CFC00D2C8D8 /* IdroManager.swift */,
-				B2F8BAC622533CFC00D2C8D8 /* IdroResponse.swift */,
-				B2F8BAC322533CFC00D2C8D8 /* LocalData+Parser.swift */,
-			);
-			name = E188;
 			sourceTree = "<group>";
 		};
 		C786AF817EC8693DAA9E6382 /* Frameworks */ = {
@@ -255,17 +229,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B237FD072244FDEB006D9099 /* ViewController.swift in Sources */,
-				B2F8BACE225342BF00D2C8D8 /* ViewTwoController.swift in Sources */,
 				B26182CE2246348D008DD6AF /* DMiniCommand.swift in Sources */,
 				B25194A422492243006327F4 /* DMiniCharacteristics.swift in Sources */,
 				B237FD052244FDEB006D9099 /* AppDelegate.swift in Sources */,
 				B26182D022463D67008DD6AF /* DMiniBLEManager.swift in Sources */,
-				B2F8BACC22533CFC00D2C8D8 /* IdroCommand.swift in Sources */,
 				B25194972248E0E1006327F4 /* DMiniCountResponse.swift in Sources */,
-				B2F8BAC922533CFC00D2C8D8 /* IdroCharacteristicsModel.swift in Sources */,
-				B2F8BACA22533CFC00D2C8D8 /* IdroManager.swift in Sources */,
-				B2F8BACB22533CFC00D2C8D8 /* IdroResponse.swift in Sources */,
-				B2F8BAC822533CFC00D2C8D8 /* LocalData+Parser.swift in Sources */,
 				B26182D2224643A4008DD6AF /* DMiniTagResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
