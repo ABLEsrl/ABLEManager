@@ -143,12 +143,16 @@ public class BluetoothManager: NSObject {
     @discardableResult
     public func reconnect() -> Bool {
         if let device = lastConnectedDevice {
-            isConnected = connect(to: device)
-        } else {
-            isConnected = false
+            let waiting = DispatchGroup()
+            waiting.enter()
+            scanAndConnect(to: device.peripheralName) { (device) in
+                waiting.leave()
+            }
+            waiting.wait()
+            return true
         }
         
-        return isConnected
+        return false
     }
     
     @discardableResult
