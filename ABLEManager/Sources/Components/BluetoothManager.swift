@@ -91,8 +91,10 @@ public class BluetoothManager: NSObject {
         writeCallback = nil
         notifyCallback = nil
         
+        manager = CBCentralManager(delegate: nil, queue: eventQueue, options: [CBCentralManagerOptionShowPowerAlertKey: true])
         super.init()
-        manager = CBCentralManager(delegate: self, queue: eventQueue, options: [CBCentralManagerOptionShowPowerAlertKey: true])
+        
+        manager.delegate = self
     }
     
     public func scanAndConnect(to name: String, callback: @escaping ConnectCallback) {
@@ -126,7 +128,7 @@ public class BluetoothManager: NSObject {
     
     @discardableResult
     public func connect(to device: PeripheralDevice) -> Bool {
-        parameterMap[.Connect] = device.peripheral.name
+        parameterMap[.Connect] = device.peripheralName
         
         connectingSemaphore.enter()
         needLeaveConnecting = true
@@ -203,143 +205,149 @@ public class BluetoothManager: NSObject {
     
     @discardableResult
     private func discoverCharacteristicsForConnectedDevice(for service: CBService) -> Bool {
-        if let peripheral = connectedDevice?.peripheral {
-            parameterMap[.Characteristic] = peripheral.name
-            
-            characteristicSemaphore.enter()
-            needLeaveCharacteristic = true
-            peripheral.delegate = self
-            peripheral.discoverCharacteristics(nil, for: service)
-            if characteristicSemaphore.wait(timeout: .now() + 4) == DispatchTimeoutResult.timedOut {
+        guard
+            let device = connectedDevice,
+            let peripheral = connectedDevice?.peripheral else {
                 return false
-            }
-            
-            return true
         }
         
-        return false
+        parameterMap[.Characteristic] = device.peripheralName
+        
+        characteristicSemaphore.enter()
+        needLeaveCharacteristic = true
+        peripheral.delegate = self
+        peripheral.discoverCharacteristics(nil, for: service)
+        if characteristicSemaphore.wait(timeout: .now() + 4) == DispatchTimeoutResult.timedOut {
+            return false
+        }
+            
+        return true
     }
     
     
     public func readData(from characteristic: String, completion: @escaping NotifyCallback) {
-        if let peripheral = connectedDevice?.peripheral {
-            parameterMap[.Read] = peripheral.name
-            
-            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
-                notifyCallback = completion
-                peripheral.readValue(for: cbcharacteristic)
-            }
+        guard
+            let device = connectedDevice,
+            let peripheral = connectedDevice?.peripheral,
+            let cbCharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) else {
+                return
         }
+        
+        parameterMap[.Read] = device.peripheralName
+        
+        notifyCallback = completion
+        peripheral.readValue(for: cbCharacteristic)
     }
     
     public func subscribeRead(to characteristic: String) {
         guard
             let device = connectedDevice,
-            let peripheral = connectedDevice?.peripheral else {
+            let peripheral = connectedDevice?.peripheral,
+            let cbCharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) else {
                 return
         }
         
         parameterMap[.Subscribe] = device.peripheralName
 
-        if let cbcharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
-            if cbcharacteristic.isNotifying {
-                peripheral.readValue(for: cbcharacteristic)
-                return
-            }
-            
-            subcribeSemaphore.enter()
-            needLeaveSubcribe = true
-            peripheral.setNotifyValue(true, for: cbcharacteristic)
-            subcribeSemaphore.wait()
-            
-            peripheral.readValue(for: cbcharacteristic)
+        if cbCharacteristic.isNotifying {
+            peripheral.readValue(for: cbCharacteristic)
+            return
         }
+        
+        subcribeSemaphore.enter()
+        needLeaveSubcribe = true
+        peripheral.setNotifyValue(true, for: cbCharacteristic)
+        subcribeSemaphore.wait()
+        
+        peripheral.readValue(for: cbCharacteristic)
     }
     public func subscribeRead(to characteristic: String, completion: @escaping NotifyCallback) {
-        if let peripheral = connectedDevice?.peripheral {
-            unsubscribe(to: characteristic)
-            
-            parameterMap[.Subscribe] = peripheral.name
-            
-            notifyCallback = completion
-            
-            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
-                if cbcharacteristic.isNotifying {
-                    peripheral.readValue(for: cbcharacteristic)
-                    return
-                }
-                
-                subcribeSemaphore.enter()
-                needLeaveSubcribe = true
-                peripheral.setNotifyValue(true, for: cbcharacteristic)
-                subcribeSemaphore.wait()
-                
-                peripheral.readValue(for: cbcharacteristic)
-            }
-        } else {
-            //completion(PeripheralDevice(), Data(), false)
+        guard
+            let device = connectedDevice,
+            let peripheral = connectedDevice?.peripheral,
+            let cbCharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) else {
+                return
         }
+    
+        parameterMap[.Subscribe] = peripheral.name
+        
+        notifyCallback = completion
+        
+        if cbCharacteristic.isNotifying {
+            peripheral.readValue(for: cbCharacteristic)
+            return
+        }
+            
+        subcribeSemaphore.enter()
+        needLeaveSubcribe = true
+        peripheral.setNotifyValue(true, for: cbCharacteristic)
+        subcribeSemaphore.wait()
+        
+        peripheral.readValue(for: cbCharacteristic)
     }
     
     public func subscribe(to characteristic: String, completion: @escaping NotifyCallback) {
-        if let peripheral = connectedDevice?.peripheral {
-            unsubscribe(to: characteristic)
-            
-            parameterMap[.Subscribe] = peripheral.name
-            
-            notifyCallback = completion
-            
-            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
-                if cbcharacteristic.isNotifying {
-                    return
-                }
-                
-                subcribeSemaphore.enter()
-                needLeaveSubcribe = true
-                peripheral.setNotifyValue(true, for: cbcharacteristic)
-                subcribeSemaphore.wait()
-            }
-        } else {
-            //completion(PeripheralDevice(), Data(), false)
+        guard
+            let device = connectedDevice,
+            let peripheral = connectedDevice?.peripheral,
+            let cbCharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) else {
+                return
         }
+        
+        parameterMap[.Subscribe] = device.peripheralName
+        
+        notifyCallback = completion
+        
+        if cbCharacteristic.isNotifying {
+            return
+        }
+        
+        subcribeSemaphore.enter()
+        needLeaveSubcribe = true
+        peripheral.setNotifyValue(true, for: cbCharacteristic)
+        subcribeSemaphore.wait()
     }
     
     public func unsubscribe(to characteristic: String) {
-        if let peripheral = connectedDevice?.peripheral {
-            parameterMap[.Subscribe] = peripheral.name
-            
-            if let cbcharacteristic = connectedDevice?.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
-                if cbcharacteristic.isNotifying {
-                    return
-                }
-                
-                subcribeSemaphore.enter()
-                needLeaveSubcribe = true
-                peripheral.setNotifyValue(false, for: cbcharacteristic)
-                subcribeSemaphore.wait()
-            }
+        guard
+            let device = connectedDevice,
+            let peripheral = connectedDevice?.peripheral,
+            let cbCharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) else {
+                return
         }
+    
+        parameterMap[.Subscribe] = device.peripheralName
+        if cbCharacteristic.isNotifying {
+            return
+        }
+            
+        subcribeSemaphore.enter()
+        needLeaveSubcribe = true
+        peripheral.setNotifyValue(false, for: cbCharacteristic)
+        subcribeSemaphore.wait()
     }
 
     public func write(command: ABLECommand, to characteristic: String, modality: CBCharacteristicWriteType = .withResponse, completion: ( (PeripheralDevice, Bool)->Void)? = nil) {
         
-        if let device = connectedDevice {
-            parameterMap[.Write] = device.peripheral.name
-            
-            let data = command.getData()
-            
-            if let cbcharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
-                if modality == .withResponse {
-                    //print("Writing \(command.rawString) to characteristic: \(cbcharacteristic.uuid.uuidString)...")
-                    if let callback = completion {
-                        writeCallback = callback
-                    }
-                    
-                    device.peripheral.writeValue(data, for: cbcharacteristic, type: .withResponse)
+        guard let device = connectedDevice else {
+            return
+        }
+        
+        parameterMap[.Write] = device.peripheralName
+        
+        let data = command.getData()
+        
+        if let cbcharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
+            if modality == .withResponse {
+                //print("Writing \(command.rawString) to characteristic: \(cbcharacteristic.uuid.uuidString)...")
+                if let callback = completion {
+                    writeCallback = callback
                 }
-                else {
-                    device.peripheral.writeValue(data, for: cbcharacteristic, type: .withoutResponse)
-                }
+                
+                device.peripheral.writeValue(data, for: cbcharacteristic, type: .withResponse)
+            }
+            else {
+                device.peripheral.writeValue(data, for: cbcharacteristic, type: .withoutResponse)
             }
         }
     }
@@ -359,13 +367,23 @@ public class BluetoothManager: NSObject {
     }
     
     public func disconnect() {
-        if let peripheral = connectedDevice?.peripheral {
-            manager.cancelPeripheralConnection(peripheral)
+        guard
+            let manager = manager,
+            let peripheral = connectedDevice?.peripheral else {
+                return
         }
+        
+        manager.cancelPeripheralConnection(peripheral)
     }
 
     public func stopScan() {
-        manager.stopScan()
+        if isPoweredOn == false {
+            return
+        }
+        
+        if let manager = manager {
+            manager.stopScan()
+        }
     }
 }
 
