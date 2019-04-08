@@ -163,40 +163,42 @@ public class BluetoothManager: NSObject {
     
     @discardableResult
     private func discoverServicesForConnectedDevice() -> Bool {
-        if let peripheral = connectedDevice?.peripheral {
-            parameterMap[.Service] = peripheral.name
-            
-            serviceSemaphore.enter()
-            needLeaveService = true
-            
-            peripheral.delegate = self
-            peripheral.discoverServices(nil)
-            if serviceSemaphore.wait(timeout: .now() + 4) == DispatchTimeoutResult.timedOut {
+        guard
+            let device = connectedDevice,
+            let peripheral = connectedDevice?.peripheral else {
                 return false
-            }
-            
-            //Saving discovered services
-            connectedDevice?.services = peripheral.services ?? [CBService]()
-            
-            var result: Bool = true
-            peripheral.services?.forEach{ (service) in
-                let res = discoverCharacteristicsForConnectedDevice(for: service)
-                if res == true {
-                    //Saving discovered characteristics
-                    if connectedDevice?.characteristics == nil {
-                        connectedDevice?.characteristics = [CBCharacteristic]()
-                    }
-                    
-                    connectedDevice?.characteristics.append(contentsOf: service.characteristics ?? [CBCharacteristic]())
-                }
-                
-                result = result && res
-            }
-            
-            return result
         }
         
-        return false
+        parameterMap[.Service] = peripheral.name
+        
+        serviceSemaphore.enter()
+        needLeaveService = true
+        
+        peripheral.delegate = self
+        peripheral.discoverServices(nil)
+        if serviceSemaphore.wait(timeout: .now() + 4) == DispatchTimeoutResult.timedOut {
+            return false
+        }
+        
+        //Saving discovered services
+        device.services = peripheral.services ?? [CBService]()
+        
+        var result: Bool = true
+        peripheral.services?.forEach{ (service) in
+            let res = discoverCharacteristicsForConnectedDevice(for: service)
+            if res == true {
+                if device.characteristics == nil {
+                    device.characteristics = [CBCharacteristic]()
+                }
+                
+                //Saving discovered characteristics
+                device.characteristics.append(contentsOf: service.characteristics ?? [CBCharacteristic]())
+            }
+            
+            result = result && res
+        }
+        
+        return result
     }
     
     @discardableResult
@@ -230,6 +232,29 @@ public class BluetoothManager: NSObject {
         }
     }
     
+    public func subscribeRead(to characteristic: String) {
+        guard
+            let device = connectedDevice,
+            let peripheral = connectedDevice?.peripheral else {
+                return
+        }
+        
+        parameterMap[.Subscribe] = device.peripheralName
+
+        if let cbcharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
+            if cbcharacteristic.isNotifying {
+                peripheral.readValue(for: cbcharacteristic)
+                return
+            }
+            
+            subcribeSemaphore.enter()
+            needLeaveSubcribe = true
+            peripheral.setNotifyValue(true, for: cbcharacteristic)
+            subcribeSemaphore.wait()
+            
+            peripheral.readValue(for: cbcharacteristic)
+        }
+    }
     public func subscribeRead(to characteristic: String, completion: @escaping NotifyCallback) {
         if let peripheral = connectedDevice?.peripheral {
             unsubscribe(to: characteristic)
