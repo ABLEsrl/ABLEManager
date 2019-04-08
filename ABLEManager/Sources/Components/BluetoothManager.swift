@@ -184,23 +184,15 @@ public class BluetoothManager: NSObject {
         
         //Saving discovered services
         device.services = peripheral.services ?? [CBService]()
+        device.characteristics = [CBCharacteristic]()
         
-        var result: Bool = true
-        peripheral.services?.forEach{ (service) in
-            let res = discoverCharacteristicsForConnectedDevice(for: service)
-            if res == true {
-                if device.characteristics == nil {
-                    device.characteristics = [CBCharacteristic]()
-                }
-                
-                //Saving discovered characteristics
+        device.services.forEach{ (service) in
+            if discoverCharacteristicsForConnectedDevice(for: service) {
                 device.characteristics.append(contentsOf: service.characteristics ?? [CBCharacteristic]())
             }
-            
-            result = result && res
         }
         
-        return result
+        return true
     }
     
     @discardableResult
