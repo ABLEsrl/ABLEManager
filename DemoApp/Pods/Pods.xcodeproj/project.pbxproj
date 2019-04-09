@@ -20,6 +20,7 @@
 		84BA2F5BA03FA0E11544B5DF67B1CEB2 /* Pods-DemoApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CD4FD0EDE0451463E1223D3D0848ACE3 /* Pods-DemoApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A528F87973CC54EB2DF5F4AF4FB059FC /* ABLECommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E922B912DE3E887FAA367080BF632AD /* ABLECommand.swift */; };
 		ACF4D40DBD20EBD14E0D91C0B58ED592 /* TimeoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265B16417E2F6A7F8B9AFFC6FCAC8561 /* TimeoutTimer.swift */; };
+		B2C2C1FA225C78DF00078346 /* ABLEDispatchGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2C1F9225C78DF00078346 /* ABLEDispatchGroup.swift */; };
 		D07618162289C7486BB58A2B09AE6FFD /* PeripheralDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B16CA0D9ACE88F2445220497F150D7 /* PeripheralDevice.swift */; };
 		FB866C9CBC66DBC1EFCFCB242CD187F2 /* ABLEResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED23632CFD912CA4B5737DD5F77B83A6 /* ABLEResponse.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		A2D5A4DDCD5F4A15822C56CCAF55BE82 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8112ADE2BDD8A91A7A9C38682CD94E7 /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8E7B2F105EA17DCE398A2EFB21BF5B /* Utils+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Utils+Hex.swift"; sourceTree = "<group>"; };
+		B2C2C1F9225C78DF00078346 /* ABLEDispatchGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABLEDispatchGroup.swift; sourceTree = "<group>"; };
 		B611CABACB0E94A999909FDD1EDE07EC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0007C680C58948F3430418E2EE172BC /* Pods-DemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		C1A5FAF3E15F0EA80CE25D0C7800C524 /* ABLEManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ABLEManager-prefix.pch"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				5E922B912DE3E887FAA367080BF632AD /* ABLECommand.swift */,
 				ED23632CFD912CA4B5737DD5F77B83A6 /* ABLEResponse.swift */,
+				B2C2C1F9225C78DF00078346 /* ABLEDispatchGroup.swift */,
 				69B16CA0D9ACE88F2445220497F150D7 /* PeripheralDevice.swift */,
 				8AA78384ACD8F7842F05CCB4A1256043 /* DeviceOperationType.swift */,
 			);
@@ -326,6 +329,7 @@
 				51BF11DF98B05185F25A622546F1B6E2 /* Data+Utils.swift in Sources */,
 				D07618162289C7486BB58A2B09AE6FFD /* PeripheralDevice.swift in Sources */,
 				52100805B31705A315E03771895551DB /* DeviceOperationType.swift in Sources */,
+				B2C2C1FA225C78DF00078346 /* ABLEDispatchGroup.swift in Sources */,
 				0351C591CF49609A77901B46EBE28F2F /* String+Utils.swift in Sources */,
 				ACF4D40DBD20EBD14E0D91C0B58ED592 /* TimeoutTimer.swift in Sources */,
 				3AE621B4C0328169411289ACF94D0ECB /* Utils+Hex.swift in Sources */,
