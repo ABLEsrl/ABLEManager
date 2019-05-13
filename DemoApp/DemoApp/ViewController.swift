@@ -23,9 +23,9 @@ class ViewController: UIViewController {
             print("DMini is connected? \(isConnected)")
         }
         
-//        DMiniBLEManager.shared.searchAndConnect { (device) in
-//            print ("Connesso con \(device.peripheralName)")
-//        }
+        DMiniBLEManager.shared.searchAndConnect { (device) in
+            print ("Connesso con \(device.peripheralName)")
+        }
         
         DMiniBLEManager.shared.scanning(["IdroCtr", "-EI8"]) { (device) in
             print ("Device Found: \(device.peripheralName)")

@@ -13,11 +13,12 @@ import Foundation
 open class PeripheralDevice: Equatable, Comparable, Hashable {
     var peripheral: CBPeripheral
     var services: [CBService]
-    var characteristics: [CBCharacteristic]!
+    var characteristics: [CBCharacteristic]
     
     init(with peripheral: CBPeripheral) {
         self.peripheral = peripheral
         self.services = peripheral.services ?? [CBService]()
+        self.characteristics = [CBCharacteristic]()
     }
     
     public var peripheralName: String {
