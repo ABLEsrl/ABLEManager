@@ -49,14 +49,14 @@ public class BluetoothManager: NSObject {
         }
         set (newValue) {
             if newValue == false {
-                connectedDevice = nil
+                self.connectedDevice = nil
             }
         }
     }
     
     @objc dynamic public var isPoweredOn: Bool {
         get {
-            if let manager = manager {
+            if let manager = self.manager {
                 return manager.state == .poweredOn
             }
             
@@ -82,9 +82,8 @@ public class BluetoothManager: NSObject {
         notifyCallback = nil
         
         manager = CBCentralManager(delegate: nil, queue: eventQueue, options: [CBCentralManagerOptionShowPowerAlertKey: true])
-        super.init()
         
-        manager.delegate = self
+        super.init()
     }
     
     public func scanAndConnect(to name: String, callback: @escaping ConnectCallback) {
@@ -110,17 +109,12 @@ public class BluetoothManager: NSObject {
     }
 
     public func scanForPeripheral(_ prefixes: [String] = [String](), completion: @escaping ScanningCallback) {
-        parameterMap[.Scanning] = prefixes
-        scanningCallback = completion
-        peripherals = [PeripheralDevice]()
+        self.parameterMap[.Scanning] = prefixes
+        self.scanningCallback = completion
+        self.peripherals = [PeripheralDevice]()
         
-        Thread.detachNewThread {
-            while self.isPoweredOn == false {
-                sleep(1)
-            }
-            
-            self.manager.scanForPeripherals(withServices: nil, options: nil)
-        }
+        self.manager.delegate = self
+        self.manager.scanForPeripherals(withServices: nil, options: nil)
     }
 
     
@@ -389,7 +383,10 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         case .poweredOn:
             print("PowerOn")
             manager.delegate = self
-            manager.scanForPeripherals(withServices: nil, options: nil)
+            
+            if self.scanningCallback != nil {
+                self.manager.scanForPeripherals(withServices: nil, options: nil)
+            }
         }
     }
     
