@@ -403,7 +403,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         prefixes.forEach { (prefix) in
             match = match || name.contains(prefix)
         }
-        if match == false {
+        if match == false && prefixes.count > 0 {
             return
         }
         
