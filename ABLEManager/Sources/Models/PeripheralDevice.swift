@@ -11,9 +11,9 @@ import Foundation
 
 
 open class PeripheralDevice: Equatable, Comparable, Hashable {
-    var peripheral: CBPeripheral
-    var services: [CBService]
-    var characteristics: [CBCharacteristic]
+    public var peripheral: CBPeripheral
+    public var services: [CBService]
+    public var characteristics: [CBCharacteristic]
     
     init(with peripheral: CBPeripheral) {
         self.peripheral = peripheral
