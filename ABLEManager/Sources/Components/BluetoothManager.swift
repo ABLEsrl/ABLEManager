@@ -113,7 +113,14 @@ public class BluetoothManager: NSObject {
         parameterMap[.Scanning] = prefixes
         scanningCallback = completion
         peripherals = [PeripheralDevice]()
-        manager.scanForPeripherals(withServices: nil, options: nil)
+        
+        Thread.detachNewThread {
+            while self.isPoweredOn == false {
+                sleep(1)
+            }
+            
+            self.manager.scanForPeripherals(withServices: nil, options: nil)
+        }
     }
 
     
@@ -387,7 +394,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print("Found Peripheral: \(peripheral.name ?? "No Nome")")
+        //print("Found Peripheral: \(peripheral.name ?? "No Nome")")
         
         let prefixes = parameterMap[.Scanning] as? [String] ?? [String]()
         let name = peripheral.name ?? ""
