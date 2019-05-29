@@ -395,7 +395,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         
         let prefixes = parameterMap[.Scanning] as? [String] ?? [String]()
         let name = peripheral.name ?? ""
-        if name.count == 0 {
+        if name.count == 0 && prefixes.count > 0 {
             return
         }
         
