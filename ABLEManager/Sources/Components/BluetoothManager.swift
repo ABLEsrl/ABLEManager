@@ -392,6 +392,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         //print("Found Peripheral: \(peripheral.name ?? "No Nome")")
+        peripheral.delegate = self
         
         let prefixes = parameterMap[.Scanning] as? [String] ?? [String]()
         let name = peripheral.name ?? ""
@@ -408,6 +409,18 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
         
         let needRefresh = peripherals.appendDistinc(PeripheralDevice(with: peripheral))
+        peripherals = peripherals.sorted()
+        
+        if needRefresh {
+            DispatchQueue.main.async {
+                self.scanningCallback?(self.peripherals)
+            }
+        }
+    }
+    
+    public func peripheralDidUpdateName(_ peripheral: CBPeripheral) {
+        
+        let needRefresh = peripherals.updatePeripheral(PeripheralDevice(with: peripheral))
         peripherals = peripherals.sorted()
         
         if needRefresh {
