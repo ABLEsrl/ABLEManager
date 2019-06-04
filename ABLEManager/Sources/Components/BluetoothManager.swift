@@ -81,8 +81,7 @@ public class BluetoothManager: NSObject {
         writeCallback = nil
         notifyCallback = nil
         
-        let cbQueue = DispatchQueue(label: "it.able.ble.event.queue.cbmanager")
-        manager = CBCentralManager(delegate: nil, queue: cbQueue, options: [CBCentralManagerOptionShowPowerAlertKey: true])
+        manager = CBCentralManager(delegate: nil, queue: eventQueue, options: [CBCentralManagerOptionShowPowerAlertKey: true])
         
         super.init()
     }
@@ -110,19 +109,15 @@ public class BluetoothManager: NSObject {
     }
 
     public func scanForPeripheral(_ prefixes: [String] = [String](), completion: @escaping ScanningCallback) {
-        Thread.detachNewThread {
             self.parameterMap[.Scanning] = prefixes
             self.scanningCallback = completion
             self.peripherals = [PeripheralDevice]()
             
             self.manager.delegate = self
             
-            while self.isPoweredOn == false {
-                sleep(1)
+            if self.isPoweredOn {
+                self.manager.scanForPeripherals(withServices: nil, options: nil)
             }
-        
-            self.manager.scanForPeripherals(withServices: nil, options: nil)
-        }
     }
 
     
