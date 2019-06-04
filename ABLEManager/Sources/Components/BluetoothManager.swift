@@ -113,8 +113,14 @@ public class BluetoothManager: NSObject {
         self.scanningCallback = completion
         self.peripherals = [PeripheralDevice]()
         
-        self.manager.delegate = self
-        self.manager.scanForPeripherals(withServices: nil, options: nil)
+        self.eventQueue.async {
+            while self.isPoweredOn == false {
+                sleep(1)
+            }
+            
+            self.manager.delegate = self
+            self.manager.scanForPeripherals(withServices: nil, options: nil)
+        }
     }
 
     
