@@ -95,13 +95,13 @@ public class BluetoothManager: NSObject {
             self.connectCallback = callback
             
             self.scanForPeripheral([name]) { (devices) in
-                if devices.count == 1, devices[0].peripheral.name == name {
+                if let device = devices.first(where: { $0.peripheralName.contains(name) }) {
                     self.stopScan()
                     
-                    self.connect(to: devices[0])
+                    self.connect(to: device)
                     
                     DispatchQueue.main.async {
-                        self.connectCallback?(devices[0])
+                        self.connectCallback?(device)
                     }
                 }
             }
