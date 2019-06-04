@@ -110,11 +110,11 @@ public class BluetoothManager: NSObject {
     }
 
     public func scanForPeripheral(_ prefixes: [String] = [String](), completion: @escaping ScanningCallback) {
-        self.parameterMap[.Scanning] = prefixes
-        self.scanningCallback = completion
-        self.peripherals = [PeripheralDevice]()
-        
-        self.eventQueue.async {
+        Thread.detachNewThread {
+            self.parameterMap[.Scanning] = prefixes
+            self.scanningCallback = completion
+            self.peripherals = [PeripheralDevice]()
+            
             self.manager.delegate = self
             
             while self.isPoweredOn == false {
