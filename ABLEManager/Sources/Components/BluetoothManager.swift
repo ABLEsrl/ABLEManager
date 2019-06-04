@@ -81,7 +81,8 @@ public class BluetoothManager: NSObject {
         writeCallback = nil
         notifyCallback = nil
         
-        manager = CBCentralManager(delegate: nil, queue: eventQueue, options: [CBCentralManagerOptionShowPowerAlertKey: true])
+        let cbQueue = DispatchQueue(label: "it.able.ble.event.queue.cbmanager")
+        manager = CBCentralManager(delegate: nil, queue: cbQueue, options: [CBCentralManagerOptionShowPowerAlertKey: true])
         
         super.init()
     }
@@ -114,11 +115,12 @@ public class BluetoothManager: NSObject {
         self.peripherals = [PeripheralDevice]()
         
         self.eventQueue.async {
+            self.manager.delegate = self
+            
             while self.isPoweredOn == false {
                 sleep(1)
             }
-            
-            self.manager.delegate = self
+        
             self.manager.scanForPeripherals(withServices: nil, options: nil)
         }
     }
