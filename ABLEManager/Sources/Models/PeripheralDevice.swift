@@ -12,13 +12,17 @@ import Foundation
 
 open class PeripheralDevice: Equatable, Comparable, Hashable {
     public var peripheral: CBPeripheral
+    public var advData: [String: Any]
+    public var rssi: NSNumber
     public var services: [CBService]
     public var characteristics: [CBCharacteristic]
     
-    init(with peripheral: CBPeripheral) {
+    init(with peripheral: CBPeripheral, advData: [String: Any] = [String: Any](), rssi: NSNumber = NSNumber()) {
         self.peripheral = peripheral
         self.services = peripheral.services ?? [CBService]()
         self.characteristics = [CBCharacteristic]()
+        self.advData = [String: Any]()
+        self.rssi = NSNumber()
     }
     
     public var peripheralName: String {

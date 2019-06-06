@@ -413,7 +413,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
             return
         }
         
-        let needRefresh = peripherals.appendDistinc(PeripheralDevice(with: peripheral))
+        let needRefresh = peripherals.appendDistinc(PeripheralDevice(with: peripheral, advData: advertisementData, rssi: RSSI))
         peripherals = peripherals.sorted()
         
         if needRefresh {
