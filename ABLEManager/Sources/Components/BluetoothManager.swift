@@ -81,8 +81,7 @@ public class BluetoothManager: NSObject {
         writeCallback = nil
         notifyCallback = nil
         
-        manager = CBCentralManager(delegate: nil, queue: eventQueue, options: [CBCentralManagerOptionShowPowerAlertKey: true,
-                                                                               CBCentralManagerOptionRestoreIdentifierKey: true,
+        manager = CBCentralManager(delegate: nil, queue: eventQueue, options: [CBCentralManagerOptionShowPowerAlertKey:      true,
                                                                                CBCentralManagerScanOptionAllowDuplicatesKey: true])
         
         super.init()
@@ -390,9 +389,14 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
             manager.delegate = self
             
             if self.scanningCallback != nil {
-                self.manager.scanForPeripherals(withServices: nil, options: nil)
+                self.manager.scanForPeripherals(withServices: nil, options: [CBCentralManagerOptionShowPowerAlertKey:      true,
+                                                                             CBCentralManagerScanOptionAllowDuplicatesKey: true])
             }
         }
+    }
+    
+    public func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
+        print("Dict: \(dict)")
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {

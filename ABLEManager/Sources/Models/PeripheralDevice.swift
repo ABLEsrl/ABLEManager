@@ -21,8 +21,8 @@ open class PeripheralDevice: Equatable, Comparable, Hashable {
         self.peripheral = peripheral
         self.services = peripheral.services ?? [CBService]()
         self.characteristics = [CBCharacteristic]()
-        self.advData = [String: Any]()
-        self.rssi = NSNumber()
+        self.advData = advData
+        self.rssi = rssi
     }
     
     public var peripheralName: String {
