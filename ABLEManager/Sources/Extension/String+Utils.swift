@@ -33,7 +33,7 @@ public extension String {
         }
         
         let to: Int = from + len - 1
-        if to <= from {
+        if from > to {
             return ""
         }
         
