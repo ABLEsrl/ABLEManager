@@ -28,14 +28,21 @@ public extension String {
     }
     
     func subString(from: Int, len: Int) -> String {
-        var res = ""
+        if from >= self.count {
+            return ""
+        }
         
-        var count = 0
-        for i in from...self.count {
-            if count < len {
+        let to: Int = from + len - 1
+        if to <= from {
+            return ""
+        }
+        
+        var res = ""
+        for i in from...to {
+            if i < count {
                 res += String(self[i])
-                count += 1
-            } else {
+            }
+            else {
                 return res
             }
         }
