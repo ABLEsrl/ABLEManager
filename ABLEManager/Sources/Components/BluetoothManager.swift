@@ -41,11 +41,13 @@ public class BluetoothManager: NSObject {
     
     @objc dynamic public var isConnected: Bool {
         get {
-            if let device = connectedDevice {
-                return device.peripheral.state == .connected
+            guard
+                let device = connectedDevice,
+                let peripheral = device.peripheral else {
+                    return false
             }
             
-            return false
+            return peripheral.state == .connected
         }
         set (newValue) {
             if newValue == false {
@@ -56,11 +58,11 @@ public class BluetoothManager: NSObject {
     
     @objc dynamic public var isPoweredOn: Bool {
         get {
-            if let manager = self.manager {
-                return manager.state == .poweredOn
+            guard let manager = self.manager else {
+                return false
             }
             
-            return false
+            return manager.state == .poweredOn
         }
     }
     
@@ -124,10 +126,14 @@ public class BluetoothManager: NSObject {
     
     @discardableResult
     public func connect(to device: PeripheralDevice) -> Bool {
+        guard let peripheral = device.peripheral else {
+            return false
+        }
+        
         parameterMap[.Connect] = device.peripheralName
         
         connectingSemaphore.enter()
-        manager.connect(device.peripheral, options: nil)
+        manager.connect(peripheral, options: nil)
 
         if connectingSemaphore.wait(timeout: .now() + 4) == DispatchTimeoutResult.timedOut {
             return false
@@ -180,8 +186,8 @@ public class BluetoothManager: NSObject {
         device.services = peripheral.services ?? [CBService]()
         device.characteristics = [CBCharacteristic]()
         
-        device.services.forEach{ (service) in
-            if discoverCharacteristicsForConnectedDevice(for: service) {
+        device.services.forEach { (service) in
+            if discoverCharacteristics(for: service) {
                 device.characteristics.append(contentsOf: service.characteristics ?? [CBCharacteristic]())
             }
         }
@@ -190,7 +196,7 @@ public class BluetoothManager: NSObject {
     }
     
     @discardableResult
-    private func discoverCharacteristicsForConnectedDevice(for service: CBService) -> Bool {
+    private func discoverCharacteristics(for service: CBService) -> Bool {
         guard
             let device = connectedDevice,
             let peripheral = connectedDevice?.peripheral else {
@@ -278,13 +284,12 @@ public class BluetoothManager: NSObject {
                 return
         }
         
-        parameterMap[.Subscribe] = device.peripheralName
-        
-        notifyCallback = completion
-        
-        if cbCharacteristic.isNotifying {
+        if cbCharacteristic.isNotifying == true {
             return
         }
+        
+        parameterMap[.Subscribe] = device.peripheralName
+        notifyCallback = completion
         
         subcribeSemaphore.enter()
         peripheral.setNotifyValue(true, for: cbCharacteristic)
@@ -299,11 +304,12 @@ public class BluetoothManager: NSObject {
                 return
         }
     
-        parameterMap[.Subscribe] = device.peripheralName
-        if cbCharacteristic.isNotifying {
+        if cbCharacteristic.isNotifying == false {
             return
         }
-            
+        
+        parameterMap[.Subscribe] = device.peripheralName
+        
         subcribeSemaphore.enter()
         peripheral.setNotifyValue(false, for: cbCharacteristic)
         subcribeSemaphore.wait()
@@ -311,7 +317,9 @@ public class BluetoothManager: NSObject {
 
     public func write(command: ABLECommand, to characteristic: String, modality: CBCharacteristicWriteType = .withResponse, completion: ( (PeripheralDevice, Bool)->Void)? = nil) {
         
-        guard let device = connectedDevice else {
+        guard
+            let device = connectedDevice,
+            let peripheral = device.peripheral else {
             return
         }
         
@@ -320,16 +328,8 @@ public class BluetoothManager: NSObject {
         let data = command.getData()
         
         if let cbcharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) {
-            if modality == .withResponse {
-                if let callback = completion {
-                    writeCallback = callback
-                }
-                
-                device.peripheral.writeValue(data, for: cbcharacteristic, type: .withResponse)
-            }
-            else {
-                device.peripheral.writeValue(data, for: cbcharacteristic, type: .withoutResponse)
-            }
+            writeCallback = completion
+            peripheral.writeValue(data, for: cbcharacteristic, type: modality)
         }
     }
     
@@ -358,11 +358,15 @@ public class BluetoothManager: NSObject {
     }
 
     public func stopScan() {
+        guard let manager = manager else {
+            return
+        }
+        
         if isPoweredOn == false {
             return
         }
         
-        if let manager = manager {
+        if manager.isScanning == true {
             manager.stopScan()
         }
     }

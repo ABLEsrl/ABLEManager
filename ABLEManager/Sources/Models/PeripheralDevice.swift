@@ -11,7 +11,7 @@ import Foundation
 
 
 open class PeripheralDevice: Equatable, Comparable, Hashable {
-    public var peripheral: CBPeripheral
+    public var peripheral: CBPeripheral?
     public var advData: [String: Any]
     public var rssi: NSNumber
     public var services: [CBService]
@@ -27,17 +27,31 @@ open class PeripheralDevice: Equatable, Comparable, Hashable {
     
     public var peripheralName: String {
         get {
-            return peripheral.name ?? ""
+            guard let device = peripheral else {
+                return ""
+            }
+            
+            if let name = advData["kCBAdvDataLocalName"] as? String {
+                return name
+            }
+            
+            return device.name ?? ""
         }
     }
     
     public static func ==(lhs: PeripheralDevice, rhs: PeripheralDevice) -> Bool {
-        return lhs.peripheral.identifier == rhs.peripheral.identifier
+        guard
+            let lhsDevice = lhs.peripheral,
+            let rhsDevice = rhs.peripheral else {
+                return false
+        }
+        
+        return lhsDevice.identifier == rhsDevice.identifier
     }
     
     public static func <(lhs: PeripheralDevice, rhs: PeripheralDevice) -> Bool {
-        let lhsName = lhs.peripheral.name ?? "NoName"
-        let rhsName = rhs.peripheral.name ?? "NoName"
+        let lhsName = lhs.peripheralName
+        let rhsName = rhs.peripheralName
         
         switch lhsName.compare(rhsName) {
         case .orderedDescending:
@@ -45,12 +59,22 @@ open class PeripheralDevice: Equatable, Comparable, Hashable {
         case .orderedAscending:
             return true
         case .orderedSame:
-            return lhs.peripheral.identifier.uuidString > rhs.peripheral.identifier.uuidString
+            guard
+                let lhsDevice = lhs.peripheral,
+                let rhsDevice = rhs.peripheral else {
+                    return false
+            }
+            
+            return lhsDevice.identifier.uuidString > rhsDevice.identifier.uuidString
         }
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(peripheral.identifier.uuidString)
+        guard let device = peripheral else {
+            return
+        }
+        
+        hasher.combine(device.identifier.uuidString)
     }
 }
 
