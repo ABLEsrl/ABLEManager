@@ -13,7 +13,7 @@ open class ABLEDispatchGroup {
     private var needLeave: Bool
     
     
-    init() {
+    public init() {
         semaphore = DispatchGroup()
         needLeave = false
     }
