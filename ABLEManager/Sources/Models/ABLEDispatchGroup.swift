@@ -24,6 +24,7 @@ open class ABLEDispatchGroup {
     
     public func leave() {
         if needLeave == true {
+            needLeave = false
             semaphore.leave()
         }
     }
