@@ -404,9 +404,10 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-       //print("Found Peripheral: \(peripheral.name ?? "No Nome")")
+        //print("Found Peripheral: \(peripheral.name ?? "No Nome")")
         peripheral.delegate = self
 
+        
         let prefixes = parameterMap[.Scanning] as? [String] ?? [String]()
         let name = peripheral.name ?? ""
         if name.count == 0 && prefixes.count > 0 {
@@ -423,7 +424,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         
         
         let needRefresh = peripherals.appendDistinc(PeripheralDevice(with: peripheral, advData: advertisementData, rssi: RSSI))
-        peripherals = peripherals.sorted()
+        peripherals     = peripherals.sorted()
         
         if needRefresh {
             DispatchQueue.main.async {
@@ -435,7 +436,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     public func peripheralDidUpdateName(_ peripheral: CBPeripheral) {
         
         let needRefresh = peripherals.updatePeripheral(PeripheralDevice(with: peripheral))
-        peripherals = peripherals.sorted()
+        peripherals     = peripherals.sorted()
         
         if needRefresh {
             DispatchQueue.main.async {
@@ -445,44 +446,57 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        if let name = parameterMap[.Connect] as? String, name == peripheral.name {
-            connectedDevice = PeripheralDevice(with: peripheral)
-            isConnected = true
-            
-            connectingSemaphore.leave()
-        }
+//        if let name = parameterMap[.Connect] as? String, name == peripheral.name {
+//            connectedDevice = PeripheralDevice(with: peripheral)
+//            isConnected = true
+//
+//            connectingSemaphore.leave()
+//        }
+        
+        connectedDevice = PeripheralDevice(with: peripheral)
+        isConnected     = true
+        
+        connectingSemaphore.leave()
     }
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         connectedDevice = nil
-        isConnected = false
+        isConnected     = false
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        if let name = parameterMap[.Service] as? String, name == peripheral.name {
-            serviceSemaphore.leave()
-        }
+        serviceSemaphore.leave()
+        
+//        if let name = parameterMap[.Service] as? String, name == peripheral.name {
+//            serviceSemaphore.leave()
+//        }
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        if let name = parameterMap[.Characteristic] as? String, name == peripheral.name {
-            characteristicSemaphore.leave()
-        }
+        characteristicSemaphore.leave()
+        
+//        if let name = parameterMap[.Characteristic] as? String, name == peripheral.name {
+//            characteristicSemaphore.leave()
+//        }
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        if let connectedDev = connectedDevice, let data = characteristic.value {
-            DispatchQueue.main.async {
-                self.notifyCallback?(connectedDev, data, (error == nil))
-            }
+        guard let device = connectedDevice, let data = characteristic.value else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.notifyCallback?(device, data, (error == nil))
         }
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
-        if let connectedDev = connectedDevice {
-            DispatchQueue.main.async {
-                self.writeCallback?(connectedDev, (error == nil))
-            }
+        guard let device = connectedDevice else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.writeCallback?(device, (error == nil))
         }
     }
     
