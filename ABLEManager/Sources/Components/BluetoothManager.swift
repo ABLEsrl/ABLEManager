@@ -145,18 +145,23 @@ public class BluetoothManager: NSObject {
 
     public func reconnect( _ callback: @escaping ((Bool)->Void)) {
         Thread.detachNewThread { [weak self] in
-            if let device = self?.lastConnectedDevice {
-                self?.reconnectionSemaphore = ABLEDispatchGroup()
-                self?.reconnectionSemaphore.enter()
-                self?.scanAndConnect(to: device.peripheralName) { (device) in
-                    self?.reconnectionSemaphore.leave()
-                    callback(true)
-                }
-                
-                if self?.reconnectionSemaphore.wait(timeout: .now() + 10) == .timedOut {
-                    callback(false)
-                }
-            } else {
+            guard
+                let strongSelf = self,
+                let device = strongSelf.lastConnectedDevice else {
+                  callback(false)
+                    return
+            }
+            
+            
+            strongSelf.reconnectionSemaphore = ABLEDispatchGroup()
+            strongSelf.reconnectionSemaphore.enter()
+            strongSelf.scanAndConnect(to: device.peripheralName) { (device) in
+                strongSelf.reconnectionSemaphore.leave()
+                callback(true)
+                return
+            }
+            
+            if strongSelf.reconnectionSemaphore.wait(timeout: .now() + 10) == .timedOut {
                 callback(false)
             }
         }
