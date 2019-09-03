@@ -379,6 +379,9 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
                 self.manager.scanForPeripherals(withServices: nil, options: [CBCentralManagerOptionShowPowerAlertKey:      true,
                                                                              CBCentralManagerScanOptionAllowDuplicatesKey: true])
             }
+            
+        @unknown default:
+            fatalError()
         }
     }
     

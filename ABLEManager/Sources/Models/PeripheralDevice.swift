@@ -117,7 +117,7 @@ public extension Array where Iterator.Element: PeripheralDevice {
     @discardableResult
     mutating func updatePeripheral(_ device: Iterator.Element ) -> Bool {
         if contains(device) == false {
-            if let deviceIdx = index(of: device) {
+            if let deviceIdx = firstIndex(of: device) {
                 remove(at: deviceIdx)
                 append(device)
                 return true
