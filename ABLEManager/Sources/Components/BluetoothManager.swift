@@ -148,21 +148,22 @@ public class BluetoothManager: NSObject {
             guard
                 let strongSelf = self,
                 let device = strongSelf.lastConnectedDevice else {
-                  callback(false)
+                    DispatchQueue.main.async { callback(false) }
                     return
             }
             
-            
             strongSelf.reconnectionSemaphore = ABLEDispatchGroup()
             strongSelf.reconnectionSemaphore.enter()
-            strongSelf.scanAndConnect(to: device.peripheralName) { (device) in
-                strongSelf.reconnectionSemaphore.leave()
-                callback(true)
-                return
+            DispatchQueue(label: "reconnection.queue").async {
+                strongSelf.scanAndConnect(to: device.peripheralName) { (device) in
+                    strongSelf.reconnectionSemaphore.leave()
+                    DispatchQueue.main.async { callback(true) }
+                    return
+                }
             }
             
             if strongSelf.reconnectionSemaphore.wait(timeout: .now() + 10) == .timedOut {
-                callback(false)
+                DispatchQueue.main.async { callback(false) }
             }
         }
     }
