@@ -38,4 +38,8 @@ open class ABLEDispatchGroup {
         needLeave = true
         return semaphore.wait(timeout: timeout)
     }
+    
+    public func notify(queue: DispatchQueue, execute: @escaping (()->Void) ) {
+        semaphore.notify(queue: queue, execute: execute)
+    }
 }

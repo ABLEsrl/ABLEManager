@@ -39,6 +39,9 @@ public class BluetoothManager: NSObject {
     private var writeCallback: WriteCallback?
     private var notifyCallback: NotifyCallback?
     
+    private var operationQueue: OperationQueue
+    
+    
     @objc dynamic public var isConnected: Bool {
         get {
             guard
@@ -79,9 +82,12 @@ public class BluetoothManager: NSObject {
         scanningFilter = nil
         
         scanningCallback = nil
-        connectCallback = nil
-        writeCallback = nil
-        notifyCallback = nil
+        connectCallback  = nil
+        writeCallback    = nil
+        notifyCallback   = nil
+        
+        operationQueue = OperationQueue()
+        operationQueue.maxConcurrentOperationCount = 1
         
         manager = CBCentralManager(delegate: nil, queue: eventQueue, options: [CBCentralManagerOptionShowPowerAlertKey:      true,
                                                                                CBCentralManagerScanOptionAllowDuplicatesKey: true])
@@ -89,27 +95,6 @@ public class BluetoothManager: NSObject {
         super.init()
     }
     
-    public func scanAndConnect(to name: String, callback: @escaping ConnectCallback) {
-        Thread.detachNewThread {
-            while self.isPoweredOn == false {
-                sleep(1)
-            }
-            
-            self.connectCallback = callback
-            
-            self.scanForPeripheral([name]) { (devices) in
-                if let device = devices.first(where: { $0.peripheralName.contains(name) }) {
-                    self.stopScan()
-                    
-                    self.connect(to: device)
-                    
-                    DispatchQueue.main.async {
-                        self.connectCallback?(device)
-                    }
-                }
-            }
-        }
-    }
 
     public func scanForPeripheral(_ prefixes: [String] = [String](), completion: @escaping ScanningCallback) {
         self.scanningFilter = prefixes
@@ -137,12 +122,32 @@ public class BluetoothManager: NSObject {
             return false
         }
         
-        connectedDevice = device
+        connectedDevice     = device
         lastConnectedDevice = device
         
         return discoverServicesForConnectedDevice()
     }
-
+    
+    public func scanAndConnect(to name: String, callback: @escaping ConnectCallback) {
+        Thread.detachNewThread {
+            while self.isPoweredOn == false {
+                usleep(2000) // 2 millesec
+            }
+            
+            self.connectCallback = callback
+            
+            self.scanForPeripheral([name]) { (devices) in
+                if let device = devices.first(where: { $0.peripheralName.contains(name) }) {
+                    self.stopScan()
+                    
+                    self.connect(to: device)
+                    
+                    DispatchQueue.main.async { self.connectCallback?(device) }
+                }
+            }
+        }
+    }
+    
     public func reconnect( _ callback: @escaping ((Bool)->Void)) {
         Thread.detachNewThread { [weak self] in
             guard
@@ -176,6 +181,7 @@ public class BluetoothManager: NSObject {
                 return false
         }
         
+        serviceSemaphore = ABLEDispatchGroup()
         serviceSemaphore.enter()
         
         peripheral.delegate = self
@@ -321,12 +327,14 @@ public class BluetoothManager: NSObject {
         }
     }
     
-    public func registerConnnectionObserver(_ callback: @escaping ((Bool) -> ())) -> NSKeyValueObservation {
+    public func registerConnnectionObserver(_ callback: @escaping ((Bool, Bool) -> ())) -> NSKeyValueObservation {
         let observer = self.observe(\.isConnected, options: [.old, .new]) { (object, change) in
-            DispatchQueue.main.async { callback(self.isConnected) }
+            let prev   = change.oldValue ?? false
+            let actual = change.newValue ?? false
+            DispatchQueue.main.async { callback(prev, actual) }
         }
         
-        DispatchQueue.main.async { callback(self.isConnected) }
+        DispatchQueue.main.async { callback(self.isConnected, self.isConnected) }
         
         return observer
     }
