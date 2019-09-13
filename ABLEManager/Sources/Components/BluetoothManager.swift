@@ -115,9 +115,10 @@ public class BluetoothManager: NSObject {
             return false
         }
         
+        connectingSemaphore = ABLEDispatchGroup()
         connectingSemaphore.enter()
         manager.connect(peripheral, options: nil)
-
+        
         if connectingSemaphore.wait(timeout: .now() + 4) == DispatchTimeoutResult.timedOut {
             return false
         }

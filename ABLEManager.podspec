@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name    = "ABLEManager"
-  s.version = "1.2.12"
+  s.version = "1.2.13"
   s.summary = "A simple and lightweight CoreBluetooth wrapper"
   s.license = {
     :type => 'MIT', :text => <<-LICENSE
