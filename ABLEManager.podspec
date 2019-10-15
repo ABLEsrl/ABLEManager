@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name    = "ABLEManager"
-  s.version = "1.2.13"
+  s.version = "1.2.15"
   s.summary = "A simple and lightweight CoreBluetooth wrapper"
   s.license = {
     :type => 'MIT', :text => <<-LICENSE
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
     LICENSE
   }
 
-  s.author           = "ABLE"
+  s.author           = "ABLE SRL"
   s.homepage         = "http://www.a-ble.com/"
   s.social_media_url = "https://twitter.com/able_srls"
 
