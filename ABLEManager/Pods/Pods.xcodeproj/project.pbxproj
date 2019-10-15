@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,7 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		20302AED488FF92ED6752C984310AD3C /* Pods_ABLEManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ABLEManager.framework; path = "Pods-ABLEManager.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20302AED488FF92ED6752C984310AD3C /* Pods_ABLEManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABLEManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25DE85914823DE39F6BFA09C9DB17BA5 /* Pods-ABLEManagerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ABLEManagerTests-umbrella.h"; sourceTree = "<group>"; };
 		34DCC0F8E7FCA2DBA1468CDB8D63ACDE /* Pods-ABLEManagerTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ABLEManagerTests-Info.plist"; sourceTree = "<group>"; };
 		364A20FAC4459634CEF5A62C4360D810 /* Pods-ABLEManager-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ABLEManager-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -35,8 +35,8 @@
 		85B41B71F7C3FE528F67C1C89A0E5BE1 /* Pods-ABLEManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ABLEManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 		8647DC344924179B2B5D9C7C6D2DE651 /* Pods-ABLEManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ABLEManager-Info.plist"; sourceTree = "<group>"; };
 		9C5B1CC3BC03EB50FBA237E2742048E4 /* Pods-ABLEManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ABLEManager.debug.xcconfig"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A89743CA92C503A9C4596EC53E53DDEF /* Pods_ABLEManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ABLEManagerTests.framework; path = "Pods-ABLEManagerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A89743CA92C503A9C4596EC53E53DDEF /* Pods_ABLEManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABLEManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21E5B7D033DBE814F71D93899B55152 /* Pods-ABLEManagerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ABLEManagerTests.modulemap"; sourceTree = "<group>"; };
 		B4413BE7AA591E7DF453774E99AE09AE /* Pods-ABLEManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ABLEManager-umbrella.h"; sourceTree = "<group>"; };
 		BC50F210C2FAFDC5DC30627CF203FFC3 /* Pods-ABLEManagerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ABLEManagerTests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -217,6 +217,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
@@ -294,11 +295,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ABLEManagerTests/Pods-ABLEManagerTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ABLEManagerTests/Pods-ABLEManagerTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -333,12 +330,9 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ABLEManager/Pods-ABLEManager-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.2.14;
 				MODULEMAP_FILE = "Target Support Files/Pods-ABLEManager/Pods-ABLEManager.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -406,8 +400,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -495,12 +488,9 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ABLEManager/Pods-ABLEManager-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.2.14;
 				MODULEMAP_FILE = "Target Support Files/Pods-ABLEManager/Pods-ABLEManager.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -534,11 +524,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ABLEManagerTests/Pods-ABLEManagerTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ABLEManagerTests/Pods-ABLEManagerTests.modulemap";
 				OTHER_LDFLAGS = "";

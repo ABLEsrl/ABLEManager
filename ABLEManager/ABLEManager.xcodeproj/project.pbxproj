@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D9BED7E2355AC530040106B /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 1D9BED7D2355AC530040106B /* Sources */; };
 		5693C274531696D8973753E7 /* Pods_ABLEManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C3EBD8FA3EAB97D0883103 /* Pods_ABLEManagerTests.framework */; };
 		7901C7A54CC694D53C1094F6 /* Pods_ABLEManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F003C41560FC333272316A7 /* Pods_ABLEManager.framework */; };
 		B237FCC42244FD8E006D9099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FCC32244FD8E006D9099 /* AppDelegate.swift */; };
@@ -15,14 +16,6 @@
 		B237FCCB2244FD8F006D9099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B237FCCA2244FD8F006D9099 /* Assets.xcassets */; };
 		B237FCCE2244FD8F006D9099 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B237FCCC2244FD8F006D9099 /* LaunchScreen.storyboard */; };
 		B237FCD92244FD8F006D9099 /* ABLEManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FCD82244FD8F006D9099 /* ABLEManagerTests.swift */; };
-		B237FCF02244FDD3006D9099 /* Data+Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FCE52244FDD3006D9099 /* Data+Parser.swift */; };
-		B237FCF12244FDD3006D9099 /* Utils+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FCE62244FDD3006D9099 /* Utils+Hex.swift */; };
-		B237FCF22244FDD3006D9099 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FCE82244FDD3006D9099 /* ServiceModel.swift */; };
-		B237FCF32244FDD3006D9099 /* PeripheralDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FCE92244FDD3006D9099 /* PeripheralDevice.swift */; };
-		B237FCF42244FDD3006D9099 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FCEB2244FDD3006D9099 /* BluetoothManager.swift */; };
-		B237FCF52244FDD3006D9099 /* TimeoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FCEC2244FDD3006D9099 /* TimeoutTimer.swift */; };
-		B237FCF62244FDD3006D9099 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FCEE2244FDD3006D9099 /* Command.swift */; };
-		B237FCF72244FDD3006D9099 /* CommandResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FCEF2244FDD3006D9099 /* CommandResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +31,7 @@
 /* Begin PBXFileReference section */
 		07A0F906A09F58ED1FDC5933 /* Pods-ABLEManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABLEManagerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ABLEManagerTests/Pods-ABLEManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 		17BBC7439398408CAF6DE8A3 /* Pods-ABLEManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABLEManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-ABLEManager/Pods-ABLEManager.release.xcconfig"; sourceTree = "<group>"; };
+		1D9BED7D2355AC530040106B /* Sources */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sources; sourceTree = SOURCE_ROOT; };
 		8A1673F3E3F758C571DF11C2 /* Pods-ABLEManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABLEManagerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ABLEManagerTests/Pods-ABLEManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F003C41560FC333272316A7 /* Pods_ABLEManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABLEManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C3EBD8FA3EAB97D0883103 /* Pods_ABLEManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABLEManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,14 +45,6 @@
 		B237FCD42244FD8F006D9099 /* ABLEManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ABLEManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B237FCD82244FD8F006D9099 /* ABLEManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABLEManagerTests.swift; sourceTree = "<group>"; };
 		B237FCDA2244FD8F006D9099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B237FCE52244FDD3006D9099 /* Data+Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Parser.swift"; sourceTree = "<group>"; };
-		B237FCE62244FDD3006D9099 /* Utils+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Utils+Hex.swift"; sourceTree = "<group>"; };
-		B237FCE82244FDD3006D9099 /* ServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
-		B237FCE92244FDD3006D9099 /* PeripheralDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralDevice.swift; sourceTree = "<group>"; };
-		B237FCEB2244FDD3006D9099 /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
-		B237FCEC2244FDD3006D9099 /* TimeoutTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeoutTimer.swift; sourceTree = "<group>"; };
-		B237FCEE2244FDD3006D9099 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		B237FCEF2244FDD3006D9099 /* CommandResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandResponse.swift; sourceTree = "<group>"; };
 		DAEE7EE28EB3050C8D59039C /* Pods-ABLEManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABLEManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ABLEManager/Pods-ABLEManager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,7 +100,7 @@
 		B237FCC22244FD8E006D9099 /* ABLEManager */ = {
 			isa = PBXGroup;
 			children = (
-				B237FCE32244FDD3006D9099 /* Sources */,
+				1D9BED7D2355AC530040106B /* Sources */,
 				B237FCC32244FD8E006D9099 /* AppDelegate.swift */,
 				B237FCC52244FD8E006D9099 /* ViewController.swift */,
 				B237FCC72244FD8E006D9099 /* Main.storyboard */,
@@ -132,53 +118,6 @@
 				B237FCDA2244FD8F006D9099 /* Info.plist */,
 			);
 			path = ABLEManagerTests;
-			sourceTree = "<group>";
-		};
-		B237FCE32244FDD3006D9099 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				B237FCE42244FDD3006D9099 /* Extension */,
-				B237FCE72244FDD3006D9099 /* Models */,
-				B237FCEA2244FDD3006D9099 /* Components */,
-				B237FCED2244FDD3006D9099 /* Command */,
-			);
-			path = Sources;
-			sourceTree = SOURCE_ROOT;
-		};
-		B237FCE42244FDD3006D9099 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				B237FCE52244FDD3006D9099 /* Data+Parser.swift */,
-				B237FCE62244FDD3006D9099 /* Utils+Hex.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		B237FCE72244FDD3006D9099 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				B237FCE82244FDD3006D9099 /* ServiceModel.swift */,
-				B237FCE92244FDD3006D9099 /* PeripheralDevice.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		B237FCEA2244FDD3006D9099 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				B237FCEB2244FDD3006D9099 /* BluetoothManager.swift */,
-				B237FCEC2244FDD3006D9099 /* TimeoutTimer.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		B237FCED2244FDD3006D9099 /* Command */ = {
-			isa = PBXGroup;
-			children = (
-				B237FCEE2244FDD3006D9099 /* Command.swift */,
-				B237FCEF2244FDD3006D9099 /* CommandResponse.swift */,
-			);
-			path = Command;
 			sourceTree = "<group>";
 		};
 		F0C8CD0E529F2BB99C1AAD7B /* Pods */ = {
@@ -278,6 +217,7 @@
 				B237FCCE2244FD8F006D9099 /* LaunchScreen.storyboard in Resources */,
 				B237FCCB2244FD8F006D9099 /* Assets.xcassets in Resources */,
 				B237FCC92244FD8E006D9099 /* Main.storyboard in Resources */,
+				1D9BED7E2355AC530040106B /* Sources in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,16 +274,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B237FCF22244FDD3006D9099 /* ServiceModel.swift in Sources */,
 				B237FCC62244FD8E006D9099 /* ViewController.swift in Sources */,
 				B237FCC42244FD8E006D9099 /* AppDelegate.swift in Sources */,
-				B237FCF42244FDD3006D9099 /* BluetoothManager.swift in Sources */,
-				B237FCF72244FDD3006D9099 /* CommandResponse.swift in Sources */,
-				B237FCF02244FDD3006D9099 /* Data+Parser.swift in Sources */,
-				B237FCF62244FDD3006D9099 /* Command.swift in Sources */,
-				B237FCF52244FDD3006D9099 /* TimeoutTimer.swift in Sources */,
-				B237FCF12244FDD3006D9099 /* Utils+Hex.swift in Sources */,
-				B237FCF32244FDD3006D9099 /* PeripheralDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
