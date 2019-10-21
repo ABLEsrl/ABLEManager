@@ -7,7 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D9BED7E2355AC530040106B /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 1D9BED7D2355AC530040106B /* Sources */; };
+		1D18DBF1235D931F00DF0A8F /* Utils+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBE5235D931F00DF0A8F /* Utils+Hex.swift */; };
+		1D18DBF2235D931F00DF0A8F /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBE6235D931F00DF0A8F /* Data+Utils.swift */; };
+		1D18DBF3235D931F00DF0A8F /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBE7235D931F00DF0A8F /* String+Utils.swift */; };
+		1D18DBF4235D931F00DF0A8F /* DeviceOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBE9235D931F00DF0A8F /* DeviceOperationType.swift */; };
+		1D18DBF5235D931F00DF0A8F /* ABLEDispatchGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBEA235D931F00DF0A8F /* ABLEDispatchGroup.swift */; };
+		1D18DBF6235D931F00DF0A8F /* ABLECommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBEB235D931F00DF0A8F /* ABLECommand.swift */; };
+		1D18DBF7235D931F00DF0A8F /* PeripheralDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBEC235D931F00DF0A8F /* PeripheralDevice.swift */; };
+		1D18DBF8235D931F00DF0A8F /* ABLEResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBED235D931F00DF0A8F /* ABLEResponse.swift */; };
+		1D18DBF9235D931F00DF0A8F /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBEF235D931F00DF0A8F /* BluetoothManager.swift */; };
+		1D18DBFA235D931F00DF0A8F /* TimeoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBF0235D931F00DF0A8F /* TimeoutTimer.swift */; };
+		1D18DBFC235D955C00DF0A8F /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBFB235D955C00DF0A8F /* Dictionary+Utils.swift */; };
+		1D18DBFE235D958C00DF0A8F /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBFD235D958C00DF0A8F /* Array+Utils.swift */; };
 		5693C274531696D8973753E7 /* Pods_ABLEManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C3EBD8FA3EAB97D0883103 /* Pods_ABLEManagerTests.framework */; };
 		7901C7A54CC694D53C1094F6 /* Pods_ABLEManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F003C41560FC333272316A7 /* Pods_ABLEManager.framework */; };
 		B237FCC42244FD8E006D9099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FCC32244FD8E006D9099 /* AppDelegate.swift */; };
@@ -31,7 +42,18 @@
 /* Begin PBXFileReference section */
 		07A0F906A09F58ED1FDC5933 /* Pods-ABLEManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABLEManagerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ABLEManagerTests/Pods-ABLEManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 		17BBC7439398408CAF6DE8A3 /* Pods-ABLEManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABLEManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-ABLEManager/Pods-ABLEManager.release.xcconfig"; sourceTree = "<group>"; };
-		1D9BED7D2355AC530040106B /* Sources */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sources; sourceTree = SOURCE_ROOT; };
+		1D18DBE5235D931F00DF0A8F /* Utils+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Utils+Hex.swift"; sourceTree = "<group>"; };
+		1D18DBE6235D931F00DF0A8F /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
+		1D18DBE7235D931F00DF0A8F /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
+		1D18DBE9235D931F00DF0A8F /* DeviceOperationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceOperationType.swift; sourceTree = "<group>"; };
+		1D18DBEA235D931F00DF0A8F /* ABLEDispatchGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABLEDispatchGroup.swift; sourceTree = "<group>"; };
+		1D18DBEB235D931F00DF0A8F /* ABLECommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABLECommand.swift; sourceTree = "<group>"; };
+		1D18DBEC235D931F00DF0A8F /* PeripheralDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralDevice.swift; sourceTree = "<group>"; };
+		1D18DBED235D931F00DF0A8F /* ABLEResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABLEResponse.swift; sourceTree = "<group>"; };
+		1D18DBEF235D931F00DF0A8F /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		1D18DBF0235D931F00DF0A8F /* TimeoutTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeoutTimer.swift; sourceTree = "<group>"; };
+		1D18DBFB235D955C00DF0A8F /* Dictionary+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; };
+		1D18DBFD235D958C00DF0A8F /* Array+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
 		8A1673F3E3F758C571DF11C2 /* Pods-ABLEManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABLEManagerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ABLEManagerTests/Pods-ABLEManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F003C41560FC333272316A7 /* Pods_ABLEManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABLEManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C3EBD8FA3EAB97D0883103 /* Pods_ABLEManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABLEManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +99,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1D18DBE3235D931F00DF0A8F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1D18DBE4235D931F00DF0A8F /* Extension */,
+				1D18DBE8235D931F00DF0A8F /* Models */,
+				1D18DBEE235D931F00DF0A8F /* Components */,
+			);
+			path = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		1D18DBE4235D931F00DF0A8F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1D18DBE5235D931F00DF0A8F /* Utils+Hex.swift */,
+				1D18DBE6235D931F00DF0A8F /* Data+Utils.swift */,
+				1D18DBE7235D931F00DF0A8F /* String+Utils.swift */,
+				1D18DBFB235D955C00DF0A8F /* Dictionary+Utils.swift */,
+				1D18DBFD235D958C00DF0A8F /* Array+Utils.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1D18DBE8235D931F00DF0A8F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1D18DBEA235D931F00DF0A8F /* ABLEDispatchGroup.swift */,
+				1D18DBEB235D931F00DF0A8F /* ABLECommand.swift */,
+				1D18DBED235D931F00DF0A8F /* ABLEResponse.swift */,
+				1D18DBEC235D931F00DF0A8F /* PeripheralDevice.swift */,
+				1D18DBE9235D931F00DF0A8F /* DeviceOperationType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1D18DBEE235D931F00DF0A8F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1D18DBEF235D931F00DF0A8F /* BluetoothManager.swift */,
+				1D18DBF0235D931F00DF0A8F /* TimeoutTimer.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		B237FCB72244FD8E006D9099 = {
 			isa = PBXGroup;
 			children = (
@@ -100,7 +165,7 @@
 		B237FCC22244FD8E006D9099 /* ABLEManager */ = {
 			isa = PBXGroup;
 			children = (
-				1D9BED7D2355AC530040106B /* Sources */,
+				1D18DBE3235D931F00DF0A8F /* Sources */,
 				B237FCC32244FD8E006D9099 /* AppDelegate.swift */,
 				B237FCC52244FD8E006D9099 /* ViewController.swift */,
 				B237FCC72244FD8E006D9099 /* Main.storyboard */,
@@ -217,7 +282,6 @@
 				B237FCCE2244FD8F006D9099 /* LaunchScreen.storyboard in Resources */,
 				B237FCCB2244FD8F006D9099 /* Assets.xcassets in Resources */,
 				B237FCC92244FD8E006D9099 /* Main.storyboard in Resources */,
-				1D9BED7E2355AC530040106B /* Sources in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +338,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D18DBF3235D931F00DF0A8F /* String+Utils.swift in Sources */,
+				1D18DBFA235D931F00DF0A8F /* TimeoutTimer.swift in Sources */,
+				1D18DBFC235D955C00DF0A8F /* Dictionary+Utils.swift in Sources */,
 				B237FCC62244FD8E006D9099 /* ViewController.swift in Sources */,
+				1D18DBF8235D931F00DF0A8F /* ABLEResponse.swift in Sources */,
+				1D18DBFE235D958C00DF0A8F /* Array+Utils.swift in Sources */,
+				1D18DBF2235D931F00DF0A8F /* Data+Utils.swift in Sources */,
+				1D18DBF4235D931F00DF0A8F /* DeviceOperationType.swift in Sources */,
 				B237FCC42244FD8E006D9099 /* AppDelegate.swift in Sources */,
+				1D18DBF7235D931F00DF0A8F /* PeripheralDevice.swift in Sources */,
+				1D18DBF9235D931F00DF0A8F /* BluetoothManager.swift in Sources */,
+				1D18DBF5235D931F00DF0A8F /* ABLEDispatchGroup.swift in Sources */,
+				1D18DBF1235D931F00DF0A8F /* Utils+Hex.swift in Sources */,
+				1D18DBF6235D931F00DF0A8F /* ABLECommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
