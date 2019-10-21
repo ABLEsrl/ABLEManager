@@ -9,46 +9,33 @@
 import Foundation
 import UIKit
 
-
 open class Utils {
     
     public static func intToHex(_ num: Int) -> String? {
-        if let number = UInt(exactly: num) {
-            let str = String(number, radix: 16, uppercase: true)
-            
-            if str.count == 0 {
-                return "00"
-            } else if str.count == 1 {
-                return "0\(str)"
-            }
-            
-            return str
+        guard let number = UInt(exactly: num) else {
+            return nil
         }
         
-        return nil
+        return String(number, radix: 16, uppercase: true).leftPadding(toLength: 2, withPad: "0")
     }
     
     public static func hexToInt(_ val: String) -> Int? {
-        if let number = UInt(val, radix: 16) {
-            return Int(number)
+        guard let number = UInt(val, radix: 16) else {
+            return nil
         }
         
-        return nil
+        return Int(number)
     }
 }
 
 public extension Character {
     
     var asciiValue: Int {
-        get {
-            let s = String(self).unicodeScalars
-            return Int(s[s.startIndex].value)
-        }
+        let s = String(self).unicodeScalars
+        return Int(s[s.startIndex].value)
     }
     
     var asciiHexValue: String? {
-        get {
-            return Utils.intToHex(asciiValue)
-        }
+        return Utils.intToHex(asciiValue)
     }
 }

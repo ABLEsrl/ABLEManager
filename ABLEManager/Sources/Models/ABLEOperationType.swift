@@ -9,7 +9,7 @@
 import Foundation
 
 
-public enum DeviceOperationType: String {
+public enum ABLEOperationType: String {
     case Scanning       = "Scanning"
     case Connect        = "Connect"
     case Read           = "Read"

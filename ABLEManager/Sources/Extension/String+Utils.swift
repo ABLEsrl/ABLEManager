@@ -9,6 +9,7 @@
 import Foundation
 
 public extension String {
+    
     func leftPadding(toLength: Int, withPad character: Character) -> String {
         let stringLength = self.count
         if stringLength < toLength {
@@ -41,8 +42,7 @@ public extension String {
         for i in from...to {
             if i < count {
                 res += String(self[i])
-            }
-            else {
+            } else {
                 return res
             }
         }
@@ -50,12 +50,9 @@ public extension String {
         return res
     }
     
-    /// A data representation of the hexadecimal bytes in this string.
     func hexDecodedData() -> Data {
-        // Get the UTF8 characters of this string
         let chars = Array(utf8)
         
-        // Keep the bytes in an UInt8 array and later convert it to Data
         var bytes = [UInt8]()
         bytes.reserveCapacity(count / 2)
         

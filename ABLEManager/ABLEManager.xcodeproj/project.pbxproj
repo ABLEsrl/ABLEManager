@@ -10,7 +10,7 @@
 		1D18DBF1235D931F00DF0A8F /* Utils+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBE5235D931F00DF0A8F /* Utils+Hex.swift */; };
 		1D18DBF2235D931F00DF0A8F /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBE6235D931F00DF0A8F /* Data+Utils.swift */; };
 		1D18DBF3235D931F00DF0A8F /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBE7235D931F00DF0A8F /* String+Utils.swift */; };
-		1D18DBF4235D931F00DF0A8F /* DeviceOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBE9235D931F00DF0A8F /* DeviceOperationType.swift */; };
+		1D18DBF4235D931F00DF0A8F /* ABLEOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBE9235D931F00DF0A8F /* ABLEOperationType.swift */; };
 		1D18DBF5235D931F00DF0A8F /* ABLEDispatchGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBEA235D931F00DF0A8F /* ABLEDispatchGroup.swift */; };
 		1D18DBF6235D931F00DF0A8F /* ABLECommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBEB235D931F00DF0A8F /* ABLECommand.swift */; };
 		1D18DBF7235D931F00DF0A8F /* PeripheralDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18DBEC235D931F00DF0A8F /* PeripheralDevice.swift */; };
@@ -45,7 +45,7 @@
 		1D18DBE5235D931F00DF0A8F /* Utils+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Utils+Hex.swift"; sourceTree = "<group>"; };
 		1D18DBE6235D931F00DF0A8F /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
 		1D18DBE7235D931F00DF0A8F /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
-		1D18DBE9235D931F00DF0A8F /* DeviceOperationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceOperationType.swift; sourceTree = "<group>"; };
+		1D18DBE9235D931F00DF0A8F /* ABLEOperationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABLEOperationType.swift; sourceTree = "<group>"; };
 		1D18DBEA235D931F00DF0A8F /* ABLEDispatchGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABLEDispatchGroup.swift; sourceTree = "<group>"; };
 		1D18DBEB235D931F00DF0A8F /* ABLECommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABLECommand.swift; sourceTree = "<group>"; };
 		1D18DBEC235D931F00DF0A8F /* PeripheralDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralDevice.swift; sourceTree = "<group>"; };
@@ -54,6 +54,7 @@
 		1D18DBF0235D931F00DF0A8F /* TimeoutTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeoutTimer.swift; sourceTree = "<group>"; };
 		1D18DBFB235D955C00DF0A8F /* Dictionary+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; };
 		1D18DBFD235D958C00DF0A8F /* Array+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
+		1D18DBFF235DDAF200DF0A8F /* ABLEManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ABLEManager.entitlements; sourceTree = "<group>"; };
 		8A1673F3E3F758C571DF11C2 /* Pods-ABLEManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABLEManagerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ABLEManagerTests/Pods-ABLEManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F003C41560FC333272316A7 /* Pods_ABLEManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABLEManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C3EBD8FA3EAB97D0883103 /* Pods_ABLEManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABLEManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,10 +126,10 @@
 			isa = PBXGroup;
 			children = (
 				1D18DBEA235D931F00DF0A8F /* ABLEDispatchGroup.swift */,
+				1D18DBE9235D931F00DF0A8F /* ABLEOperationType.swift */,
 				1D18DBEB235D931F00DF0A8F /* ABLECommand.swift */,
 				1D18DBED235D931F00DF0A8F /* ABLEResponse.swift */,
 				1D18DBEC235D931F00DF0A8F /* PeripheralDevice.swift */,
-				1D18DBE9235D931F00DF0A8F /* DeviceOperationType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -165,6 +166,7 @@
 		B237FCC22244FD8E006D9099 /* ABLEManager */ = {
 			isa = PBXGroup;
 			children = (
+				1D18DBFF235DDAF200DF0A8F /* ABLEManager.entitlements */,
 				1D18DBE3235D931F00DF0A8F /* Sources */,
 				B237FCC32244FD8E006D9099 /* AppDelegate.swift */,
 				B237FCC52244FD8E006D9099 /* ViewController.swift */,
@@ -248,9 +250,11 @@
 				TargetAttributes = {
 					B237FCBF2244FD8E006D9099 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1110;
 					};
 					B237FCD32244FD8F006D9099 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1110;
 						TestTargetID = B237FCBF2244FD8E006D9099;
 					};
 				};
@@ -345,7 +349,7 @@
 				1D18DBF8235D931F00DF0A8F /* ABLEResponse.swift in Sources */,
 				1D18DBFE235D958C00DF0A8F /* Array+Utils.swift in Sources */,
 				1D18DBF2235D931F00DF0A8F /* Data+Utils.swift in Sources */,
-				1D18DBF4235D931F00DF0A8F /* DeviceOperationType.swift in Sources */,
+				1D18DBF4235D931F00DF0A8F /* ABLEOperationType.swift in Sources */,
 				B237FCC42244FD8E006D9099 /* AppDelegate.swift in Sources */,
 				1D18DBF7235D931F00DF0A8F /* PeripheralDevice.swift in Sources */,
 				1D18DBF9235D931F00DF0A8F /* BluetoothManager.swift in Sources */,
@@ -514,7 +518,9 @@
 			baseConfigurationReference = DAEE7EE28EB3050C8D59039C /* Pods-ABLEManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ABLEManager/ABLEManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 42EAQ8DVJ4;
 				INFOPLIST_FILE = ABLEManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -523,7 +529,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.able.ABLEManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -533,7 +540,9 @@
 			baseConfigurationReference = 17BBC7439398408CAF6DE8A3 /* Pods-ABLEManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ABLEManager/ABLEManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 42EAQ8DVJ4;
 				INFOPLIST_FILE = ABLEManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -542,7 +551,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.able.ABLEManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -563,7 +573,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.able.ABLEManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ABLEManager.app/ABLEManager";
 			};
@@ -585,7 +595,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.able.ABLEManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ABLEManager.app/ABLEManager";
 			};

@@ -13,6 +13,7 @@ open class ABLECommand: Hashable {
     open var rawString: String = ""
     open var rawData:   Data   = Data()
     
+    
     public init(with payload: String) {
         self.rawString = payload
         self.rawData   = payload.data(using: .ascii) ?? Data()
