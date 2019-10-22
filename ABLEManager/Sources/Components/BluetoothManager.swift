@@ -30,7 +30,7 @@ public class BluetoothManager: NSObject {
     private var eventQueue:     DispatchQueue!
     private var scanningFilter: [Any]?
     
-    public var peripherals:         [PeripheralDevice]!
+    public var peripherals:         [PeripheralDevice]?
     public var connectedDevice:     PeripheralDevice?
     public var lastConnectedDevice: PeripheralDevice?
     
@@ -414,20 +414,24 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
         
         
-        let needRefresh = peripherals.appendDistinc(PeripheralDevice(with: peripheral, advData: advertisementData, rssi: RSSI))
-        peripherals     = peripherals.sorted()
+        let needRefresh = peripherals?.appendDistinc(PeripheralDevice(with: peripheral, advData: advertisementData, rssi: RSSI)) ?? false
+        peripherals     = peripherals?.sorted()
         
         if needRefresh {
-            DispatchQueue.main.async { self.scanningCallback?(self.peripherals) }
+            DispatchQueue.main.async {
+                self.scanningCallback?(self.peripherals ?? [PeripheralDevice]())
+            }
         }
     }
     
     public func peripheralDidUpdateName(_ peripheral: CBPeripheral) {
-        let needRefresh = peripherals.updatePeripheral(PeripheralDevice(with: peripheral))
-        peripherals     = peripherals.sorted()
+        let needRefresh = peripherals?.updatePeripheral(PeripheralDevice(with: peripheral)) ?? false
+        peripherals     = peripherals?.sorted()
         
         if needRefresh {
-            DispatchQueue.main.async { self.scanningCallback?(self.peripherals) }
+            DispatchQueue.main.async {
+                self.scanningCallback?(self.peripherals  ?? [PeripheralDevice]())
+            }
         }
     }
     

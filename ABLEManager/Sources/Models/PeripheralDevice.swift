@@ -27,26 +27,26 @@ open class PeripheralDevice: Equatable, Comparable, Hashable, CustomStringConver
     
     public var peripheralName: String {
         guard let device = peripheral else {
-            return ""
+            return "No-Name"
         }
         
         if let name = advData["kCBAdvDataLocalName"] as? String {
             return name
         }
         
-        return device.name ?? ""
+        return device.name ?? "No-Name"
     }
     
     public static func ==(lhs: PeripheralDevice, rhs: PeripheralDevice) -> Bool {
         guard
-            let lhsDevice = lhs.peripheral,
-            let rhsDevice = rhs.peripheral else {
+            let lhsPeripheral = lhs.peripheral,
+            let rhsPeripheral = rhs.peripheral else {
                 return false
         }
         
         var equals = true
         equals = equals && (lhs.peripheralName.compare(rhs.peripheralName) == .orderedSame)
-        equals = equals && (lhsDevice.identifier.uuidString == rhsDevice.identifier.uuidString)
+        equals = equals && (lhsPeripheral.identifier.uuidString == rhsPeripheral.identifier.uuidString)
         return equals
     }
     
@@ -100,10 +100,10 @@ open class PeripheralDevice: Equatable, Comparable, Hashable, CustomStringConver
 }
 
 
-public extension Array where Iterator.Element: PeripheralDevice {
+public extension Array where Iterator.Element == PeripheralDevice {
     
     @discardableResult
-    mutating func appendDistinc(_ device: Iterator.Element ) -> Bool {
+    mutating func appendDistinc(_ device: PeripheralDevice) -> Bool {
         if contains(device) == false {
             append(device)
             return true
@@ -113,7 +113,7 @@ public extension Array where Iterator.Element: PeripheralDevice {
     }
     
     @discardableResult
-    mutating func updatePeripheral(_ device: Iterator.Element ) -> Bool {
+    mutating func updatePeripheral(_ device: PeripheralDevice) -> Bool {
         if contains(device) == false {
             if let deviceIdx = firstIndex(of: device) {
                 remove(at: deviceIdx)
