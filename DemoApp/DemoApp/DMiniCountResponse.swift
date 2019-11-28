@@ -63,12 +63,10 @@ public class DMiniCountResponse: ABLEResponse {
     }
     
     public var tagsCount: Int {
-        get {
-            if parsedCompletely() {
-                return Utils.hexToInt(TAGS_COUNT) ?? -1
-            } else {
-                return -1
-            }
+        if parsedCompletely() {
+            return Utils.hexToInt(TAGS_COUNT) ?? -1
+        } else {
+            return -1
         }
     }
 }

@@ -21,7 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Uso il BLE</string>
+	<string>DMini BLE Example</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>DMini BLE Example</string>
 	<key>UIBackgroundModes</key>
 	<array/>
 	<key>UILaunchStoryboardName</key>

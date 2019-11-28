@@ -23,11 +23,28 @@ import ABLEManager
  
  *** Read Tag ***
  $290a010001\r\n
+ 
+ *** Write Tag ***
+ $2220010Cxxxxxxxxxxxxxxxxxxxxxxxx\r\n
+ 
+ 22 is the command
+ 20 is the frame length in hex (20=32 characters)
+ 01 indicates that the writing has to be performed in RAM memory and save only if not present
+ 0c is tag length in byte (0c=12 byte, so 24 characters)
+ xxxxxxxxxxxxxxxxxxxxxxxx EPC of tag
+
  */
+
+
 
 public enum CMD: String {
     case TAG_COUNT = "27"
     case READ_TAG  = "29"
+    case WRITE_TAG = "22"
+}
+
+public enum MODALITA: String {
+    case RAM = "01"
 }
 
 public class DMiniCommand: ABLECommand {
@@ -39,8 +56,8 @@ public class DMiniCommand: ABLECommand {
     
     
     public init(with command: CMD, payload: String = "") {
-        let len = command.rawValue.count+2+payload.count // il 2 è la len dell'hex len (al massimo due byte)
-        let hexLen = Utils.intToHex(len) ?? ""
+        let len        = command.rawValue.count+2+payload.count // il 2 è la len dell'hex len (al massimo due byte)
+        let hexLen     = Utils.intToHex(len) ?? "00"
         let rawCommand = SOF + command.rawValue + hexLen + payload + EOF
         
         super.init(with: rawCommand)
@@ -55,9 +72,27 @@ public class DMiniCommand: ABLECommand {
         return readTagCommand(index: 1)
     }
     static func readTagCommand(index: Int) -> DMiniCommand {
-        let readFromRAM = "01"
+        let readFromRAM    = MODALITA.RAM.rawValue
         let tagIndexString = String(index).leftPadding(toLength: 4, withPad: "0")
-        let command = DMiniCommand(with: .READ_TAG, payload: readFromRAM + tagIndexString)
+        let command        = DMiniCommand(with: .READ_TAG, payload: readFromRAM + tagIndexString)
+        return command
+    }
+
+    static func writeTagCommand(value: String) -> DMiniCommand {
+        let readFromRAM = MODALITA.RAM.rawValue
+        let tagHexLen   = Utils.intToHex(value.count/2) ?? "00"
+        let payload     = readFromRAM + tagHexLen + value
+        let command     = DMiniCommand(with: .WRITE_TAG, payload: payload)
+        print("Write Payload: \(command.rawString)")
         return command
     }
 }
+
+/*
+22 is the command
+20 is the frame length in hex (20=32 characters)
+
+Payload
+01 indicates that the writing has to be performed in RAM memory and save only if not present
+0c is tag length in byte (0c=12 byte, so 24 characters)
+*/

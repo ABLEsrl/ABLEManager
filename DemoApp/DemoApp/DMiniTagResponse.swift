@@ -75,8 +75,6 @@ public class DMiniTagResponse: ABLEResponse {
     }
     
     public var tagPayload: String {
-        get {
-            return TAG
-        }
+        return TAG
     }
 }

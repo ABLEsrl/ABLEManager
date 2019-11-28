@@ -468,7 +468,10 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
             return
         }
         
-        DispatchQueue.main.async { self.writeCallback?(device, (error == nil)) }
+        DispatchQueue.main.async {
+            print("ERROR: \(error.debugDescription)")
+            self.writeCallback?(device, (error == nil))
+        }
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
