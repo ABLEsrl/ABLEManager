@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DFC4E62238FDF3200CB55E6 /* DMiniWriteTagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFC4E61238FDF3200CB55E6 /* DMiniWriteTagResponse.swift */; };
+		1DFC4E64239026A500CB55E6 /* DMiniClearRespose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFC4E63239026A500CB55E6 /* DMiniClearRespose.swift */; };
 		B237FD052244FDEB006D9099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FD042244FDEB006D9099 /* AppDelegate.swift */; };
 		B237FD072244FDEB006D9099 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FD062244FDEB006D9099 /* ViewController.swift */; };
 		B237FD0A2244FDEB006D9099 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B237FD082244FDEB006D9099 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		0A6065BE9903B48B58955842 /* Pods-DemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoApp/Pods-DemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		1744898365EAF50BB5852767 /* Pods-DemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoApp/Pods-DemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		1DFC4E61238FDF3200CB55E6 /* DMiniWriteTagResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniWriteTagResponse.swift; sourceTree = "<group>"; };
+		1DFC4E63239026A500CB55E6 /* DMiniClearRespose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniClearRespose.swift; sourceTree = "<group>"; };
 		6744546B7F16FCA9E59974C7 /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B237FD012244FDEB006D9099 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B237FD042244FDEB006D9099 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				B26182CD2246348D008DD6AF /* DMiniCommand.swift */,
 				B26182D1224643A4008DD6AF /* DMiniTagResponse.swift */,
 				1DFC4E61238FDF3200CB55E6 /* DMiniWriteTagResponse.swift */,
+				1DFC4E63239026A500CB55E6 /* DMiniClearRespose.swift */,
 				B25194962248E0E1006327F4 /* DMiniCountResponse.swift */,
 				B26182CF22463D67008DD6AF /* DMiniBLEManager.swift */,
 				B25194A322492243006327F4 /* DMiniCharacteristics.swift */,
@@ -238,6 +241,7 @@
 				B26182D022463D67008DD6AF /* DMiniBLEManager.swift in Sources */,
 				1DFC4E62238FDF3200CB55E6 /* DMiniWriteTagResponse.swift in Sources */,
 				B25194972248E0E1006327F4 /* DMiniCountResponse.swift in Sources */,
+				1DFC4E64239026A500CB55E6 /* DMiniClearRespose.swift in Sources */,
 				B26182D2224643A4008DD6AF /* DMiniTagResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

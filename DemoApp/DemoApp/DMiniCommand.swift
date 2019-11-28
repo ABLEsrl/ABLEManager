@@ -38,14 +38,29 @@ import ABLEManager
 
 
 public enum CMD: String {
-    case TAG_COUNT = "27"
-    case READ_TAG  = "29"
-    case WRITE_TAG = "22"
+    case TAG_COUNT   = "27"
+    case READ_TAG    = "29"
+    case WRITE_TAG   = "22"
+    case CLEAR       = "2B"
+    case SCANN_MODE  = "0E"
+    case CHANGE_MODE = "3D"
 }
 
 public enum MODALITA: String {
     case RAM = "01"
 }
+
+public enum SCANNING_MODE: String {
+    case ON  = "01"
+    case OFF = "00"
+}
+
+public enum DEVICE_MODE: String {
+    case INVENTORY = "01"
+    case FIND      = "02"
+    case SCANNING  = "03"
+}
+
 
 public class DMiniCommand: ABLECommand {
     var SOF:     String = "$"
@@ -84,6 +99,29 @@ public class DMiniCommand: ABLECommand {
         let payload     = readFromRAM + tagHexLen + value
         let command     = DMiniCommand(with: .WRITE_TAG, payload: payload)
         print("Write Payload: \(command.rawString)")
+        return command
+    }
+    
+    /* *** Clear Command ***
+    $2b0601\r\n
+    Command Response
+    $2c0300\r\n
+    */
+    static func clearDeviceCommand() -> DMiniCommand {
+        let command = DMiniCommand(with: .CLEAR, payload: "01")
+        print("Clear Payload: \(command.rawString)")
+        return command
+    }
+    
+    static func setScanningModeCommand(_ mode: SCANNING_MODE) -> DMiniCommand {
+        let command = DMiniCommand(with: .SCANN_MODE, payload: "01" + mode.rawValue)
+        print("Scanning Mode Payload: \(command.rawString)")
+        return command
+    }
+    
+    static func switchToModeCommand(_ mode: DEVICE_MODE) -> DMiniCommand {
+        let command = DMiniCommand(with: .CHANGE_MODE, payload: "01" + mode.rawValue)
+        print("Switch Mode Payload: \(command.rawString)")
         return command
     }
 }

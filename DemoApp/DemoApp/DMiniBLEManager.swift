@@ -16,11 +16,13 @@ public class DMiniBLEManager {
     
     private var currentTag:         DMiniTagResponse
     private var currentWriteTag:    DMiniWriteTagResponse
+    private var currentClear:       DMiniClearResponse
     private var connectionObserver: NSKeyValueObservation?
-    
+   
     init() {
         currentTag      = DMiniTagResponse()
         currentWriteTag = DMiniWriteTagResponse()
+        currentClear    = DMiniClearResponse()
         
         connectionObserver = nil
     }
@@ -153,5 +155,108 @@ public class DMiniBLEManager {
                 callback(resCodes)
             }
         }
+    }
+    
+    
+    /* *** Clear Command ***
+     $2b0601\r\n
+
+     Clear Command Response
+
+     $2c0300\r\n
+     */
+    func clearDevice(_ callback: @escaping ((Bool)->Void) ) {
+        self.currentClear = DMiniClearResponse()
+        
+        BluetoothManager.shared.subscribe(to: DMiniCharacteristic.characteristic5.rawValue) { (device, response, success) in
+            if success {
+                print("Ricevo risposta: " + response.asciiString)
+                
+                self.currentWriteTag.append(string: response.asciiString)
+                if self.currentWriteTag.parsedCompletely() {
+                    callback(true)
+                }
+            } else {
+                print("Errore nella ricezione della risposta")
+                callback(false)
+            }
+        }
+        
+        let clearCommand = DMiniCommand.clearDeviceCommand()
+        BluetoothManager.shared.write(command: clearCommand, to: DMiniCharacteristic.characteristic5.rawValue, modality: .withoutResponse)
+    }
+    
+    
+    func setScanningModeOn( _ callback: @escaping ((Bool)->Void) ) {
+        self.setScanningMode(mode: .ON) { (esito) in
+            callback(esito)
+        }
+    }
+    
+    func setScanningModeOff( _ callback: @escaping ((Bool)->Void) ) {
+        self.setScanningMode(mode: .OFF) { (esito) in
+            callback(esito)
+        }
+    }
+    
+    func setScanningMode(mode: SCANNING_MODE, _ callback: @escaping ((Bool)->Void) ) {
+        self.currentClear = DMiniClearResponse()
+        
+        BluetoothManager.shared.subscribe(to: DMiniCharacteristic.characteristic5.rawValue) { (device, response, success) in
+            if success {
+                print("Ricevo risposta: " + response.asciiString)
+                
+                self.currentWriteTag.append(string: response.asciiString)
+                if self.currentWriteTag.parsedCompletely() {
+                    callback(true)
+                }
+            } else {
+                print("Errore nella ricezione della risposta")
+                callback(false)
+            }
+        }
+        
+        let clearCommand = DMiniCommand.setScanningModeCommand(mode)
+        BluetoothManager.shared.write(command: clearCommand, to: DMiniCharacteristic.characteristic5.rawValue, modality: .withoutResponse)
+    }
+    
+    
+    func setInventoryMode(mode: DEVICE_MODE, _ callback: @escaping ((Bool)->Void) ) {
+        self.setMode(mode: .INVENTORY) { (esito) in
+            callback(esito)
+        }
+    }
+    
+    func setFindMode(mode: DEVICE_MODE, _ callback: @escaping ((Bool)->Void) ) {
+        self.setMode(mode: .FIND) { (esito) in
+            callback(esito)
+        }
+    }
+    
+    func setScanningMode(mode: DEVICE_MODE, _ callback: @escaping ((Bool)->Void) ) {
+        self.setMode(mode: .SCANNING) { (esito) in
+            callback(esito)
+        }
+    }
+    
+    func setMode(mode: DEVICE_MODE, _ callback: @escaping ((Bool)->Void) ) {
+        self.currentClear = DMiniClearResponse()
+        
+        BluetoothManager.shared.subscribe(to: DMiniCharacteristic.characteristic5.rawValue) { (device, response, success) in
+            if success {
+                print("Ricevo risposta: " + response.asciiString)
+                
+                self.currentWriteTag.append(string: response.asciiString)
+                if self.currentWriteTag.parsedCompletely() {
+                    callback(true)
+                }
+            } else {
+                print("Errore nella ricezione della risposta")
+                callback(false)
+            }
+        }
+        
+        let clearCommand = DMiniCommand.switchToModeCommand(mode)
+        BluetoothManager.shared.write(command: clearCommand, to: DMiniCharacteristic.characteristic5.rawValue, modality: .withoutResponse)
     }
 }

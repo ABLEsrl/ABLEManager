@@ -1,5 +1,5 @@
 //
-//  DMiniWriteTagResponse.swift
+//  DMiniClearRespose.swift
 //  DemoApp
 //
 //  Created by Riccardo Paolillo on 28/11/2019.
@@ -10,28 +10,16 @@ import Foundation
 import ABLEManager
 
 /*
- $2306xx\r\n
- dove:
- $ è il SOF
- 23 è il comando
- 06 è la lunghezza del frame in esadecimale (22=34 caratteri)
- xx è la il codice risposta:
-    XX=00 Saved correctly
-    XX=01 Memory full
-    XX=02 Tags in memory (inventory mode active)
-    XX=03 Tag already saved
+ $2c0300\r\n
  */
 
-public enum WriteTagResponseCode: String {
-    case SaveCorrectly   = "00"
-    case MemoryFull      = "01"
-    case DeviceNotReady  = "02"
-    case TagAlreadySaved = "03"
-    
+public enum ClearResponseCode: String {
+    case ClearCorrectly   = "00"
+
     case UnknownCodeError = ""
 }
 
-public class DMiniWriteTagResponse: ABLEResponse {
+public class DMiniClearResponse: ABLEResponse {
     var SOF:  String = "$"
     var CMD:  String = ""
     var LEN:  String = ""
@@ -76,7 +64,7 @@ public class DMiniWriteTagResponse: ABLEResponse {
         return true
     }
     
-    public var responseCode: WriteTagResponseCode {
-        return WriteTagResponseCode(rawValue: CODE) ?? WriteTagResponseCode.UnknownCodeError
+    public var responseCode: ClearResponseCode {
+        return ClearResponseCode(rawValue: CODE) ?? ClearResponseCode.UnknownCodeError
     }
 }

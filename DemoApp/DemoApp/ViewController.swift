@@ -52,7 +52,7 @@ extension ViewController {
     @IBAction func writeTag(_ sender: UIButton?) {
         DMiniBLEManager.shared.writeTag(value: "e2801170200000c03bf709e8") { (reponseCode) in
             switch reponseCode {
-            case .SaveCorrecty:
+            case .SaveCorrectly:
                 print("Salvato")
             case .MemoryFull:
                 print("Memoria Piena")
@@ -72,7 +72,7 @@ extension ViewController {
         DMiniBLEManager.shared.writeAllTags(values: list) { (responseList) in
             responseList.forEach { (reponseCode) in
                 switch reponseCode {
-                case .SaveCorrecty: //Risposta valida
+                case .SaveCorrectly: //Risposta valida
                     print("Salvato")
                 case .MemoryFull:
                     print("Memoria Piena")
@@ -85,6 +85,46 @@ extension ViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func clearDevice(_ sender: UIButton?) {
+        DMiniBLEManager.shared.clearDevice { (success) in
+            print("Clear device: \(success)")
+        }
+    }
+    
+    @IBAction func scanningOn(_ sender: UIButton?) {
+        DMiniBLEManager.shared.setScanningModeOn { (success) in
+            print("Scanning on enabled: \(success)")
+        }
+    }
+    
+    @IBAction func scanningOff(_ sender: UIButton?) {
+        DMiniBLEManager.shared.setScanningModeOff { (success) in
+            print("Scanning off enabled: \(success)")
+        }
+    }
+
+    @IBAction func switchToMode(_ sender: UIButton?) {
+        DMiniBLEManager.shared.setMode(mode: .INVENTORY) { (success) in
+            print("Mode enabled: \(success)")
+            
+            sleep(1)
+            DMiniBLEManager.shared.setMode(mode: .FIND) { (success) in
+                print("Mode enabled: \(success)")
+                
+                sleep(1)
+                DMiniBLEManager.shared.setMode(mode: .SCANNING) { (success) in
+                    print("Mode enabled: \(success)")
+                    
+                    sleep(1)
+                    DMiniBLEManager.shared.setMode(mode: .INVENTORY) { (success) in
+                        print("Mode enabled: \(success)")
+                    }
+                }
+            }
+        }
+        
     }
 }
 
