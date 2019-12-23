@@ -71,7 +71,7 @@ public class DMiniCommand: ABLECommand {
     
     
     public init(with command: CMD, payload: String = "") {
-        let len        = command.rawValue.count+2+payload.count // il 2 è la len dell'hex len (al massimo due byte)
+        let len        = command.rawValue.count + 2 + payload.count // il 2 è la len dell'hex len (al massimo due byte)
         let hexLen     = Utils.intToHex(len) ?? "00"
         let rawCommand = SOF + command.rawValue + hexLen + payload + EOF
         
@@ -101,36 +101,25 @@ public class DMiniCommand: ABLECommand {
         print("Write Payload: \(command.rawString)")
         return command
     }
-    
-    /* *** Clear Command ***
-    $2b0601\r\n
-    Command Response
-    $2c0300\r\n
-    */
+ 
     static func clearDeviceCommand() -> DMiniCommand {
-        let command = DMiniCommand(with: .CLEAR, payload: "01")
+        let payload = "01"
+        let command = DMiniCommand(with: .CLEAR, payload: payload)
         print("Clear Payload: \(command.rawString)")
         return command
     }
     
     static func setScanningModeCommand(_ mode: SCANNING_MODE) -> DMiniCommand {
-        let command = DMiniCommand(with: .SCANN_MODE, payload: "01" + mode.rawValue)
+        let payload = "01" + mode.rawValue
+        let command = DMiniCommand(with: .SCANN_MODE, payload: payload)
         print("Scanning Mode Payload: \(command.rawString)")
         return command
     }
     
     static func switchToModeCommand(_ mode: DEVICE_MODE) -> DMiniCommand {
-        let command = DMiniCommand(with: .CHANGE_MODE, payload: "01" + mode.rawValue)
+        let payload = "01" + mode.rawValue
+        let command = DMiniCommand(with: .CHANGE_MODE, payload: payload)
         print("Switch Mode Payload: \(command.rawString)")
         return command
     }
 }
-
-/*
-22 is the command
-20 is the frame length in hex (20=32 characters)
-
-Payload
-01 indicates that the writing has to be performed in RAM memory and save only if not present
-0c is tag length in byte (0c=12 byte, so 24 characters)
-*/

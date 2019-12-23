@@ -469,7 +469,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
         
         DispatchQueue.main.async {
-            print("ERROR: \(error.debugDescription)")
+            //print("ERROR: \(error.debugDescription)")
             self.writeCallback?(device, (error == nil))
         }
     }

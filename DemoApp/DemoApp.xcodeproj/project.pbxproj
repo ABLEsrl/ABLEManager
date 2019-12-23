@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D460A7623AA98BF00981F36 /* RN4678Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D460A7523AA98BF00981F36 /* RN4678Response.swift */; };
+		1DBB319923AA511000DB9085 /* RN4678Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB319823AA511000DB9085 /* RN4678Command.swift */; };
+		1DBB319B23AA512100DB9085 /* RN4678Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB319A23AA512100DB9085 /* RN4678Manager.swift */; };
+		1DBB319D23AA513400DB9085 /* RN4678Characteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB319C23AA513400DB9085 /* RN4678Characteristics.swift */; };
+		1DBB319F23AA568900DB9085 /* RN4678ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB319E23AA568900DB9085 /* RN4678ViewController.swift */; };
 		1DFC4E62238FDF3200CB55E6 /* DMiniWriteTagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFC4E61238FDF3200CB55E6 /* DMiniWriteTagResponse.swift */; };
 		1DFC4E64239026A500CB55E6 /* DMiniClearRespose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFC4E63239026A500CB55E6 /* DMiniClearRespose.swift */; };
 		B237FD052244FDEB006D9099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FD042244FDEB006D9099 /* AppDelegate.swift */; };
@@ -25,6 +30,11 @@
 /* Begin PBXFileReference section */
 		0A6065BE9903B48B58955842 /* Pods-DemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoApp/Pods-DemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		1744898365EAF50BB5852767 /* Pods-DemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoApp/Pods-DemoApp.release.xcconfig"; sourceTree = "<group>"; };
+		1D460A7523AA98BF00981F36 /* RN4678Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RN4678Response.swift; sourceTree = "<group>"; };
+		1DBB319823AA511000DB9085 /* RN4678Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RN4678Command.swift; sourceTree = "<group>"; };
+		1DBB319A23AA512100DB9085 /* RN4678Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RN4678Manager.swift; sourceTree = "<group>"; };
+		1DBB319C23AA513400DB9085 /* RN4678Characteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RN4678Characteristics.swift; sourceTree = "<group>"; };
+		1DBB319E23AA568900DB9085 /* RN4678ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RN4678ViewController.swift; sourceTree = "<group>"; };
 		1DFC4E61238FDF3200CB55E6 /* DMiniWriteTagResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniWriteTagResponse.swift; sourceTree = "<group>"; };
 		1DFC4E63239026A500CB55E6 /* DMiniClearRespose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniClearRespose.swift; sourceTree = "<group>"; };
 		6744546B7F16FCA9E59974C7 /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +64,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DBB319723AA50FE00DB9085 /* Lets */ = {
+			isa = PBXGroup;
+			children = (
+				1DBB319823AA511000DB9085 /* RN4678Command.swift */,
+				1D460A7523AA98BF00981F36 /* RN4678Response.swift */,
+				1DBB319C23AA513400DB9085 /* RN4678Characteristics.swift */,
+				1DBB319A23AA512100DB9085 /* RN4678Manager.swift */,
+			);
+			name = Lets;
+			sourceTree = "<group>";
+		};
 		9A126D76EBA8BE97183ED014 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,8 +105,10 @@
 		B237FD032244FDEB006D9099 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				1DBB319723AA50FE00DB9085 /* Lets */,
 				B237FD042244FDEB006D9099 /* AppDelegate.swift */,
 				B237FD062244FDEB006D9099 /* ViewController.swift */,
+				1DBB319E23AA568900DB9085 /* RN4678ViewController.swift */,
 				B237FD0D2244FDEC006D9099 /* LaunchScreen.storyboard */,
 				B237FD082244FDEB006D9099 /* Main.storyboard */,
 				B237FD0B2244FDEC006D9099 /* Assets.xcassets */,
@@ -235,14 +258,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B237FD072244FDEB006D9099 /* ViewController.swift in Sources */,
+				1DBB319923AA511000DB9085 /* RN4678Command.swift in Sources */,
 				B26182CE2246348D008DD6AF /* DMiniCommand.swift in Sources */,
 				B25194A422492243006327F4 /* DMiniCharacteristics.swift in Sources */,
 				B237FD052244FDEB006D9099 /* AppDelegate.swift in Sources */,
 				B26182D022463D67008DD6AF /* DMiniBLEManager.swift in Sources */,
+				1D460A7623AA98BF00981F36 /* RN4678Response.swift in Sources */,
+				1DBB319F23AA568900DB9085 /* RN4678ViewController.swift in Sources */,
 				1DFC4E62238FDF3200CB55E6 /* DMiniWriteTagResponse.swift in Sources */,
 				B25194972248E0E1006327F4 /* DMiniCountResponse.swift in Sources */,
+				1DBB319D23AA513400DB9085 /* RN4678Characteristics.swift in Sources */,
 				1DFC4E64239026A500CB55E6 /* DMiniClearRespose.swift in Sources */,
 				B26182D2224643A4008DD6AF /* DMiniTagResponse.swift in Sources */,
+				1DBB319B23AA512100DB9085 /* RN4678Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

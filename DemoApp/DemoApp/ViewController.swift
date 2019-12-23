@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import UIKit
+import ABLEManager
+
 
 class ViewController: UIViewController {
     
@@ -26,12 +27,12 @@ class ViewController: UIViewController {
             print("Connesso con \(device.peripheralName)")
         }
         
-        DMiniBLEManager.shared.scanning(["DMini"]) { (device) in
+        DMiniBLEManager.shared.scanning() { (device) in
             print("Device Found: \(device.peripheralName)")
         }
     }
 }
- 
+
 
 extension ViewController {
     
