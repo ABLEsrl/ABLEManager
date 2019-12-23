@@ -12,19 +12,17 @@ import ABLEManager
 
 class RN4678Command: ABLECommand {
     var hexMessage:  String  = ""
-    var args:        String  = ""
     
     init() {
         super.init(with: "")
     }
     
     init(payload: String) {
-        self.args        = payload
-        self.hexMessage  = args
+        super.init(with: "")
         
-        super.init(with: hexMessage)
-        
-        self.rawData = hexMessage.hexDecodedData()
+        self.hexMessage = payload
+        self.rawData    = hexMessage.hexDecodedData()
+        self.rawString  = String(data: self.rawData, encoding: .ascii) ?? ""
     }
 
     override func getData() -> Data {

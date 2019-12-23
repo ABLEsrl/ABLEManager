@@ -26,10 +26,6 @@ class RN4678ViewController: UIViewController {
         RN4678Manager.shared.searchAndConnect { (device) in
             print("Connesso con \(device.peripheralName)")
         }
-        
-//        LetsBLEManager.shared.scanning() { (device) in
-//            print("Device Found: \(device.peripheralName)")
-//        }
     }
 }
 

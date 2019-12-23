@@ -18,6 +18,38 @@
             endingLineNumber = "323"
             landmarkName = "write(command:to:modality:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "149D96F7-95FF-4F2E-B1DC-F71A59706C5F - c92021800c9f16f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ABLEManager.BluetoothManager.write(command: ABLEManager.ABLECommand, to: Swift.String, modality: __C.CBCharacteristicWriteType, completion: Swift.Optional&lt;(ABLEManager.PeripheralDevice, Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "ABLEManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardopaolillo/Documents/Bitbucket/ABLEManager/ABLEManager/Sources/Components/BluetoothManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "323"
+                  endingLineNumber = "323"
+                  offsetFromSymbolStart = "432">
+               </Location>
+               <Location
+                  uuid = "149D96F7-95FF-4F2E-B1DC-F71A59706C5F - e329322357d1c727"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.CBCharacteristic) -&gt; Swift.Bool in ABLEManager.BluetoothManager.write(command: ABLEManager.ABLECommand, to: Swift.String, modality: __C.CBCharacteristicWriteType, completion: Swift.Optional&lt;(ABLEManager.PeripheralDevice, Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "ABLEManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardopaolillo/Documents/Bitbucket/ABLEManager/ABLEManager/Sources/Components/BluetoothManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "323"
+                  endingLineNumber = "323"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
