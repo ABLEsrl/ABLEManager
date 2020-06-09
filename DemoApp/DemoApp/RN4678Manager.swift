@@ -40,22 +40,32 @@ public class RN4678Manager {
     }
 
     
-    func sendWithSteamResponse(command: RN4678Command, _ callback: @escaping ((String?)->Void)) {
-        self.rawPayload     = ""
-        self.streamCallback = callback
+    func sendWithSteamResponse(command: RN4678Command, _ callback: @escaping ((RN4678Response)->Void)) {
+        self.currentResponse = RN4678Response()
+        self.currentCommand  = command
         
         BluetoothManager.shared.subscribe(to: RN4678Characteristic.characteristic3.rawValue) { (device, response, success) in
             guard response.isZeroFilled == false else {
+                print("Received empty response")
                 return
             }
             
-            //Concateno le semi-risposte quindi le passo tutto alla funzione di split
-            self.rawPayload += response.hexString
+            self.currentResponse.append(data: response)
             
-            DispatchQueue.main.async { self.streamCallback?(self.rawPayload) }
+            if self.currentResponse.isComplete {
+                DispatchQueue.main.async {
+                    callback(RN4678Response.clone(with: self.currentResponse))
+                    
+                    //Invio ancora il comando per creare lo stream
+                    self.currentResponse = RN4678Response()
+                    self.write(command: command, to: .characteristic3)
+                }
+                
+            }
         }
         
-        self.write(command: command)
+        //Invio il comando
+        self.write(command: command, to: .characteristic3)
     }
     
     func sendWithResponse(command: RN4678Command, _ callback: @escaping ((RN4678Response)->Void)) {
@@ -70,9 +80,7 @@ public class RN4678Manager {
             
             self.currentResponse.append(data: response)
             
-            if self.currentResponse.isComplete == false {
-                self.currentResponse.append(data: response)
-            } else {
+            if self.currentResponse.isComplete {
                 DispatchQueue.main.async {
                     callback(self.currentResponse)
                     self.currentResponse = RN4678Response()

@@ -23,6 +23,20 @@ class RN4678Response: ABLEResponse {
         super.init(with: rawString)
     }
     
+    public static func clone(with data: RN4678Response = RN4678Response()) -> RN4678Response {
+        let newResponse          = RN4678Response()
+        
+        newResponse.start        = data.start
+        newResponse.heartRate    = data.heartRate
+        newResponse.breathRate   = data.breathRate
+        newResponse.sampleCount  = data.sampleCount
+        newResponse.ecgSamples   = data.ecgSamples
+        newResponse.breathSample = data.breathSample
+        newResponse.stop         = data.stop
+        
+        return newResponse
+    }
+    
     public func append(data: Data) {
         rawData   += data
         rawString += rawData.hexString
@@ -54,11 +68,11 @@ class RN4678Response: ABLEResponse {
         }
         
         if rawString.count >= 218 { // La prima parte del pacchetto
-            ecgSamples = rawString.subString(from: 26, len: 64*3)
+            ecgSamples = rawString.subString(from: 26, len: 64*6)
         }
         
         if rawString.count >= 314 { // La prima parte del pacchetto
-            breathSample = rawString.subString(from: 218, len: 32*3)
+            breathSample = rawString.subString(from: 218, len: 32*6)
         }
         
         if heartRate == "" || breathRate == "" || sampleCount == "" || ecgSamples == "" || breathSample == "" {

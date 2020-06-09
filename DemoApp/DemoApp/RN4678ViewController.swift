@@ -33,14 +33,17 @@ class RN4678ViewController: UIViewController {
 extension RN4678ViewController {
     
     @IBAction func startStream(_ sender: UIButton?) {
-        RN4678Manager.shared.sendWithResponse(command: RN4678Command.startCommand) { (response) in
+        var start = Date().timeIntervalSince1970 * 1000
+        RN4678Manager.shared.sendWithSteamResponse(command: RN4678Command.startCommand) { (response) in
             print("HeartRate:  " + "\(response.heartRateValue)")
             print("breathRate: " + "\(response.breathRateValue)")
             print("Samples:    " + "\(response.sampleCountValue)")
-            print("ECG:        " + response.ecgSamplesValues.compactMap {"\($0)"}.joined(separator: " "))
-            print("Breath:     " + response.breathSampleValues.compactMap {"\($0)"}.joined(separator: " "))
+//            print("ECG:        " + response.ecgSamplesValues.compactMap {"\($0)"}.joined(separator: " "))
+//            print("Breath:     " + response.breathSampleValues.compactMap {"\($0)"}.joined(separator: " "))
             
-            DispatchQueue.main.async { self.startStream(sender) }
+            let elaps = Date().timeIntervalSince1970 * 1000 - start
+            print("Elapsed: \(elaps)")
+            start = Date().timeIntervalSince1970 * 1000
         }
     }
     
