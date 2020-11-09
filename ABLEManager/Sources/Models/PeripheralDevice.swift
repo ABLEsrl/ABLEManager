@@ -39,14 +39,15 @@ open class PeripheralDevice: Equatable, Comparable, Hashable, CustomStringConver
     
     public static func ==(lhs: PeripheralDevice, rhs: PeripheralDevice) -> Bool {
         guard
-            let lhsPeripheral = lhs.peripheral,
-            let rhsPeripheral = rhs.peripheral else {
+            let _ = lhs.peripheral,
+            let _ = rhs.peripheral else {
                 return false
         }
         
         var equals = true
         equals = equals && (lhs.peripheralName.compare(rhs.peripheralName) == .orderedSame)
-        equals = equals && (lhsPeripheral.identifier.uuidString == rhsPeripheral.identifier.uuidString)
+        equals = equals && (lhs.characteristics.count == rhs.characteristics.count)
+       
         return equals
     }
     
@@ -103,25 +104,58 @@ open class PeripheralDevice: Equatable, Comparable, Hashable, CustomStringConver
 public extension Array where Iterator.Element == PeripheralDevice {
     
     @discardableResult
-    mutating func appendDistinc(_ device: PeripheralDevice) -> Bool {
+    mutating func appendDistinc(_ device: PeripheralDevice, sorting: Bool) -> Bool {
+        var valueAppended = false
+        
         if contains(device) == false {
             append(device)
-            return true
+            valueAppended = true
+            
+            sort()
         }
         
-        return false
+        return valueAppended
     }
     
     @discardableResult
-    mutating func updatePeripheral(_ device: PeripheralDevice) -> Bool {
-        if contains(device) == false {
-            if let deviceIdx = firstIndex(of: device) {
-                remove(at: deviceIdx)
-                append(device)
-                return true
-            }            
+    mutating func updatePeripheral(_ device: PeripheralDevice, sorting: Bool) -> Bool {
+        var valueUpdated = false
+        
+        forEach {
+            let elementUUID = $0.peripheral?.identifier.uuidString ?? ""
+            let deviceUUID = device.peripheral?.identifier.uuidString ?? ""
+            
+            if elementUUID.compare(deviceUUID) == .orderedSame {
+                $0.peripheral = device.peripheral
+                valueUpdated = true
+            }
         }
         
-        return false
+        if valueUpdated && sorting {
+            sort()
+        }
+        
+        return valueUpdated
+    }
+    
+    @discardableResult
+    mutating func connectedPeripheral(_ device: PeripheralDevice, sorting: Bool) -> Bool {
+        var valueUpdated = false
+        
+        forEach {
+            let elementUUID = $0.peripheral?.identifier.uuidString ?? ""
+            let deviceUUID = device.peripheral?.identifier.uuidString ?? ""
+            
+            if elementUUID.compare(deviceUUID) == .orderedSame {
+                $0.peripheral = device.peripheral
+                valueUpdated = true
+            }
+        }
+        
+        if valueUpdated && sorting {
+            sort()
+        }
+        
+        return valueUpdated
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 
-open class ABLEResponse: Hashable {
+open class ABLEResponse: Hashable, CustomStringConvertible {
     open var rawString: String = ""
     open var rawData:   Data   = Data()
     
@@ -19,7 +19,7 @@ open class ABLEResponse: Hashable {
     }
     
     open func hash(into hasher: inout Hasher) {
-        hasher.combine(rawString)
+        hasher.combine(self.rawString)
     }
     
     public static func ==(lhs: ABLEResponse, rhs: ABLEResponse) -> Bool {
@@ -27,10 +27,14 @@ open class ABLEResponse: Hashable {
     }
     
     open func parseData(_ data: Data) {
-        rawData = data
+        self.rawData = data
     }
     
     open var description: String {
-        return rawString
+        return self.rawString
+    }
+    
+    open var debugDescription: String {
+        return self.rawString
     }
 }
