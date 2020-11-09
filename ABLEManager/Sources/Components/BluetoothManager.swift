@@ -132,16 +132,18 @@ public class BluetoothManager: NSObject {
                 usleep(2000) // 2 millesec
             }
             
-            strongSelf.connectCallback = callback
-            
-            strongSelf.scanForPeripheral([name]) { (devices) in
-                if let device = devices.first(where: { $0.peripheralName.contains(name) }) {
-                    strongSelf.stopScan()
-                    
-                    if strongSelf.connect(to: device) {
-                        DispatchQueue.main.async { strongSelf.connectCallback?(device) }
-                    } else {
-                        DispatchQueue.main.async { strongSelf.connectCallback?(nil) }
+            DispatchQueue.main.async {
+                strongSelf.connectCallback = callback
+                
+                strongSelf.scanForPeripheral([name]) { (devices) in
+                    if let device = devices.first(where: { $0.peripheralName.contains(name) }) {
+                        strongSelf.stopScan()
+                        
+                        if strongSelf.connect(to: device) {
+                            DispatchQueue.main.async { strongSelf.connectCallback?(device) }
+                        } else {
+                            DispatchQueue.main.async { strongSelf.connectCallback?(nil) }
+                        }
                     }
                 }
             }
