@@ -111,7 +111,7 @@ public class BluetoothManager: NSObject {
 
     
     @discardableResult
-    public func connect(to device: PeripheralDevice) -> Bool {
+    public func connect(to device: PeripheralDevice, timeout: TimeInterval = 10) -> Bool {
         guard let peripheral = device.peripheral else {
             return false
         }
@@ -119,7 +119,7 @@ public class BluetoothManager: NSObject {
         connectingSemaphore.enter()
         manager.connect(peripheral, options: nil)
         
-        if connectingSemaphore.wait(timeout: .now() + 4) == .timedOut {
+        if connectingSemaphore.wait(timeout: .now() + timeout) == .timedOut {
             return false
         }
         
@@ -159,13 +159,13 @@ public class BluetoothManager: NSObject {
         }
     }
     
-    public func reconnect( _ callback: @escaping ((Bool)->Void)) {
+    public func reconnect(timeout: TimeInterval = 10, _ callback: @escaping ((Bool)->Void)) {
         guard let device = self.lastConnectedDevice else {
             DispatchQueue.main.async { callback(false) }
             return
         }
             
-        self.scanAndConnect(to: device.peripheralName, timeout: 10) { (device) in
+        self.scanAndConnect(to: device.peripheralName, timeout: timeout) { (device) in
             if device == nil {
                 DispatchQueue.main.async { callback(false) }
             } else {
