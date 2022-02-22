@@ -15,6 +15,13 @@
 		1DBB319B23AA512100DB9085 /* RN4678Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB319A23AA512100DB9085 /* RN4678Manager.swift */; };
 		1DBB319D23AA513400DB9085 /* RN4678Characteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB319C23AA513400DB9085 /* RN4678Characteristics.swift */; };
 		1DBB319F23AA568900DB9085 /* RN4678ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB319E23AA568900DB9085 /* RN4678ViewController.swift */; };
+		1DE5AD7027C526EF00C61F49 /* JetsonCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5AD6A27C526EF00C61F49 /* JetsonCommand.swift */; };
+		1DE5AD7127C526EF00C61F49 /* JetsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5AD6B27C526EF00C61F49 /* JetsonManager.swift */; };
+		1DE5AD7227C526EF00C61F49 /* JetsonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5AD6C27C526EF00C61F49 /* JetsonResponse.swift */; };
+		1DE5AD7327C526EF00C61F49 /* JetsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5AD6D27C526EF00C61F49 /* JetsonViewController.swift */; };
+		1DE5AD7427C526EF00C61F49 /* JetsonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5AD6E27C526EF00C61F49 /* JetsonDetailViewController.swift */; };
+		1DE5AD7527C526EF00C61F49 /* JetsonCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5AD6F27C526EF00C61F49 /* JetsonCharacteristics.swift */; };
+		1DE5AD7727C5270500C61F49 /* Jetson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DE5AD7627C5270400C61F49 /* Jetson.storyboard */; };
 		1DFC4E62238FDF3200CB55E6 /* DMiniWriteTagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFC4E61238FDF3200CB55E6 /* DMiniWriteTagResponse.swift */; };
 		1DFC4E64239026A500CB55E6 /* DMiniClearRespose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFC4E63239026A500CB55E6 /* DMiniClearRespose.swift */; };
 		B237FD052244FDEB006D9099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FD042244FDEB006D9099 /* AppDelegate.swift */; };
@@ -41,6 +48,13 @@
 		1DBB319A23AA512100DB9085 /* RN4678Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RN4678Manager.swift; sourceTree = "<group>"; };
 		1DBB319C23AA513400DB9085 /* RN4678Characteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RN4678Characteristics.swift; sourceTree = "<group>"; };
 		1DBB319E23AA568900DB9085 /* RN4678ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RN4678ViewController.swift; sourceTree = "<group>"; };
+		1DE5AD6A27C526EF00C61F49 /* JetsonCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JetsonCommand.swift; sourceTree = "<group>"; };
+		1DE5AD6B27C526EF00C61F49 /* JetsonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JetsonManager.swift; sourceTree = "<group>"; };
+		1DE5AD6C27C526EF00C61F49 /* JetsonResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JetsonResponse.swift; sourceTree = "<group>"; };
+		1DE5AD6D27C526EF00C61F49 /* JetsonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JetsonViewController.swift; sourceTree = "<group>"; };
+		1DE5AD6E27C526EF00C61F49 /* JetsonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JetsonDetailViewController.swift; sourceTree = "<group>"; };
+		1DE5AD6F27C526EF00C61F49 /* JetsonCharacteristics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JetsonCharacteristics.swift; sourceTree = "<group>"; };
+		1DE5AD7627C5270400C61F49 /* Jetson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Jetson.storyboard; sourceTree = "<group>"; };
 		1DFC4E61238FDF3200CB55E6 /* DMiniWriteTagResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniWriteTagResponse.swift; sourceTree = "<group>"; };
 		1DFC4E63239026A500CB55E6 /* DMiniClearRespose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniClearRespose.swift; sourceTree = "<group>"; };
 		6744546B7F16FCA9E59974C7 /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +97,20 @@
 			name = RN4678;
 			sourceTree = "<group>";
 		};
+		1DE5AD6927C526C300C61F49 /* Jetson */ = {
+			isa = PBXGroup;
+			children = (
+				1DE5AD7627C5270400C61F49 /* Jetson.storyboard */,
+				1DE5AD6D27C526EF00C61F49 /* JetsonViewController.swift */,
+				1DE5AD6E27C526EF00C61F49 /* JetsonDetailViewController.swift */,
+				1DE5AD6F27C526EF00C61F49 /* JetsonCharacteristics.swift */,
+				1DE5AD6A27C526EF00C61F49 /* JetsonCommand.swift */,
+				1DE5AD6B27C526EF00C61F49 /* JetsonManager.swift */,
+				1DE5AD6C27C526EF00C61F49 /* JetsonResponse.swift */,
+			);
+			name = Jetson;
+			sourceTree = "<group>";
+		};
 		9A126D76EBA8BE97183ED014 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +147,7 @@
 				B237FD082244FDEB006D9099 /* Main.storyboard */,
 				B237FD0B2244FDEC006D9099 /* Assets.xcassets */,
 				B237FD102244FDEC006D9099 /* Info.plist */,
+				1DE5AD6927C526C300C61F49 /* Jetson */,
 				1DBB319723AA50FE00DB9085 /* RN4678 */,
 				B2F8BAC122533C7900D2C8D8 /* DMini */,
 			);
@@ -220,6 +249,7 @@
 				B237FD0F2244FDEC006D9099 /* LaunchScreen.storyboard in Resources */,
 				B237FD0C2244FDEC006D9099 /* Assets.xcassets in Resources */,
 				B237FD0A2244FDEB006D9099 /* Main.storyboard in Resources */,
+				1DE5AD7727C5270500C61F49 /* Jetson.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,20 +298,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DE5AD7027C526EF00C61F49 /* JetsonCommand.swift in Sources */,
+				1DE5AD7227C526EF00C61F49 /* JetsonResponse.swift in Sources */,
 				1D4C006E27C4D43300C81266 /* ViewController.swift in Sources */,
 				B237FD072244FDEB006D9099 /* DMiniViewController.swift in Sources */,
 				1DBB319923AA511000DB9085 /* RN4678Command.swift in Sources */,
 				B26182CE2246348D008DD6AF /* DMiniCommand.swift in Sources */,
 				B25194A422492243006327F4 /* DMiniCharacteristics.swift in Sources */,
 				B237FD052244FDEB006D9099 /* AppDelegate.swift in Sources */,
+				1DE5AD7427C526EF00C61F49 /* JetsonDetailViewController.swift in Sources */,
 				B26182D022463D67008DD6AF /* DMiniBLEManager.swift in Sources */,
 				1D460A7623AA98BF00981F36 /* RN4678Response.swift in Sources */,
 				1DBB319F23AA568900DB9085 /* RN4678ViewController.swift in Sources */,
 				1DFC4E62238FDF3200CB55E6 /* DMiniWriteTagResponse.swift in Sources */,
 				B25194972248E0E1006327F4 /* DMiniCountResponse.swift in Sources */,
 				1DBB319D23AA513400DB9085 /* RN4678Characteristics.swift in Sources */,
+				1DE5AD7327C526EF00C61F49 /* JetsonViewController.swift in Sources */,
 				1DFC4E64239026A500CB55E6 /* DMiniClearRespose.swift in Sources */,
+				1DE5AD7127C526EF00C61F49 /* JetsonManager.swift in Sources */,
 				B26182D2224643A4008DD6AF /* DMiniTagResponse.swift in Sources */,
+				1DE5AD7527C526EF00C61F49 /* JetsonCharacteristics.swift in Sources */,
 				1DBB319B23AA512100DB9085 /* RN4678Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
