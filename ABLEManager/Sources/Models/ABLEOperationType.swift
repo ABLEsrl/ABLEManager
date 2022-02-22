@@ -1,5 +1,5 @@
 //
-//  CommandQ.swift
+//  ABLEOperationType.swift
 //  ABLEManager
 //
 //  Created by Riccardo Paolillo on 02/01/2019.

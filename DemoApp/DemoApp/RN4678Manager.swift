@@ -28,13 +28,17 @@ public class RN4678Manager {
     }
     
     func scanning(_ prefixes: [String] = [String](), _ callback: @escaping ((PeripheralDevice)->Void) ) {
-        BluetoothManager.shared.scanForPeripheral(prefixes) { (devices) in
+        BluetoothManager.shared.scanForPeripheral(prefixes) { devices in
             callback(devices[0])
         }
     }
     
     func searchAndConnect(_ callback: @escaping ((PeripheralDevice)->Void) ) {
-        BluetoothManager.shared.scanAndConnect(to: "RN4678-850D") { (device) in
+        BluetoothManager.shared.scanAndConnect(to: "RN4678-850D", timeout: 10) { device in
+            guard let device = device else {
+                return
+            }
+            
             callback(device)
         }
     }

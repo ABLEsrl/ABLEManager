@@ -23,8 +23,8 @@ open class TimeoutTimer {
     }
     
     public static func invalidate(timer: Timer?) {
-        if let timeout = timer {
-            timeout.invalidate()
+        if let timer = timer {
+            timer.invalidate()
         }
     }
 }

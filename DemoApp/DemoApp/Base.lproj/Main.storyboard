@@ -1,123 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vJp-q4-gNw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w5m-58-3I1">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Demo App-->
+        <scene sceneID="UWq-1b-I2V">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="8V6-P3-sWA" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mqZ-Jg-5cv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y81-Pc-1vg">
-                                <rect key="frame" x="107" y="116" width="160" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Read all Tags on reader"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZzP-Ag-NdZ">
+                                <rect key="frame" x="121" y="124" width="133" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="DMini Demo App"/>
                                 <connections>
-                                    <action selector="readAllTags:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4bM-CV-KKs"/>
+                                    <segue destination="nhi-gd-Tj3" kind="show" identifier="kShowDMini" id="UfE-1N-Ran"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Grp-lg-fyh">
-                                <rect key="frame" x="135" y="48" width="102" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Get tags count"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJD-vy-IFE">
+                                <rect key="frame" x="113" y="235" width="149" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="RN4678 Demo App"/>
                                 <connections>
-                                    <action selector="tagsCountOnReader:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PFl-Ss-LVL"/>
+                                    <segue destination="tUS-lg-x5F" kind="show" identifier="kShowRN4678" id="6id-yi-dcF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrK-f3-FHf">
-                                <rect key="frame" x="155" y="182" width="63" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Write tag"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3x-Xn-1Vc">
+                                <rect key="frame" x="117.5" y="346" width="140" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Jetson Demo App"/>
                                 <connections>
-                                    <action selector="writeTag:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sFZ-wD-IeN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzu-jh-8gb">
-                                <rect key="frame" x="107" y="247" width="160" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Write Tags List"/>
-                                <connections>
-                                    <action selector="writeTagList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LU1-oq-ZkZ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pss-dn-rUK">
-                                <rect key="frame" x="107" y="318" width="160" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Clear"/>
-                                <connections>
-                                    <action selector="clearDevice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JVD-bp-wIR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwt-bq-mlE">
-                                <rect key="frame" x="107" y="384" width="160" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Scaning On"/>
-                                <connections>
-                                    <action selector="scanningOn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Oi-Fu-SaM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpg-bL-8Dk">
-                                <rect key="frame" x="107" y="445" width="160" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Scaning Off"/>
-                                <connections>
-                                    <action selector="scanningOff:" destination="BYZ-38-t0r" eventType="touchUpInside" id="618-vy-7vY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbY-QC-N0f">
-                                <rect key="frame" x="106" y="509" width="160" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Change Mode"/>
-                                <connections>
-                                    <action selector="switchToMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kcb-gf-ex2"/>
+                                    <segue destination="fiA-i6-hXv" kind="show" identifier="kShowJetson" id="vpg-z8-I8A"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="u0P-xf-WLJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="l3x-Xn-1Vc" firstAttribute="centerX" secondItem="u0P-xf-WLJ" secondAttribute="centerX" id="D5M-Es-lhQ"/>
+                            <constraint firstItem="KJD-vy-IFE" firstAttribute="centerX" secondItem="u0P-xf-WLJ" secondAttribute="centerX" id="GIZ-fE-BgE"/>
+                            <constraint firstItem="l3x-Xn-1Vc" firstAttribute="top" secondItem="KJD-vy-IFE" secondAttribute="bottom" constant="80" id="S4u-ea-Zet"/>
+                            <constraint firstItem="ZzP-Ag-NdZ" firstAttribute="centerX" secondItem="u0P-xf-WLJ" secondAttribute="centerX" id="SwA-t8-B4O"/>
+                            <constraint firstItem="KJD-vy-IFE" firstAttribute="top" secondItem="ZzP-Ag-NdZ" secondAttribute="bottom" constant="80" id="mFL-7H-qa8"/>
+                            <constraint firstItem="ZzP-Ag-NdZ" firstAttribute="top" secondItem="u0P-xf-WLJ" secondAttribute="top" constant="80" id="ziC-mV-ciP"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Demo App" id="624-oH-yyZ"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cNj-1r-ayh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-881" y="377"/>
+            <point key="canvasLocation" x="-1034" y="390"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="9tC-2e-nxL">
+        <!--Navigation Controller-->
+        <scene sceneID="uE1-MR-dSh">
             <objects>
-                <viewController id="vJp-q4-gNw" customClass="RN4678ViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pOF-5B-wJy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="suX-O4-6Xd">
-                                <rect key="frame" x="107" y="116" width="160" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Read all Tags on reader"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iH-Kc-Y1h">
-                                <rect key="frame" x="148" y="48" width="77" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start Chart"/>
-                                <connections>
-                                    <action selector="startStream:" destination="vJp-q4-gNw" eventType="touchUpInside" id="vO0-Sq-oL3"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="KEM-ov-rFC"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6MV-RX-2fO" sceneMemberID="firstResponder"/>
+                <navigationController id="w5m-58-3I1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T9F-De-N3b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8V6-P3-sWA" kind="relationship" relationship="rootViewController" id="HbH-hw-cO2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="99R-CP-c2P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="111" y="390"/>
+            <point key="canvasLocation" x="-1841" y="390"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="2gf-Rf-CFY">
+            <objects>
+                <viewControllerPlaceholder id="nhi-gd-Tj3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Otn-Vb-0wD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rfW-I3-gp9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-407" y="200"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="7pE-KM-t0Z">
+            <objects>
+                <viewControllerPlaceholder id="tUS-lg-x5F" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2QI-eQ-ahf"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UK2-zT-yF8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-407" y="390"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="FeL-jX-Foc">
+            <objects>
+                <viewControllerPlaceholder id="fiA-i6-hXv" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2Ln-Wq-Yp3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AO4-3f-7MN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-407" y="585"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -104,13 +104,15 @@ open class PeripheralDevice: Equatable, Comparable, Hashable, CustomStringConver
 public extension Array where Iterator.Element == PeripheralDevice {
     
     @discardableResult
-    mutating func appendDistinc(_ device: PeripheralDevice, sorting: Bool) -> Bool {
+    mutating func appendDistinc(_ device: PeripheralDevice, sorting: Bool=true) -> Bool {
         var valueAppended = false
         
         if contains(device) == false {
             append(device)
             valueAppended = true
-            
+        }
+        
+        if valueAppended && sorting {
             sort()
         }
         
@@ -118,28 +120,7 @@ public extension Array where Iterator.Element == PeripheralDevice {
     }
     
     @discardableResult
-    mutating func updatePeripheral(_ device: PeripheralDevice, sorting: Bool) -> Bool {
-        var valueUpdated = false
-        
-        forEach {
-            let elementUUID = $0.peripheral?.identifier.uuidString ?? ""
-            let deviceUUID = device.peripheral?.identifier.uuidString ?? ""
-            
-            if elementUUID.compare(deviceUUID) == .orderedSame {
-                $0.peripheral = device.peripheral
-                valueUpdated = true
-            }
-        }
-        
-        if valueUpdated && sorting {
-            sort()
-        }
-        
-        return valueUpdated
-    }
-    
-    @discardableResult
-    mutating func connectedPeripheral(_ device: PeripheralDevice, sorting: Bool) -> Bool {
+    mutating func updatePeripheral(_ device: PeripheralDevice, sorting: Bool=true) -> Bool {
         var valueUpdated = false
         
         forEach {
