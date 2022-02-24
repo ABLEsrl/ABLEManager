@@ -15,7 +15,7 @@ open class ABLEResponse: Hashable, CustomStringConvertible {
     
     public init(with payload: String) {
         self.rawString = payload
-        self.rawData   = payload.data(using: .ascii) ?? Data()
+        self.rawData   = payload.data(using: .utf8) ?? Data()
     }
     
     open func hash(into hasher: inout Hasher) {

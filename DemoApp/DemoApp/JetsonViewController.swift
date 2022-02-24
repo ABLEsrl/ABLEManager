@@ -48,6 +48,10 @@ class JetsonViewController: UIViewController {
 
 
 extension JetsonViewController {
+    @IBAction func closePressed(_ sender: UIButton?) {
+        self.dismiss(animated: true)
+    }
+    
     @IBAction func scanningPressed(_ sender: UIButton?) {
         JetsonManager.shared.stopScan()
         

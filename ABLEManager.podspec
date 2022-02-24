@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name    = "ABLEManager"
-  s.version = "1.4.1"
+  s.version = "1.5.0"
   s.summary = "A simple and lightweight CoreBluetooth wrapper"
   s.license = {
     :type => 'MIT', :text => <<-LICENSE
@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.homepage         = "http://www.a-ble.com/"
   s.social_media_url = "https://twitter.com/able_srls"
 
-  s.platform         = :ios, "10.0"
+  s.platform         = :ios, "12.0"
   s.source           = { :git => "https://github.com/ABLEsrl/ABLEManager.git", :tag => "#{s.version}" }
   s.source_files     = "ABLEManager/Sources/**/*.{swift}"
 end

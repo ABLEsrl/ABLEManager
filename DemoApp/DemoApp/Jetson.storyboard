@@ -52,6 +52,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Jetson" id="6PF-1A-BKJ">
+                        <barButtonItem key="leftBarButtonItem" title="Chiudi" id="wD0-dt-AmX">
+                            <connections>
+                                <action selector="closePressed:" destination="E8t-Vc-BZg" id="3SN-MO-mZD"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Reload" id="Owi-1a-L6m">
                             <connections>
                                 <action selector="scanningPressed:" destination="E8t-Vc-BZg" id="n4q-Ng-Bia"/>

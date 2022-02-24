@@ -116,21 +116,6 @@ class JetsonData: Codable {
     }
 }
 
-extension String {
-
-    func toDictionary() -> [String: Any]? {
-        if let data = data(using: .utf8) {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
-            }
-            catch {
-                print("Dict parser Error: " + error.localizedDescription)
-            }
-        }
-
-        return nil
-    }
-}
 
 extension UIColor {
 
@@ -151,7 +136,6 @@ extension UIColor {
                            alpha: CGFloat(a1 + (a2 - a1) * percentage))
         }
     }
-
 }
 
 
