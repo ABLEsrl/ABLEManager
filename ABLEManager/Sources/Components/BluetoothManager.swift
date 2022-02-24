@@ -79,27 +79,30 @@ public class BluetoothManager: NSObject {
         super.init()
         
         let options = [CBCentralManagerOptionShowPowerAlertKey: true,
-                  CBCentralManagerScanOptionAllowDuplicatesKey: true,
-                    CBCentralManagerOptionRestoreIdentifierKey: "it.able.ble.central"] as [String : Any]
-        self.manager = CBCentralManager(delegate: self, queue: eventQueue, options: options)
+                  CBCentralManagerScanOptionAllowDuplicatesKey: true] as [String : Any]
+        self.manager = CBCentralManager(delegate: self, queue: self.eventQueue, options: options)
     }
     
 
     public func scanForPeripheral(_ prefixes: [String] = [String](), completion: @escaping ScanningCallback) {
-        guard
-            self.isPoweredOn == true,
-            self.manager.isScanning == false else {
-                self.manager.delegate = self
-                return
-        }
-            
-        DispatchQueue.main.async { [weak self] in
-            self?.scanningFilter   = prefixes
-            self?.scanningCallback = completion
-            self?.peripherals      = [PeripheralDevice]()
+        DispatchQueue.global().async { [weak self] in
+            while self?.isPoweredOn == false {
+                usleep(100)
+            }
             
             self?.manager.delegate = self
-            self?.manager.scanForPeripherals(withServices: nil, options: nil)
+            self?.scanningFilter   = prefixes
+            self?.scanningCallback = completion
+            
+            if self?.manager.isScanning == true {
+                self?.peripherals = [PeripheralDevice]()
+                return
+            }
+                
+            DispatchQueue.main.async { [weak self] in
+                self?.peripherals = [PeripheralDevice]()
+                self?.manager.scanForPeripherals(withServices: nil, options: nil)
+            }
         }
     }
 
@@ -363,9 +366,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
             self.manager.delegate = self
             
             if self.scanningCallback != nil {
-                let options = [CBCentralManagerOptionShowPowerAlertKey: true,
-                          CBCentralManagerScanOptionAllowDuplicatesKey: true,
-                            CBCentralManagerOptionRestoreIdentifierKey: "it.able.ble.central"] as [String : Any]
+                let options = [CBCentralManagerOptionShowPowerAlertKey: true, CBCentralManagerScanOptionAllowDuplicatesKey: true]
                 self.manager.scanForPeripherals(withServices: nil, options: options)
             }
             
@@ -382,14 +383,15 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         peripheral.delegate = self
 
         let prefixes = self.scanningFilter ?? [String]()
-        let name     = peripheral.name ?? advertisementData["kCBAdvDataLocalName"] as? String ?? ""
-        if name.count == 0 && prefixes.count > 0 {
+        let name     = peripheral.name ?? ""
+        let advName  = advertisementData["kCBAdvDataLocalName"] as? String ?? ""
+        if name.count == 0 && advName.count == 0 && prefixes.count > 0 {
             return
         }
-        
+        print("Name: ", name, " - AdvName: ", advName)
         var match = false
         prefixes.forEach { pref in
-            match = match || name.contains(pref)
+            match = match || name.contains(pref) || advName.contains(pref)
         }
         if match == false && prefixes.count > 0 {
             return

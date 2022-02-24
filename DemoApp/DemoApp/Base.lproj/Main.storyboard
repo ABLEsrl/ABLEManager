@@ -22,7 +22,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="DMini Demo App"/>
                                 <connections>
-                                    <segue destination="nhi-gd-Tj3" kind="show" identifier="kShowDMini" id="UfE-1N-Ran"/>
+                                    <segue destination="nhi-gd-Tj3" kind="showDetail" id="7FU-NI-PpO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJD-vy-IFE">
@@ -38,7 +38,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Jetson Demo App"/>
                                 <connections>
-                                    <segue destination="fiA-i6-hXv" kind="show" identifier="kShowJetson" id="vpg-z8-I8A"/>
+                                    <segue destination="fiA-i6-hXv" kind="showDetail" id="wqp-4s-vgA"/>
                                 </connections>
                             </button>
                         </subviews>

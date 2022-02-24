@@ -63,6 +63,7 @@ extension JetsonDetailViewController {
     
     func handle(data: String) {
         guard let jetsonData = JetsonData.from(string: data) else {
+            print("Unable to instantiaze JetsonData from : \"\(data)\"")
             return
         }
         
@@ -70,23 +71,33 @@ extension JetsonDetailViewController {
         self.rightStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
         let leftCount  = UILabel()
-        leftCount.text = "\(jetsonData.detection)"
-        leftCount.font = UIFont.boldSystemFont(ofSize: 14)
+        leftCount.text = "\(jetsonData.detect)"
+        leftCount.textAlignment   = .center
+        leftCount.font = UIFont.boldSystemFont(ofSize: 20)
         self.leftStackView.addArrangedSubview(leftCount)
         
         let rightCount  = UILabel()
-        rightCount.text = "\(jetsonData.detection)"
+        rightCount.text = "\(jetsonData.detect)"
+        rightCount.textAlignment   = .center
         rightCount.font = UIFont.boldSystemFont(ofSize: 20)
         self.rightStackView.addArrangedSubview(rightCount)
         
         jetsonData.porosity.forEach { porosity in
             let label             = UILabel()
             label.text            = "\(porosity)%"
+            label.textAlignment   = .center
             label.textColor       = .black
             label.font            = UIFont.boldSystemFont(ofSize: 16)
-            label.backgroundColor = UIColor.white.to(color: .green, percentage: CGFloat(porosity))
+            label.backgroundColor = UIColor.red.to(color: .green, percentage: CGFloat(porosity))
             self.leftStackView.addArrangedSubview(label)
-            self.rightStackView.addArrangedSubview(label)
+            
+            let labelR             = UILabel()
+            labelR.text            = "\(porosity)%"
+            labelR.textAlignment   = .center
+            labelR.textColor       = .black
+            labelR.font            = UIFont.boldSystemFont(ofSize: 16)
+            labelR.backgroundColor = UIColor.red.to(color: .green, percentage: CGFloat(porosity))
+            self.rightStackView.addArrangedSubview(labelR)
         }
     }
 }
@@ -94,12 +105,13 @@ extension JetsonDetailViewController {
 
 class JetsonData: Codable {
     var porosity: [Int]
-    var detection: Int
+    var detect: Int
     
     class func from(string: String) -> JetsonData? {
         if let encoded = string.data(using: .utf8), let decoded = try? JSONDecoder().decode(JetsonData.self, from: encoded) {
             return decoded
         }
+        
         return nil
     }
 }

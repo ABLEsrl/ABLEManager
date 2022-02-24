@@ -37,8 +37,14 @@ public class JetsonManager {
         BluetoothManager.shared.stopScan()
     }
     
-    func connect(to device: PeripheralDevice, timeout: TimeInterval=10) -> Bool {
-        return BluetoothManager.shared.connect(to: device, timeout: timeout)
+    func connect(to device: PeripheralDevice, timeout: TimeInterval=10, _ callback: @escaping ((PeripheralDevice?)->Void)) {
+        DispatchQueue.global().async {
+            BluetoothManager.shared.connect(to: device, timeout: timeout)
+            
+            DispatchQueue.main.async {
+                callback(BluetoothManager.shared.connectedDevice)
+            }
+        }
     }
     
     func searchAndConnect(name: String="Jetson", timeout: TimeInterval=10, _ callback: @escaping ((PeripheralDevice)->Void) ) {

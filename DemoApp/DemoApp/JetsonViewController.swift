@@ -54,7 +54,7 @@ extension JetsonViewController {
         self.deviceList = [PeripheralDevice]()
         self.tableView.reloadData()
         
-        JetsonManager.shared.scanning(["Jetson"]) { devices in
+        JetsonManager.shared.scanning() { devices in
             self.deviceList = devices
             self.tableView.reloadData()
         }
@@ -81,16 +81,31 @@ extension JetsonViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         JetsonManager.shared.stopScan()
         
-        let success = JetsonManager.shared.connect(to: self.deviceList[indexPath.row], timeout: 10)
-        guard let device = BluetoothManager.shared.connectedDevice else {
-            print("Unable to connect")
-            return
+        tableView.cellForRow(at: indexPath)?.accessoryView = self.createSpinner()
+        JetsonManager.shared.connect(to: self.deviceList[indexPath.row], timeout: 10) { device in
+            tableView.cellForRow(at: indexPath)?.accessoryView = nil
+            
+            guard let device = device else {
+                print("Unable to connect to selected device")
+                return
+            }
+            
+            print("Connected:       \(true)")
+            print("Services:        \(device.services)")
+            print("Characteristics: \(device.characteristics)")
+            
+            self.performSegue(withIdentifier: "kShowDetail", sender: self)
         }
-        
-        print("Connected:       \(success)")
-        print("Services:        \(device.services)")
-        print("Characteristics: \(device.characteristics)")
-        
-        self.performSegue(withIdentifier: "kShowDetail", sender: self)
+    }
+    
+    
+    func createSpinner() -> UIActivityIndicatorView {
+        let view             = UIActivityIndicatorView(style: .gray)
+        view.backgroundColor = .clear
+        view.style           = .gray
+        view.tintColor       = .gray
+        view.color           = .gray
+        view.startAnimating()
+        return view
     }
 }
