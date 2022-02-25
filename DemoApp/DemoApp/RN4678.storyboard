@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="71K-WQ-nXn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ipz-2Q-x4C">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,7 +8,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="b6u-N2-iBw">
+            <objects>
+                <navigationController id="ipz-2Q-x4C" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ckh-wv-qZb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="71K-WQ-nXn" kind="relationship" relationship="rootViewController" id="lYM-9z-5Kj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rdK-3W-BhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1272" y="-63"/>
+        </scene>
+        <!--RN4678-->
         <scene sceneID="5fp-xD-HEg">
             <objects>
                 <viewController id="71K-WQ-nXn" customClass="RN4678ViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,12 +33,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ej8-My-jCI">
-                                <rect key="frame" x="126" y="157" width="160" height="30"/>
+                                <rect key="frame" x="127" y="318" width="160" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Read all Tags on reader"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxT-4m-jvr">
-                                <rect key="frame" x="167" y="65" width="77" height="30"/>
+                                <rect key="frame" x="168" y="226" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start Chart"/>
                                 <connections>
@@ -33,10 +49,17 @@
                         <viewLayoutGuide key="safeArea" id="d1K-XS-DND"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="RN4678" id="0Q4-Ub-NNc">
+                        <barButtonItem key="leftBarButtonItem" title="Chiudi" id="N8C-FF-Bhd">
+                            <connections>
+                                <action selector="closePressed:" destination="71K-WQ-nXn" id="5IF-zT-v2e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bz7-C9-EHI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="88" y="3"/>
+            <point key="canvasLocation" x="-480" y="-64"/>
         </scene>
     </scenes>
 </document>

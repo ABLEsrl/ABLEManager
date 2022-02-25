@@ -31,6 +31,13 @@ class RN4678ViewController: UIViewController {
 
 
 extension RN4678ViewController {
+    @IBAction func closePressed(_ sender: UIButton?) {
+        self.dismiss(animated: true)
+    }
+}
+
+
+extension RN4678ViewController {
     
     @IBAction func startStream(_ sender: UIButton?) {
         var start = Date().timeIntervalSince1970 * 1000

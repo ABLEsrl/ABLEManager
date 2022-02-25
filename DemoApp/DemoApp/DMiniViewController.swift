@@ -33,6 +33,12 @@ class DMiniViewController: UIViewController {
     }
 }
 
+extension DMiniViewController {
+    @IBAction func closePressed(_ sender: UIButton?) {
+        self.dismiss(animated: true)
+    }
+}
+
 
 extension DMiniViewController {
     
