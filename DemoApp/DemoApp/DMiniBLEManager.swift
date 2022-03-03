@@ -39,8 +39,8 @@ public class DMiniBLEManager {
         }
     }
     
-    func searchAndConnect(_ callback: @escaping ((PeripheralDevice)->Void) ) {
-        BluetoothManager.shared.scanAndConnect(to: "D-mini") { (device) in
+    func searchAndConnect(_ callback: @escaping ((PeripheralDevice?)->Void) ) {
+        BluetoothManager.shared.scanAndConnect(to: "D-mini", timeout: 10) { (device) in
             callback(device)
         }
     }

@@ -24,6 +24,7 @@ class RN4678ViewController: UIViewController {
         }
         
         RN4678Manager.shared.searchAndConnect { (device) in
+            guard let device = device else { return }
             print("Connesso con \(device.peripheralName)")
         }
     }

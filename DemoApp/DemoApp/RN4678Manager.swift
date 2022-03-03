@@ -33,8 +33,8 @@ public class RN4678Manager {
         }
     }
     
-    func searchAndConnect(_ callback: @escaping ((PeripheralDevice)->Void) ) {
-        BluetoothManager.shared.scanAndConnect(to: "RN4678-850D") { (device) in
+    func searchAndConnect(_ callback: @escaping ((PeripheralDevice?)->Void) ) {
+        BluetoothManager.shared.scanAndConnect(to: "RN4678-850D", timeout: 5) { (device) in
             callback(device)
         }
     }
