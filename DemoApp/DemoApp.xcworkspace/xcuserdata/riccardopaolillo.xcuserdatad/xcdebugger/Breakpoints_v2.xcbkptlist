@@ -3,4 +3,102 @@
    uuid = "720BAB2F-EAD1-4CDC-9365-08B25752C6F7"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8038C62E-66E0-404D-BDAE-AAC634692F25"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DemoApp/JetsonDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E83B5F20-F7DE-4AB1-8E15-29F3DA5FE32D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../ABLEManager/Sources/Components/BluetoothManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "subscribe(to:read:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E83B5F20-F7DE-4AB1-8E15-29F3DA5FE32D - 4977950971641a04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ABLEManager.BluetoothManager.subscribe(to: Swift.String, read: Swift.Bool, completion: (ABLEManager.PeripheralDevice, Foundation.Data, Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "ABLEManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardopaolillo/Documents/Github/ABLEManager/ABLEManager/Sources/Components/BluetoothManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "255"
+                  endingLineNumber = "255"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "E83B5F20-F7DE-4AB1-8E15-29F3DA5FE32D - 4977950971641a04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ABLEManager.BluetoothManager.subscribe(to: Swift.String, read: Swift.Bool, completion: (ABLEManager.PeripheralDevice, Foundation.Data, Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "ABLEManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardopaolillo/Documents/Github/ABLEManager/ABLEManager/Sources/Components/BluetoothManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "255"
+                  endingLineNumber = "255"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32890F90-112C-497D-B9BE-CF4857B3F248"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../ABLEManager/Sources/Components/BluetoothManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "subscribe(to:read:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC39FB91-6C79-4EFC-B4F3-4F6304959936"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DemoApp/JetsonDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

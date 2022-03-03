@@ -20,12 +20,15 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>DMini BLE Example</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>DMini BLE Example</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>DMini BLE Example</string>
 	<key>UIBackgroundModes</key>
-	<array/>
+	<array>
+		<string>bluetooth-central</string>
+		<string>processing</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
