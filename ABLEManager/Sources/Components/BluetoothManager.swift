@@ -10,11 +10,11 @@ import CoreBluetooth
 import Foundation
 import UIKit
 
-
-public typealias ScanningCallback = (([PeripheralDevice])->Void)
-public typealias ConnectCallback  = ((PeripheralDevice?)->Void)
-public typealias WriteCallback    = ((PeripheralDevice, Bool)->Void)
-public typealias NotifyCallback   = ((PeripheralDevice, Data, Bool)->Void)
+public typealias ConnectionKVOCallback = ((Bool, Bool)->Void)
+public typealias ScanningCallback      = (([PeripheralDevice])->Void)
+public typealias ConnectCallback       = ((PeripheralDevice?)->Void)
+public typealias WriteCallback         = ((PeripheralDevice, Bool)->Void)
+public typealias NotifyCallback        = ((PeripheralDevice, Data, Bool)->Void)
 
 public class BluetoothManager: NSObject {
     
@@ -35,17 +35,16 @@ public class BluetoothManager: NSObject {
     public var connectedDevice:     PeripheralDevice?
     public var lastConnectedDevice: PeripheralDevice?
     
-    private var scanningCallback: ScanningCallback?
-    private var connectCallback:  ConnectCallback?
-    private var writeCallbacks:   [String: WriteCallback?]
-    private var notifyCallbacks:  [String: NotifyCallback?]
+    private var connectionStatusCallback: ConnectionKVOCallback?
+    private var scanningCallback:         ScanningCallback?
+    private var connectCallback:          ConnectCallback?
+    private var writeCallbacks:           [String: WriteCallback?]
+    private var notifyCallbacks:          [String: NotifyCallback?]
     
     
     @objc dynamic public var isConnected: Bool {
-        guard
-            let device = self.connectedDevice,
-            let peripheral = device.peripheral else {
-                return false
+        guard let device = self.connectedDevice, let peripheral = device.peripheral else {
+            return false
         }
         
         return peripheral.state == .connected
@@ -324,14 +323,16 @@ public class BluetoothManager: NSObject {
         }
     }
     
-    public func registerConnnectionObserver(_ callback: @escaping ((Bool, Bool) -> ())) -> NSKeyValueObservation {
+    public func registerConnnectionObserver(_ callback: @escaping ConnectionKVOCallback) -> NSKeyValueObservation {
+        self.connectionStatusCallback = callback
+        
         let observer = self.observe(\.isConnected, options: [.old, .new]) { (object, change) in
             let prev   = change.oldValue ?? false
             let actual = change.newValue ?? false
-            DispatchQueue.main.async { callback(prev, actual) }
+            DispatchQueue.main.async { self.connectionStatusCallback?(prev, actual) }
         }
         
-        DispatchQueue.main.async { [weak self] in callback(self?.isConnected ?? false, self?.isConnected ?? false) }
+        DispatchQueue.main.async { [weak self] in self?.connectionStatusCallback?(self?.isConnected ?? false, self?.isConnected ?? false) }
         
         return observer
     }
@@ -444,6 +445,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         self.connectedDevice = nil
+        self.connectionStatusCallback?(true, false)
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
