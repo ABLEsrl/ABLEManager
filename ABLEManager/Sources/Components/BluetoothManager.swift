@@ -445,7 +445,10 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         self.connectedDevice = nil
-        self.connectionStatusCallback?(true, false)
+        
+        DispatchQueue.main.async {
+            self.connectionStatusCallback?(true, false)
+        }
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
