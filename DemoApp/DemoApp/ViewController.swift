@@ -19,16 +19,17 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        DMiniBLEManager.shared.registerConnectionObserver { (isConnected) in
+        DMiniBLEManager.shared.registerConnectionObserver { isConnected in
             print("DMini is connected? \(isConnected)")
         }
         
-        DMiniBLEManager.shared.searchAndConnect { (device) in
+        DMiniBLEManager.shared.searchAndConnect { device in
+            guard let device = device else { return }
             print("Connesso con \(device.peripheralName)")
         }
         
-        DMiniBLEManager.shared.scanning() { (device) in
-            print("Device Found: \(device.peripheralName)")
+        DMiniBLEManager.shared.scanning() { device in
+            print("New Device Found: \(device.peripheralName)")
         }
     }
 }
@@ -70,8 +71,8 @@ extension ViewController {
     @IBAction func writeTagList(_ sender: UIButton?) {
         let list = ["e2801170200000c03bf709e8", "e2801180300000c03bf709e8", "e2801180303000c03bf709e8"]
         
-        DMiniBLEManager.shared.writeAllTags(values: list) { (responseList) in
-            responseList.forEach { (reponseCode) in
+        DMiniBLEManager.shared.writeAllTags(values: list) { responseList in
+            responseList.forEach { reponseCode in
                 switch reponseCode {
                 case .SaveCorrectly: //Risposta valida
                     print("Salvato")
@@ -89,37 +90,37 @@ extension ViewController {
     }
     
     @IBAction func clearDevice(_ sender: UIButton?) {
-        DMiniBLEManager.shared.clearDevice { (success) in
+        DMiniBLEManager.shared.clearDevice { success in
             print("Clear device: \(success)")
         }
     }
     
     @IBAction func scanningOn(_ sender: UIButton?) {
-        DMiniBLEManager.shared.setScanningModeOn { (success) in
+        DMiniBLEManager.shared.setScanningModeOn { success in
             print("Scanning on enabled: \(success)")
         }
     }
     
     @IBAction func scanningOff(_ sender: UIButton?) {
-        DMiniBLEManager.shared.setScanningModeOff { (success) in
+        DMiniBLEManager.shared.setScanningModeOff { success in
             print("Scanning off enabled: \(success)")
         }
     }
 
     @IBAction func switchToMode(_ sender: UIButton?) {
-        DMiniBLEManager.shared.setMode(mode: .INVENTORY) { (success) in
+        DMiniBLEManager.shared.setMode(mode: .INVENTORY) { success in
             print("Mode enabled: \(success)")
             
             sleep(1)
-            DMiniBLEManager.shared.setMode(mode: .FIND) { (success) in
+            DMiniBLEManager.shared.setMode(mode: .FIND) { success in
                 print("Mode enabled: \(success)")
                 
                 sleep(1)
-                DMiniBLEManager.shared.setMode(mode: .SCANNING) { (success) in
+                DMiniBLEManager.shared.setMode(mode: .SCANNING) { success in
                     print("Mode enabled: \(success)")
                     
                     sleep(1)
-                    DMiniBLEManager.shared.setMode(mode: .INVENTORY) { (success) in
+                    DMiniBLEManager.shared.setMode(mode: .INVENTORY) { success in
                         print("Mode enabled: \(success)")
                     }
                 }

@@ -43,11 +43,17 @@ public class BluetoothManager: NSObject {
     
     
     @objc dynamic public var isConnected: Bool {
-        guard let device = self.connectedDevice, let peripheral = device.peripheral else {
-            return false
+        get {
+            guard let device = self.connectedDevice, let peripheral = device.peripheral else {
+                return false
+            }
+            
+            return peripheral.state == .connected
         }
         
-        return peripheral.state == .connected
+        set {
+            self.connectedDevice = nil
+        }
     }
     
     @objc dynamic public var isPoweredOn: Bool {
@@ -445,10 +451,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         self.connectedDevice = nil
-        
-        DispatchQueue.main.async {
-            self.connectionStatusCallback?(true, false)
-        }
+        self.isConnected = false
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
