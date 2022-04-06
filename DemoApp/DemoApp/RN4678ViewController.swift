@@ -1,5 +1,5 @@
 //
-//  LetsViewController.swift
+//  RN4678ViewController.swift
 //  DemoApp
 //
 //  Created by Riccardo Paolillo on 18/12/2019.
@@ -24,9 +24,15 @@ class RN4678ViewController: UIViewController {
         }
         
         RN4678Manager.shared.searchAndConnect { (device) in
-            guard let device = device else { return }
             print("Connesso con \(device.peripheralName)")
         }
+    }
+}
+
+
+extension RN4678ViewController {
+    @IBAction func closePressed(_ sender: UIButton?) {
+        self.dismiss(animated: true)
     }
 }
 

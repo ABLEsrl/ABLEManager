@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qro-UN-EMb">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="7Ea-lg-U0h">
+            <objects>
+                <navigationController id="qro-UN-EMb" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o2c-f5-fCg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xQK-Fv-opK" kind="relationship" relationship="rootViewController" id="FmO-1z-Oth"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jgw-1q-5wM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1614" y="12"/>
+        </scene>
+        <!--DMini-->
+        <scene sceneID="Fzk-hC-9RQ">
+            <objects>
+                <viewController id="xQK-Fv-opK" customClass="DMiniViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jvk-Vn-jx7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JbQ-Dv-qdN">
+                                <rect key="frame" x="82.666666666666671" y="44" width="248.66666666666663" height="692"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yy4-Md-7B8">
+                                        <rect key="frame" x="0.0" y="0.0" width="248.66666666666666" height="86.666666666666671"/>
+                                        <state key="normal" title="Read all Tags on reader"/>
+                                        <connections>
+                                            <action selector="readAllTags:" destination="xQK-Fv-opK" eventType="touchUpInside" id="XmI-wS-LsH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3C8-MC-lzp">
+                                        <rect key="frame" x="0.0" y="86.666666666666657" width="248.66666666666666" height="86.333333333333343"/>
+                                        <state key="normal" title="Get tags count"/>
+                                        <connections>
+                                            <action selector="tagsCountOnReader:" destination="xQK-Fv-opK" eventType="touchUpInside" id="Ba4-rx-OMZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZB-r0-RtI">
+                                        <rect key="frame" x="0.0" y="173" width="248.66666666666666" height="86.666666666666686"/>
+                                        <state key="normal" title="Write tag"/>
+                                        <connections>
+                                            <action selector="writeTag:" destination="xQK-Fv-opK" eventType="touchUpInside" id="Ke2-ka-2FG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnI-Q8-H7I">
+                                        <rect key="frame" x="0.0" y="259.66666666666669" width="248.66666666666666" height="86.333333333333314"/>
+                                        <state key="normal" title="Write Tags List"/>
+                                        <connections>
+                                            <action selector="writeTagList:" destination="xQK-Fv-opK" eventType="touchUpInside" id="Wb2-Ei-GAm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hf7-xo-hNT">
+                                        <rect key="frame" x="0.0" y="346" width="248.66666666666666" height="86.666666666666686"/>
+                                        <state key="normal" title="Clear"/>
+                                        <connections>
+                                            <action selector="clearDevice:" destination="xQK-Fv-opK" eventType="touchUpInside" id="tSn-8a-X5U"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kY6-7J-ITx">
+                                        <rect key="frame" x="0.0" y="432.66666666666669" width="248.66666666666666" height="86.333333333333314"/>
+                                        <state key="normal" title="Scaning On"/>
+                                        <connections>
+                                            <action selector="scanningOn:" destination="xQK-Fv-opK" eventType="touchUpInside" id="vm6-J7-VNH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HeT-Me-0A1">
+                                        <rect key="frame" x="0.0" y="519" width="248.66666666666666" height="86.666666666666629"/>
+                                        <state key="normal" title="Scaning Off"/>
+                                        <connections>
+                                            <action selector="scanningOff:" destination="xQK-Fv-opK" eventType="touchUpInside" id="lpB-tR-Mw1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIV-FF-Jfv">
+                                        <rect key="frame" x="0.0" y="605.66666666666663" width="248.66666666666666" height="86.333333333333371"/>
+                                        <state key="normal" title="Change Mode"/>
+                                        <connections>
+                                            <action selector="switchToMode:" destination="xQK-Fv-opK" eventType="touchUpInside" id="xRa-8B-xVO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="caa-lX-Gri"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JbQ-Dv-qdN" firstAttribute="top" secondItem="caa-lX-Gri" secondAttribute="top" id="8mF-sl-bRY"/>
+                            <constraint firstItem="caa-lX-Gri" firstAttribute="bottom" secondItem="JbQ-Dv-qdN" secondAttribute="bottom" id="b7u-Je-xji"/>
+                            <constraint firstItem="JbQ-Dv-qdN" firstAttribute="width" secondItem="Jvk-Vn-jx7" secondAttribute="width" multiplier="0.6" id="e1S-xW-kNu"/>
+                            <constraint firstItem="JbQ-Dv-qdN" firstAttribute="centerX" secondItem="caa-lX-Gri" secondAttribute="centerX" id="rlx-M3-ho9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="DMini" id="S1S-Qa-UeH">
+                        <barButtonItem key="leftBarButtonItem" title="Chiudi" id="6dE-S5-2rK">
+                            <connections>
+                                <action selector="closePressed:" destination="xQK-Fv-opK" id="6xF-X2-1uz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iLq-L1-MTP" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-829" y="11"/>
+        </scene>
+    </scenes>
+</document>
