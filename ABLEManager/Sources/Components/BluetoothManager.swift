@@ -423,12 +423,10 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
         
         let newDevice = PeripheralDevice(with: peripheral, advData: advertisementData, rssi: RSSI)
-        let needRefresh = self.peripherals.appendDistinc(newDevice, sorting: true)
+        self.peripherals.append(newDevice)
         
-        if needRefresh {
-            DispatchQueue.main.async {
-                self.scanningCallback?(self.peripherals)
-            }
+        DispatchQueue.main.async {
+            self.scanningCallback?(self.peripherals)
         }
     }
     
