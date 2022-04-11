@@ -26,15 +26,31 @@ open class PeripheralDevice: Equatable, Comparable, Hashable, CustomStringConver
     }
     
     public var peripheralName: String {
-        guard let device = peripheral else {
-            return "No-Name"
+        if self.name.count > 0 {
+            return self.name
         }
         
+        if self.advName.count > 0 {
+            return self.advName
+        }
+        
+        return ""
+    }
+    
+    public var advName: String {
         if let name = advData["kCBAdvDataLocalName"] as? String {
             return name
         }
         
-        return device.name ?? "No-Name"
+        return ""
+    }
+    
+    public var name: String {
+        guard let device = peripheral else {
+            return ""
+        }
+        
+        return device.name ?? ""
     }
     
     public static func ==(lhs: PeripheralDevice, rhs: PeripheralDevice) -> Bool {
