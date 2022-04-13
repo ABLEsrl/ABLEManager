@@ -11,17 +11,15 @@ import ABLEManager
 
 
 class ProteusCommand: ABLECommand {
-    var hexMessage:  String  = ""
-    
+
     init() {
         super.init(with: "")
     }
     
     init(payload: String) {
         super.init(with: "")
-        
-        self.hexMessage = payload
-        self.rawData    = hexMessage.hexDecodedData()
+ 
+        self.rawData    = payload.data(using: .ascii) ?? Data()
         self.rawString  = String(data: self.rawData, encoding: .ascii) ?? ""
     }
 
@@ -32,7 +30,7 @@ class ProteusCommand: ABLECommand {
     }
     
     
-    static var startCommand: ProteusCommand {
-        return ProteusCommand(payload: "7DFF")
+    static var authCommand: ProteusCommand {
+        return ProteusCommand(payload: "[1234567890I]")
     }
 }

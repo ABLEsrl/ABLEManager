@@ -39,7 +39,7 @@ class ProteusViewController: UIViewController {
         }
         */
         
-        ProteusManager.shared.scanning() { devices in
+        ProteusManager.shared.scanning(["BP"]) { devices in
             self.deviceList = devices
             self.tableView.reloadData()
         }
@@ -58,7 +58,7 @@ extension ProteusViewController {
         self.deviceList = [PeripheralDevice]()
         self.tableView.reloadData()
         
-        ProteusManager.shared.scanning() { devices in
+        ProteusManager.shared.scanning(["BP"]) { devices in
             self.deviceList = devices
             self.tableView.reloadData()
         }

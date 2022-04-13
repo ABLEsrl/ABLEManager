@@ -236,7 +236,7 @@ public class BluetoothManager: NSObject {
         peripheral.readValue(for: cbCharacteristic)
     }
     
-    public func subscribeRead(to characteristic: String) {
+    public func subscribeRead(to characteristic: String, read: Bool=true) {
         guard
             let device = self.connectedDevice,
             let peripheral = self.connectedDevice?.peripheral,
@@ -245,50 +245,28 @@ public class BluetoothManager: NSObject {
         }
 
         if cbCharacteristic.isNotifying {
-            peripheral.readValue(for: cbCharacteristic)
+            if read {
+                peripheral.readValue(for: cbCharacteristic)
+            }
             return
         }
         
-        DispatchQueue.global().async {
-            self.subcribeSemaphore.enter()
-            peripheral.setNotifyValue(true, for: cbCharacteristic)
-            if self.subcribeSemaphore.wait(timeout: .now() + 5) == .timedOut {
-                return
-            }
-            
+        self.subcribeSemaphore.enter()
+        peripheral.setNotifyValue(true, for: cbCharacteristic)
+        if self.subcribeSemaphore.wait(timeout: .now() + 5) == .timedOut {
+            return
+        }
+        
+        if read {
             peripheral.readValue(for: cbCharacteristic)
         }
     }
     
     public func subscribe(to characteristic: String, read: Bool=false, completion: @escaping NotifyCallback) {
-        guard
-            let device = self.connectedDevice,
-            let peripheral = self.connectedDevice?.peripheral,
-            let cbCharacteristic = device.characteristics.first(where: {$0.uuid.uuidString == characteristic}) else {
-                return
-        }
-        
         self.notifyCallbacks[characteristic] = completion
         
-        if cbCharacteristic.isNotifying {
-            if read {
-                peripheral.readValue(for: cbCharacteristic)
-            }
-            return
-        }
-        
-        DispatchQueue.global().async {
-            self.subcribeSemaphore.enter()
-            peripheral.setNotifyValue(true, for: cbCharacteristic)
-            if self.subcribeSemaphore.wait(timeout: .now() + 5) == .timedOut {
-                return
-            }
-            
-            if read {
-                peripheral.readValue(for: cbCharacteristic)
-            }
-        }
-     }
+        self.subscribeRead(to: characteristic, read: read)
+    }
     
     public func unsubscribe(to characteristic: String) {
         guard
@@ -304,12 +282,10 @@ public class BluetoothManager: NSObject {
             return
         }
         
-        DispatchQueue.global().async {
-            self.subcribeSemaphore.enter()
-            peripheral.setNotifyValue(false, for: cbCharacteristic)
-            if self.subcribeSemaphore.wait(timeout: .now() + 5) == .timedOut {
-                return
-            }
+        self.subcribeSemaphore.enter()
+        peripheral.setNotifyValue(false, for: cbCharacteristic)
+        if self.subcribeSemaphore.wait(timeout: .now() + 5) == .timedOut {
+            return
         }
     }
 

@@ -55,7 +55,7 @@ public class ProteusManager {
         }
     }
 
-    func subscribe(characteristic: ProteusCharacteristic = .characteristic2, _ callback: @escaping ((String)->Void)) {
+    func subscribe(characteristic: ProteusCharacteristic = .characteristic1, _ callback: @escaping ((String)->Void)) {
         self.currentResponse = ProteusResponse()
         
         BluetoothManager.shared.subscribe(to: characteristic.rawValue) { (device, response, success) in
@@ -81,7 +81,7 @@ public class ProteusManager {
         }
     }
     
-    func unsubscribe(characteristic: ProteusCharacteristic = .characteristic2) {
+    func unsubscribe(characteristic: ProteusCharacteristic = .characteristic1) {
         BluetoothManager.shared.unsubscribe(to: characteristic.rawValue)
     }
     
@@ -89,12 +89,37 @@ public class ProteusManager {
         BluetoothManager.shared.disconnect()
     }
     
-    func sendWithoutResponse(command: ProteusCommand) {
+    func read(characteristic: ProteusCharacteristic = .characteristic2) -> ProteusResponse {
+        let char = BluetoothManager.shared.connectedDevice?.characteristics.first(where: { $0.uuid.uuidString.uppercased() == characteristic.rawValue.uppercased() })
+        let res = ProteusResponse(with: char?.value?.asciiString ?? "")
+        return res
+    }
+    
+    func send(command: ProteusCommand) {
         self.currentResponse = ProteusResponse()
         self.currentCommand  = command
         
-        //Invio il comando
-        self.write(command: command, to: .characteristic1)
+        /*
+        BluetoothManager.shared.subscribe(to: ProteusCharacteristic.characteristic1.rawValue) { (device, response, success) in
+            guard response.isZeroFilled == false else {
+                print("Received empty response")
+                return
+            }
+            
+            self.currentResponse.append(data: response)
+            
+            if self.currentResponse.isComplete {
+                DispatchQueue.main.async {
+                    callback(self.currentResponse)
+                    self.currentResponse = ProteusResponse()
+                }
+            }
+        }
+        */
+        //DispatchQueue.global().async {
+        //    usleep(useconds_t(100 * 1000))
+            self.write(command: command, to: .characteristic2)
+        //}
     }
     
     private func write(command: ABLECommand?, to characteristic: ProteusCharacteristic = .characteristic2, modality: CBCharacteristicWriteType = .withResponse) {
@@ -103,7 +128,7 @@ public class ProteusManager {
             return
         }
         
-        Thread.detachNewThread {
+        DispatchQueue.global().async {
             BluetoothManager.shared.write(command: ableCommand, to: characteristic.rawValue, modality: modality) { (_, success) in
                 guard success == true else {
                     print("Send failed")
@@ -132,7 +157,7 @@ extension ProteusManager {
     }
     
     private func splitParts(from rawPayload: String) -> (String, [ProteusResponse]) {
-        let lista: [ProteusResponse] = self.matches(for: "(<).*(>)", in: rawPayload).compactMap {
+        let lista: [ProteusResponse] = self.matches(for: "(\\[).*(\\])", in: rawPayload).compactMap {
             let resp = ProteusResponse()
             resp.append(string: String($0))
             print($0)

@@ -12,12 +12,11 @@ import UIKit
 
 
 class ProteusDetailViewController: UIViewController {
-    @IBOutlet weak var centerLabel:    UILabel!
-    @IBOutlet weak var leftStackView:  UIStackView!
-    @IBOutlet weak var rightStackView: UIStackView!
-    
+    @IBOutlet weak var tableView: UITableView!
     
     var device: PeripheralDevice?
+    var messages: [String] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +46,7 @@ class ProteusDetailViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super .viewWillDisappear(animated)
+        super.viewWillDisappear(animated)
         
         ProteusManager.shared.unsubscribe()
         ProteusManager.shared.disconnect()
@@ -58,61 +57,38 @@ class ProteusDetailViewController: UIViewController {
 extension ProteusDetailViewController {
                      
     @IBAction func sendCommandPressed(_ sender: UIButton?) {
-        ProteusManager.shared.sendWithoutResponse(command: ProteusCommand.startCommand)
+        ProteusManager.shared.send(command: ProteusCommand.authCommand)
+        
+        self.messages.append("Sending: \(ProteusCommand.authCommand.rawString)")
+        self.tableView.reloadSections([0], with: .fade)
     }
     
     func handle(data: String) {
-        guard let ProteusData = ProteusData.from(string: data) else {
-            print("Unable to instantiaze ProteusData from : \"\(data)\"")
-            return
-        }
+        print("ProteusData: \"\(data)\"")
         
-        self.leftStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        self.rightStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        
-        let leftCount  = UILabel()
-        leftCount.text = "\(ProteusData.detect)"
-        leftCount.textAlignment   = .center
-        leftCount.font = UIFont.boldSystemFont(ofSize: 20)
-        self.leftStackView.addArrangedSubview(leftCount)
-        
-        let rightCount  = UILabel()
-        rightCount.text = "\(ProteusData.detect)"
-        rightCount.textAlignment   = .center
-        rightCount.font = UIFont.boldSystemFont(ofSize: 20)
-        self.rightStackView.addArrangedSubview(rightCount)
-        
-        ProteusData.porosity.forEach { porosity in
-            let label             = UILabel()
-            label.text            = "\(porosity)%"
-            label.textAlignment   = .center
-            label.textColor       = .black
-            label.font            = UIFont.boldSystemFont(ofSize: 16)
-            label.backgroundColor = UIColor.red.to(color: .green, percentage: CGFloat(porosity))
-            self.leftStackView.addArrangedSubview(label)
-            
-            let labelR             = UILabel()
-            labelR.text            = "\(porosity)%"
-            labelR.textAlignment   = .center
-            labelR.textColor       = .black
-            labelR.font            = UIFont.boldSystemFont(ofSize: 16)
-            labelR.backgroundColor = UIColor.red.to(color: .green, percentage: CGFloat(porosity))
-            self.rightStackView.addArrangedSubview(labelR)
-        }
+        self.messages.append("Received: \(data)")
+        self.tableView.reloadSections([0], with: .fade)
     }
 }
 
 
-class ProteusData: Codable {
-    var porosity: [Int]
-    var detect: Int
+extension ProteusDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
-    class func from(string: String) -> ProteusData? {
-        if let encoded = string.data(using: .utf8), let decoded = try? JSONDecoder().decode(ProteusData.self, from: encoded) {
-            return decoded
-        }
-        
-        return nil
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        cell.textLabel?.text = self.messages[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
     }
 }
 

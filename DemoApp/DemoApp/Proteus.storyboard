@@ -83,23 +83,31 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rz-0d-tfd" userLabel="Center">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="f5S-HC-QMT" userLabel="left">
-                                        <rect key="frame" x="0.0" y="0.0" width="165.5" height="774"/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="UVS-xJ-yWq" userLabel="right">
-                                        <rect key="frame" x="248.5" y="0.0" width="165.5" height="774"/>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYH-gI-Ibt">
+                                        <rect key="frame" x="147.5" y="10" width="119" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Send Message"/>
+                                        <connections>
+                                            <action selector="sendCommandPressed:" destination="kgT-1W-TgY" eventType="touchUpInside" id="NXW-fj-3Pd"/>
+                                        </connections>
+                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IfP-i0-HOh">
+                                        <rect key="frame" x="0.0" y="61" width="414" height="713"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="kgT-1W-TgY" id="twM-t5-XCp"/>
+                                            <outlet property="delegate" destination="kgT-1W-TgY" id="J49-4M-lB0"/>
+                                        </connections>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="UVS-xJ-yWq" secondAttribute="trailing" id="6c0-to-jV1"/>
-                                    <constraint firstAttribute="bottom" secondItem="f5S-HC-QMT" secondAttribute="bottom" id="MJb-xO-yui"/>
-                                    <constraint firstItem="UVS-xJ-yWq" firstAttribute="width" secondItem="9Rz-0d-tfd" secondAttribute="width" multiplier="0.4" id="P5W-bK-VDk"/>
-                                    <constraint firstItem="f5S-HC-QMT" firstAttribute="width" secondItem="9Rz-0d-tfd" secondAttribute="width" multiplier="0.4" id="QaU-3P-uaq"/>
-                                    <constraint firstItem="UVS-xJ-yWq" firstAttribute="top" secondItem="9Rz-0d-tfd" secondAttribute="top" id="XeJ-co-kjW"/>
-                                    <constraint firstItem="f5S-HC-QMT" firstAttribute="leading" secondItem="9Rz-0d-tfd" secondAttribute="leading" id="ZwC-yO-qU5"/>
-                                    <constraint firstAttribute="bottom" secondItem="UVS-xJ-yWq" secondAttribute="bottom" id="x1K-80-Jsj"/>
-                                    <constraint firstItem="f5S-HC-QMT" firstAttribute="top" secondItem="9Rz-0d-tfd" secondAttribute="top" id="yEB-Gg-61F"/>
+                                    <constraint firstAttribute="trailing" secondItem="IfP-i0-HOh" secondAttribute="trailing" id="DUw-3V-wBN"/>
+                                    <constraint firstItem="hYH-gI-Ibt" firstAttribute="top" secondItem="9Rz-0d-tfd" secondAttribute="top" constant="10" id="Wuu-pn-6KL"/>
+                                    <constraint firstItem="IfP-i0-HOh" firstAttribute="top" secondItem="hYH-gI-Ibt" secondAttribute="bottom" constant="20" id="ZKn-5G-Wqm"/>
+                                    <constraint firstItem="hYH-gI-Ibt" firstAttribute="centerX" secondItem="9Rz-0d-tfd" secondAttribute="centerX" id="jbD-Hc-Yri"/>
+                                    <constraint firstAttribute="bottom" secondItem="IfP-i0-HOh" secondAttribute="bottom" id="pIK-wP-YkF"/>
+                                    <constraint firstItem="IfP-i0-HOh" firstAttribute="leading" secondItem="9Rz-0d-tfd" secondAttribute="leading" id="qrN-hv-ItJ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -112,16 +120,9 @@
                             <constraint firstItem="9Rz-0d-tfd" firstAttribute="top" secondItem="kdl-qB-GZL" secondAttribute="top" id="uBx-uc-utl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="x93-kq-atb">
-                        <barButtonItem key="rightBarButtonItem" title="Toggle Service" id="Oox-MP-gg8">
-                            <connections>
-                                <action selector="sendCommandPressed:" destination="kgT-1W-TgY" id="KGM-Br-SI0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="x93-kq-atb"/>
                     <connections>
-                        <outlet property="leftStackView" destination="f5S-HC-QMT" id="Syn-dH-5Rw"/>
-                        <outlet property="rightStackView" destination="UVS-xJ-yWq" id="rIp-G8-qet"/>
+                        <outlet property="tableView" destination="IfP-i0-HOh" id="hAj-pY-sJM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qFm-N5-DvH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
