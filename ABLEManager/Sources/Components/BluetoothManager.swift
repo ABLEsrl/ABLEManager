@@ -376,9 +376,11 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
+    /*
     public func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
         
     }
+    */
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         peripheral.delegate = self

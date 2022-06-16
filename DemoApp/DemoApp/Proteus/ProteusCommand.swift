@@ -31,6 +31,11 @@ class ProteusCommand: ABLECommand {
     
     
     static var authCommand: ProteusCommand {
-        return ProteusCommand(payload: "[1234567890I]")
+        return ProteusCommand(payload: "[P000000020000000000ff00ff470af00046016764001000000000000]")
+    }
+    
+    static func programCommand(value: Int) -> ProteusCommand {
+        let dimming = String(value, radix: 16).leftPadding(toLength: 2, withPad: "0")
+        return ProteusCommand(payload: "[P000000020000000000ff00ff"+dimming+"0af00046016764001000000000000]")
     }
 }

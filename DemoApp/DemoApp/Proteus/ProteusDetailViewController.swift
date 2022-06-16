@@ -17,6 +17,7 @@ class ProteusDetailViewController: UIViewController {
     var device: PeripheralDevice?
     var messages: [String] = []
     
+    var start = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +41,8 @@ class ProteusDetailViewController: UIViewController {
             }
         }
         
-        ProteusManager.shared.subscribe() { [weak self] newData in
-            self?.handle(data: newData)
+        ProteusManager.shared.handleNewMessage = { [weak self] response in
+            self?.handle(data: response.rawString)
         }
     }
     
@@ -60,14 +61,18 @@ extension ProteusDetailViewController {
         ProteusManager.shared.send(command: ProteusCommand.authCommand)
         
         self.messages.append("Sending: \(ProteusCommand.authCommand.rawString)")
-        self.tableView.reloadSections([0], with: .fade)
+        self.tableView.insertRows(at: [IndexPath(row: self.messages.count-1, section: 0)], with: .fade)
+        self.tableView.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .bottom, animated: true)
     }
     
     func handle(data: String) {
-        print("ProteusData: \"\(data)\"")
+        print("Receive time: \(Date().timeIntervalSince(self.start)*1000)")
         
-        self.messages.append("Received: \(data)")
-        self.tableView.reloadSections([0], with: .fade)
+        self.messages.append(data)
+        self.tableView.insertRows(at: [IndexPath(row: self.messages.count-1, section: 0)], with: .fade)
+        self.tableView.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .bottom, animated: true)
+        
+        self.start = Date()
     }
 }
 

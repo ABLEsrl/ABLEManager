@@ -22,6 +22,15 @@
 		1DE5AD7427C526EF00C61F49 /* ProteusDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5AD6E27C526EF00C61F49 /* ProteusDetailViewController.swift */; };
 		1DE5AD7527C526EF00C61F49 /* ProteusCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5AD6F27C526EF00C61F49 /* ProteusCharacteristics.swift */; };
 		1DE5AD7727C5270500C61F49 /* Proteus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DE5AD7627C5270400C61F49 /* Proteus.storyboard */; };
+		1DF07484285B222200C30ECE /* ProteusDetailViewControllerMany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF07483285B222200C30ECE /* ProteusDetailViewControllerMany.swift */; };
+		1DF07492285B36D800C30ECE /* USRResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0748A285B36D800C30ECE /* USRResponse.swift */; };
+		1DF07493285B36D800C30ECE /* USR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF0748B285B36D800C30ECE /* USR.storyboard */; };
+		1DF07494285B36D800C30ECE /* USRCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0748C285B36D800C30ECE /* USRCharacteristics.swift */; };
+		1DF07495285B36D800C30ECE /* USRDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0748D285B36D800C30ECE /* USRDetailViewController.swift */; };
+		1DF07496285B36D800C30ECE /* USRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0748E285B36D800C30ECE /* USRManager.swift */; };
+		1DF07497285B36D800C30ECE /* USRCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0748F285B36D800C30ECE /* USRCommand.swift */; };
+		1DF07498285B36D800C30ECE /* USRDetailViewControllerMany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF07490285B36D800C30ECE /* USRDetailViewControllerMany.swift */; };
+		1DF07499285B36D800C30ECE /* USRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF07491285B36D800C30ECE /* USRViewController.swift */; };
 		1DFC4E62238FDF3200CB55E6 /* DMiniWriteTagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFC4E61238FDF3200CB55E6 /* DMiniWriteTagResponse.swift */; };
 		1DFC4E64239026A500CB55E6 /* DMiniClearRespose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFC4E63239026A500CB55E6 /* DMiniClearRespose.swift */; };
 		B237FD052244FDEB006D9099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237FD042244FDEB006D9099 /* AppDelegate.swift */; };
@@ -55,6 +64,15 @@
 		1DE5AD6E27C526EF00C61F49 /* ProteusDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProteusDetailViewController.swift; sourceTree = "<group>"; };
 		1DE5AD6F27C526EF00C61F49 /* ProteusCharacteristics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProteusCharacteristics.swift; sourceTree = "<group>"; };
 		1DE5AD7627C5270400C61F49 /* Proteus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Proteus.storyboard; sourceTree = "<group>"; };
+		1DF07483285B222200C30ECE /* ProteusDetailViewControllerMany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProteusDetailViewControllerMany.swift; sourceTree = "<group>"; };
+		1DF0748A285B36D800C30ECE /* USRResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USRResponse.swift; sourceTree = "<group>"; };
+		1DF0748B285B36D800C30ECE /* USR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = USR.storyboard; sourceTree = "<group>"; };
+		1DF0748C285B36D800C30ECE /* USRCharacteristics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USRCharacteristics.swift; sourceTree = "<group>"; };
+		1DF0748D285B36D800C30ECE /* USRDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USRDetailViewController.swift; sourceTree = "<group>"; };
+		1DF0748E285B36D800C30ECE /* USRManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USRManager.swift; sourceTree = "<group>"; };
+		1DF0748F285B36D800C30ECE /* USRCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USRCommand.swift; sourceTree = "<group>"; };
+		1DF07490285B36D800C30ECE /* USRDetailViewControllerMany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USRDetailViewControllerMany.swift; sourceTree = "<group>"; };
+		1DF07491285B36D800C30ECE /* USRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USRViewController.swift; sourceTree = "<group>"; };
 		1DFC4E61238FDF3200CB55E6 /* DMiniWriteTagResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniWriteTagResponse.swift; sourceTree = "<group>"; };
 		1DFC4E63239026A500CB55E6 /* DMiniClearRespose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMiniClearRespose.swift; sourceTree = "<group>"; };
 		6744546B7F16FCA9E59974C7 /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +102,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1DBB319723AA50FE00DB9085 /* RN4678 */ = {
+		1DF07486285B365A00C30ECE /* USR IoT */ = {
+			isa = PBXGroup;
+			children = (
+				1DF0748B285B36D800C30ECE /* USR.storyboard */,
+				1DF0748C285B36D800C30ECE /* USRCharacteristics.swift */,
+				1DF0748F285B36D800C30ECE /* USRCommand.swift */,
+				1DF07491285B36D800C30ECE /* USRViewController.swift */,
+				1DF0748D285B36D800C30ECE /* USRDetailViewController.swift */,
+				1DF07490285B36D800C30ECE /* USRDetailViewControllerMany.swift */,
+				1DF0748E285B36D800C30ECE /* USRManager.swift */,
+				1DF0748A285B36D800C30ECE /* USRResponse.swift */,
+			);
+			path = "USR IoT";
+			sourceTree = "<group>";
+		};
+		1DF07487285B366200C30ECE /* Proteus */ = {
+			isa = PBXGroup;
+			children = (
+				1DE5AD7627C5270400C61F49 /* Proteus.storyboard */,
+				1DE5AD6D27C526EF00C61F49 /* ProteusViewController.swift */,
+				1DE5AD6E27C526EF00C61F49 /* ProteusDetailViewController.swift */,
+				1DF07483285B222200C30ECE /* ProteusDetailViewControllerMany.swift */,
+				1DE5AD6F27C526EF00C61F49 /* ProteusCharacteristics.swift */,
+				1DE5AD6A27C526EF00C61F49 /* ProteusCommand.swift */,
+				1DE5AD6B27C526EF00C61F49 /* ProteusManager.swift */,
+				1DE5AD6C27C526EF00C61F49 /* ProteusResponse.swift */,
+			);
+			path = Proteus;
+			sourceTree = "<group>";
+		};
+		1DF07488285B367700C30ECE /* RN4678 */ = {
 			isa = PBXGroup;
 			children = (
 				1D4C006F27C4D4F400C81266 /* RN4678.storyboard */,
@@ -94,21 +142,23 @@
 				1DBB319C23AA513400DB9085 /* RN4678Characteristics.swift */,
 				1DBB319A23AA512100DB9085 /* RN4678Manager.swift */,
 			);
-			name = RN4678;
+			path = RN4678;
 			sourceTree = "<group>";
 		};
-		1DE5AD6927C526C300C61F49 /* Proteus */ = {
+		1DF07489285B368A00C30ECE /* DMini */ = {
 			isa = PBXGroup;
 			children = (
-				1DE5AD7627C5270400C61F49 /* Proteus.storyboard */,
-				1DE5AD6D27C526EF00C61F49 /* ProteusViewController.swift */,
-				1DE5AD6E27C526EF00C61F49 /* ProteusDetailViewController.swift */,
-				1DE5AD6F27C526EF00C61F49 /* ProteusCharacteristics.swift */,
-				1DE5AD6A27C526EF00C61F49 /* ProteusCommand.swift */,
-				1DE5AD6B27C526EF00C61F49 /* ProteusManager.swift */,
-				1DE5AD6C27C526EF00C61F49 /* ProteusResponse.swift */,
+				1D4C006B27C4D3FC00C81266 /* DMini.storyboard */,
+				B237FD062244FDEB006D9099 /* DMiniViewController.swift */,
+				B26182CD2246348D008DD6AF /* DMiniCommand.swift */,
+				B26182D1224643A4008DD6AF /* DMiniTagResponse.swift */,
+				1DFC4E61238FDF3200CB55E6 /* DMiniWriteTagResponse.swift */,
+				1DFC4E63239026A500CB55E6 /* DMiniClearRespose.swift */,
+				B25194962248E0E1006327F4 /* DMiniCountResponse.swift */,
+				B26182CF22463D67008DD6AF /* DMiniBLEManager.swift */,
+				B25194A322492243006327F4 /* DMiniCharacteristics.swift */,
 			);
-			name = Proteus;
+			path = DMini;
 			sourceTree = "<group>";
 		};
 		9A126D76EBA8BE97183ED014 /* Pods */ = {
@@ -147,27 +197,12 @@
 				B237FD082244FDEB006D9099 /* Main.storyboard */,
 				B237FD0B2244FDEC006D9099 /* Assets.xcassets */,
 				B237FD102244FDEC006D9099 /* Info.plist */,
-				1DE5AD6927C526C300C61F49 /* Proteus */,
-				1DBB319723AA50FE00DB9085 /* RN4678 */,
-				B2F8BAC122533C7900D2C8D8 /* DMini */,
+				1DF07489285B368A00C30ECE /* DMini */,
+				1DF07488285B367700C30ECE /* RN4678 */,
+				1DF07486285B365A00C30ECE /* USR IoT */,
+				1DF07487285B366200C30ECE /* Proteus */,
 			);
 			path = DemoApp;
-			sourceTree = "<group>";
-		};
-		B2F8BAC122533C7900D2C8D8 /* DMini */ = {
-			isa = PBXGroup;
-			children = (
-				1D4C006B27C4D3FC00C81266 /* DMini.storyboard */,
-				B237FD062244FDEB006D9099 /* DMiniViewController.swift */,
-				B26182CD2246348D008DD6AF /* DMiniCommand.swift */,
-				B26182D1224643A4008DD6AF /* DMiniTagResponse.swift */,
-				1DFC4E61238FDF3200CB55E6 /* DMiniWriteTagResponse.swift */,
-				1DFC4E63239026A500CB55E6 /* DMiniClearRespose.swift */,
-				B25194962248E0E1006327F4 /* DMiniCountResponse.swift */,
-				B26182CF22463D67008DD6AF /* DMiniBLEManager.swift */,
-				B25194A322492243006327F4 /* DMiniCharacteristics.swift */,
-			);
-			name = DMini;
 			sourceTree = "<group>";
 		};
 		C786AF817EC8693DAA9E6382 /* Frameworks */ = {
@@ -244,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF07493285B36D800C30ECE /* USR.storyboard in Resources */,
 				1D4C006C27C4D3FC00C81266 /* DMini.storyboard in Resources */,
 				1D4C007027C4D4F400C81266 /* RN4678.storyboard in Resources */,
 				B237FD0F2244FDEC006D9099 /* LaunchScreen.storyboard in Resources */,
@@ -300,25 +336,33 @@
 			files = (
 				1DE5AD7027C526EF00C61F49 /* ProteusCommand.swift in Sources */,
 				1DE5AD7227C526EF00C61F49 /* ProteusResponse.swift in Sources */,
+				1DF07496285B36D800C30ECE /* USRManager.swift in Sources */,
 				1D4C006E27C4D43300C81266 /* ViewController.swift in Sources */,
+				1DF07499285B36D800C30ECE /* USRViewController.swift in Sources */,
+				1DF07492285B36D800C30ECE /* USRResponse.swift in Sources */,
 				B237FD072244FDEB006D9099 /* DMiniViewController.swift in Sources */,
 				1DBB319923AA511000DB9085 /* RN4678Command.swift in Sources */,
 				B26182CE2246348D008DD6AF /* DMiniCommand.swift in Sources */,
 				B25194A422492243006327F4 /* DMiniCharacteristics.swift in Sources */,
 				B237FD052244FDEB006D9099 /* AppDelegate.swift in Sources */,
+				1DF07497285B36D800C30ECE /* USRCommand.swift in Sources */,
 				1DE5AD7427C526EF00C61F49 /* ProteusDetailViewController.swift in Sources */,
 				B26182D022463D67008DD6AF /* DMiniBLEManager.swift in Sources */,
 				1D460A7623AA98BF00981F36 /* RN4678Response.swift in Sources */,
 				1DBB319F23AA568900DB9085 /* RN4678ViewController.swift in Sources */,
+				1DF07495285B36D800C30ECE /* USRDetailViewController.swift in Sources */,
 				1DFC4E62238FDF3200CB55E6 /* DMiniWriteTagResponse.swift in Sources */,
 				B25194972248E0E1006327F4 /* DMiniCountResponse.swift in Sources */,
 				1DBB319D23AA513400DB9085 /* RN4678Characteristics.swift in Sources */,
+				1DF07484285B222200C30ECE /* ProteusDetailViewControllerMany.swift in Sources */,
+				1DF07494285B36D800C30ECE /* USRCharacteristics.swift in Sources */,
 				1DE5AD7327C526EF00C61F49 /* ProteusViewController.swift in Sources */,
 				1DFC4E64239026A500CB55E6 /* DMiniClearRespose.swift in Sources */,
 				1DE5AD7127C526EF00C61F49 /* ProteusManager.swift in Sources */,
 				B26182D2224643A4008DD6AF /* DMiniTagResponse.swift in Sources */,
 				1DE5AD7527C526EF00C61F49 /* ProteusCharacteristics.swift in Sources */,
 				1DBB319B23AA512100DB9085 /* RN4678Manager.swift in Sources */,
+				1DF07498285B36D800C30ECE /* USRDetailViewControllerMany.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

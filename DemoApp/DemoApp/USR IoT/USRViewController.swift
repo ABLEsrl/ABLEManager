@@ -11,7 +11,7 @@ import ABLEManager
 import UIKit
 
 
-class ProteusViewController: UIViewController {
+class USRViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,17 +29,17 @@ class ProteusViewController: UIViewController {
             isModalInPresentation = true
         }
         
-        ProteusManager.shared.registerConnectionObserver { isConnected in
-            print("Proteus is connected? \(isConnected)")
+        USRManager.shared.registerConnectionObserver { isConnected in
+            print("USR is connected? \(isConnected)")
         }
         
         /*
-         ProteusManager.shared.searchAndConnect { (device) in
+         USRManagerManager.shared.searchAndConnect { (device) in
             print("Connesso con \(device.peripheralName)")
         }
         */
         
-        ProteusManager.shared.scanning(["BP"]) { devices in
+        USRManager.shared.scanning(["FE"]) { devices in
             self.deviceList = devices
             self.tableView.reloadData()
         }
@@ -47,18 +47,18 @@ class ProteusViewController: UIViewController {
 }
 
 
-extension ProteusViewController {
+extension USRViewController {
     @IBAction func closePressed(_ sender: UIButton?) {
         self.dismiss(animated: true)
     }
     
     @IBAction func scanningPressed(_ sender: UIButton?) {
-        ProteusManager.shared.stopScan()
+        USRManager.shared.stopScan()
         
         self.deviceList = [PeripheralDevice]()
         self.tableView.reloadData()
         
-        ProteusManager.shared.scanning(["BP"]) { devices in
+        USRManager.shared.scanning(["FE"]) { devices in
             self.deviceList = devices
             self.tableView.reloadData()
         }
@@ -66,7 +66,7 @@ extension ProteusViewController {
 }
 
 
-extension ProteusViewController: UITableViewDelegate, UITableViewDataSource {
+extension USRViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -83,22 +83,38 @@ extension ProteusViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ProteusManager.shared.stopScan()
+        USRManager.shared.stopScan()
         
-        tableView.cellForRow(at: indexPath)?.accessoryView = self.createSpinner()
-        ProteusManager.shared.connect(to: self.deviceList[indexPath.row], timeout: 10) { device in
-            tableView.cellForRow(at: indexPath)?.accessoryView = nil
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        
+        cell.accessoryView = self.createSpinner()
+        USRManager.shared.connect(to: self.deviceList[indexPath.row], timeout: 10) { device in
+            cell.accessoryView = nil
             
             guard let device = device else {
                 print("Unable to connect to selected device")
                 return
             }
-            
             print("Connected:       \(true)")
             print("Services:        \(device.services)")
             print("Characteristics: \(device.characteristics)")
             
-            self.performSegue(withIdentifier: "kShowDetail", sender: self)
+            DispatchQueue.global().async {
+                USRManager.shared.send(command: USRCommand.authCommand)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                let choices = UIAlertController(title: "USR", message: "Scegli la modalità", preferredStyle: .actionSheet)
+                choices.popoverPresentationController?.sourceView = cell
+                choices.addAction(UIAlertAction(title: "One Message", style: .default) { action in
+                    self.performSegue(withIdentifier: "kShowDetailMessage", sender: self)
+                })
+                choices.addAction(UIAlertAction(title: "Stream Messages", style: .default) { action in
+                    self.performSegue(withIdentifier: "kShowDetailStream", sender: self)
+                })
+                choices.addAction(UIAlertAction(title: "Annulla", style: .destructive))
+                self.present(choices, animated: true)
+            }
         }
     }
     
