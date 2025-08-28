@@ -20,8 +20,8 @@ public class ProteusManager {
     private var currentResponse:    ProteusResponse        = ProteusResponse()
     private var connectionObserver: NSKeyValueObservation? = nil
     private var streamCallback:     ((String)->Void)?      = nil
-    private var inFlightQueue:      [ProteusCommand]       = []
-    private var serialQueue:        DispatchQueue          = DispatchQueue(label: "serial.queue.com.able")
+    private var messagesQueue:      [ProteusCommand]       = []
+    private var serialQueue:        DispatchQueue          = DispatchQueue(label: "com.able.message.serial.queue")
     private var inFlight:           Bool                   = false
     
     var handleNewMessage: ((ProteusResponse)->Void)?
@@ -29,6 +29,14 @@ public class ProteusManager {
     
     init() {
     
+    }
+    
+    func registerMessagesCallback(_ callback: ((ProteusResponse)->Void)? ) {
+        self.handleNewMessage = callback
+    }
+    
+    func removeMessagesCallback() {
+        self.handleNewMessage = nil
     }
     
     func registerConnectionObserver(_ callback: @escaping ((Bool)->Void) ) {
@@ -45,7 +53,7 @@ public class ProteusManager {
         BluetoothManager.shared.stopScan()
     }
     
-    func connect(to device: PeripheralDevice, timeout: TimeInterval=5, _ callback: @escaping ((PeripheralDevice?)->Void)) {
+    func connect(to device: PeripheralDevice, timeout: TimeInterval=5, _ callback: @escaping ((PeripheralDevice?)->Void) ) {
         self.serialQueue.async {
             BluetoothManager.shared.connect(to: device, timeout: timeout)
             
@@ -98,7 +106,7 @@ public class ProteusManager {
             self.unsubscribe(characteristic: .characteristic2)
             
             BluetoothManager.shared.disconnect()
-            self.inFlightQueue = []
+            self.messagesQueue = []
             self.inFlight      = false
         }
     }
@@ -108,13 +116,11 @@ public class ProteusManager {
             self.currentResponse = ProteusResponse()
             self.currentCommand  = command
             
-            switch self.inFlightQueue.count {
-            case 0:
-                self.inFlightQueue.append(command)
-                
-            default:
-                self.inFlightQueue.removeLast()
-                self.inFlightQueue.append(command)
+            if self.messagesQueue.count == 0 {
+                self.messagesQueue.append(command)
+            } else {
+                self.messagesQueue.removeLast()
+                self.messagesQueue.append(command)
             }
             
             self.writeIfPossible()
@@ -127,12 +133,12 @@ public class ProteusManager {
             self.inFlight = false
         }
         
-        guard self.inFlight == false, self.inFlightQueue.count > 0 else {
+        guard self.inFlight == false, self.messagesQueue.count > 0 else {
             return
         }
         
         self.inFlight = true
-        let sendingCommand = self.inFlightQueue.removeFirst()
+        let sendingCommand = self.messagesQueue.removeFirst()
         self.write(command: sendingCommand, to: .characteristic2, modality: .withResponse)
     }
     
